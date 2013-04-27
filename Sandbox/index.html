@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Young Person's Guide to YUI3</title>
+    </head>
+    <body>
+        <header>Young Person's Guide to YUI3</header>
+        <section>
+            <h1>I'm waking up</h1>
+        </section>
+        <footer>
+        Yippee!
+        </footer>
+    <!-- Load YUI3 from the Yahoo CDN -->
+    <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+    <script>
+        /* Now we're going to start up YUI3 and change the h1's content. */
+        YUI().use("node", function (Y) {
+            Y.one("h1").set("text", "Hello World!");
+        });
+    </script>
+    </body>
+</html>

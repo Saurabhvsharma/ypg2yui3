@@ -41,23 +41,31 @@ This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 ### What you're need
 
 The typical web developer setup is a computer, a web browser, a text editor and a web server.
-More specifially you can use either a Linux box, a Mac, Windows PC, or even a Raspberry Pi. You'll also
-need a web browser (e.g. Firefox), an editor (e.g. Adobe Brackets or Scripted Editor), 
-and the web server (e.g. httpster, Apache or NginX).  I happen to use a Mac, Firefox or Chrome web browser, 
-Adobe Brackets and httpster as my webserver. My setup should run equally well on a Mac or Windows PC. I
-also have been known to use a Raspberry Pi, Firefox (iceweasel), Scripted Editor and httpster.
+More specifially you might choose to use a a Linux box, a Mac, a Windows PC, or even a 
+Raspberry Pi. You'll also need a web browser (e.g. Firefox, Chrome, Safari, IE, or Opera),
+an editor (e.g. [Adobe Brackets][], [Scripted Editor][], Coda, Textmate, ShiftEdit, Sublime Editor), 
+and the web server (e.g. httpster, Apache or NginX).  I happen to use a Mac, Firefox or Chrome
+web browser,  Adobe Brackets and httpster as my webserver at my day job. That setup should
+run equally well on a Mac or Windows PC. I am writing this tutorial and examples at home on my
+on a Raspberry Pi computer, using the "iceweasel" version of Firefox, typing this text in with
+ Scripted Editor and using httpster as my web  server to test my examples.
 
+[Adobe Brackets]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
+[Scripted Editor]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
 
-### Using my setup
+### A basic setup (Mac/Windows)
 
-You only need the general setup to follow along but if you'd like to use what I used these instructions
-are for you.
+You only need the general setup to follow along but here's how to 
+get going if you're working from a Mac or Windows PC.
 
 1) Turn on your computer :-)
 2) Download and install the latest [Firefox](http://www.mozilla.org), click on the download button and follow the instructions
-3) Install Adobe Brackets
+3) Install [Adobe Brackets](http://brackets.io), follow their instructions
 4) Install [NodeJS](http://nodejs.org), click the download button and follow the instructions
 5) [httpster](https://github.com/SimbCo/httpster), follow the instructions in the "README.md"
+
+If you can create/edit a plain text file, start your web server and browser then you are ready to begin.
+
 
 ## One
 
@@ -105,6 +113,8 @@ Edit index.html to include the following-
         </body>
     </html>
 ```
+
+Refresh your web browser and now you should see the Hello World message in the middle area of the page.
 
 So there. You've use YUI3 to change the contents of an H1 and written the proverbial "Hello World" example.
 
