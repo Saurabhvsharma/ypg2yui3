@@ -16,6 +16,9 @@ This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 * Know how to install things on your computer
 
 
+[YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
+
+
 # Contents #
 
 - [Getting Started](#getting started)
@@ -128,6 +131,3 @@ So there. You've use YUI3 to change the contents of an H1 and written the prover
 
 ## Eleven
 
-
-
-[YUI3]: http://yuilibrary.com YUI3 was at version 3.10.0 at the time this article was written
