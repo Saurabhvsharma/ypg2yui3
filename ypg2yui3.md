@@ -1,11 +1,37 @@
 
 # Young Person's Guide to YUI3
+ypg2yui3
+========
 
-This is a gentle introduction to YUI3. It does make a few assumptions-
+# Young Person's Guide to YUI3
+
+by R. S. Doiel, <rsdoiel@gmail.com>
+Updated: 2013-04-26
+
+
+This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 
 * You have a passing knowledge of JavaScript, HTML, CSS
 * A basic idea of how the web works
 * Know how to install things on your computer
+
+
+# Contents #
+
+- [Getting Started](#getting started)
+- [One](#one) The index.html file, getting YUI, getting it to do something
+- [Two](#two) Taking actions based on mouse clicks
+- [Three](#three) Taking actions based on keyboard commands
+- [Four](#four) Taking actions based on touch
+- [Five](#five) Using a YUI Modules
+- [Six](#six) Getting data from someplace else
+- [Seven](#seven) Responding based on URL parameters
+- [Eight](#eight) Writing your own Modules
+- [Nine](#nine) Building a Simple Single, Page Application
+- [Ten](#ten) Should you use YUI for that?
+    * If HTML can do it, usc HTML
+    * If CSS can do it, use CSS
+- [Eleven](#eleven) Finding helpful YUI3 Modules
 
 ## Getting started
 
@@ -30,21 +56,78 @@ are for you.
 4) Install [NodeJS](http://nodejs.org), click the download button and follow the instructions
 5) [httpster](https://github.com/SimbCo/httpster), follow the instructions in the "README.md"
 
-## Table of Contents
+## One
 
-* The index.html file, getting YUI, getting it to do something
-* Taking actions based on mouse clicks
-* Taking actions based on keyboard commands
-* Taking actions based on touch
-* Using a YUI Modules
-* Getting data from someplace else
-* Responding based on URL parameters
-* Writing your own Modules
-* Building a Simple Single, Page Application
-* Should you use YUI for that?
-    * If HTML can do it, usc HTML
-    * If CSS can do it, use CSS
-* Finding helpful YUI3 Modules
+First, YUI3 is loaded from the web page.  That means you need to have a working
+web server. I recomment creating a folder where you're going to put your
+site and using httpster turn that folder into a web site.  Here's
+the sequence of steps I use to get started. On my Mac I ran these commands
+from the Terminal and already had NodeJS, my text editor and httpster
+installed.
+
+```Shell
+     mkdir Sandbox
+     cd Sandbox
+     touch index.html
+     httpster
+```
+
+At this point httpster is serving up any content it finds in Sandbox folder. In
+this specific case an empty index.html file.
+
+Edit index.html to include the following-
+
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Young Person's Guide to YUI3</title>
+        </head>
+        <body>
+            <header>Young Person's Guide to YUI3</header>
+            <section>
+                <h1>I'm waking up</h1>
+            </section>
+            <footer>
+            Yippee!
+            </footer>
+        <!-- Load YUI3 from the Yahoo CDN -->
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+            /* Now we're going to start up YUI3 and change the h1's content. */
+            YUI().use("node", function (Y) {
+                Y.one("h1").set("text", "Hello World!");
+            });
+        </script>
+        </body>
+    </html>
+```
+
+So there. You've use YUI3 to change the contents of an H1 and written the proverbial "Hello World" example.
 
 
 
+
+## Two
+
+## Three
+
+## Four
+
+## Five
+
+## Six
+
+## Seven
+
+## Eight
+
+## Nine
+
+## Ten
+
+## Eleven
+
+
+
+[YUI3]: http://yuilibrary.com YUI3 was at version 3.10.0 at the time this article was written
