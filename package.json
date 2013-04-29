@@ -1,0 +1,30 @@
+{
+  "name": "ypg2yui3",
+  "version": "0.0.0",
+  "description": "A Young Person's Guide to YUI3",
+  "main": "index.js",
+  "scripts": {
+    "test": "test_index.js"
+  },
+  "bin": {
+      "ypg2yui3": "index.js"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+      "yui3": "3.10.x",
+      "express": "3.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rsdoiel/ypg2yui3.git"
+  },
+  "keywords": [
+    "tutorial",
+    "yui3"
+  ],
+  "author": "R. S. Doiel, <rsdoiel@gmail.com>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "925f18ac3c050e7519066b7f10756d0a3a171179"
+}
