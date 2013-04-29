@@ -4,7 +4,8 @@
   "description": "A Young Person's Guide to YUI3",
   "main": "index.js",
   "scripts": {
-    "test": "node test_index.js"
+      "start": "node index.js",
+      "test": "node test_index.js"
   },
   "bin": {
       "ypg2yui3": "index.js"
@@ -13,6 +14,7 @@
   },
   "dependencies": {
       "yui3": "3.10.x",
+      "markdown": "0.4.x",
       "express": "3.x"
   },
   "repository": {
