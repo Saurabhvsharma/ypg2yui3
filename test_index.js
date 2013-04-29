@@ -6,7 +6,8 @@
  */
 
 var YUI = require("yui").YUI,
-    port = processs.env.PORT || 3334,
+    url = require("url"),
+    port = process.env.PORT || 3334,
     hostname = process.env.HOSTNAME || "localhost";
 
 YUI({

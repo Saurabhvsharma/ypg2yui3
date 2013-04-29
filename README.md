@@ -20,7 +20,7 @@ This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 
 
 # Contents #
-
+- [Setting up](#setting up)
 - [Getting Started](#getting started)
 - [One](#one) The index.html file, getting YUI, getting it to do something
 - [Two](#two) Taking actions based on mouse clicks
@@ -36,7 +36,8 @@ This is a gentle introduction to [YUI3][]. It does make a few assumptions-
     * If CSS can do it, use CSS
 - [Eleven](#eleven) Finding helpful YUI3 Modules
 
-## Getting started
+
+## Setting Up
 
 ### What you're need
 
@@ -66,15 +67,76 @@ get going if you're working from a Mac or Windows PC.
 
 If you can create/edit a plain text file, start your web server and browser then you are ready to begin.
 
+## Getting Started
+
+As this is a short work on using YUI3 library you need to know how to make it available on a web page. Fortunately
+this is blessedly easy. You use a _script_ tag to include it from Yahoo's CDN. As a teaser let's make a simple
+web page and use YUI3 to change the pages' title to "Hello World".
+
+Build the first part of your HTML document as you normally would.
+
+[getting-started.html](Sandbox/getting-started.html)
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Getting Started</title>
+        </head>
+        <body>
+            <h1>Getting Started</h1>
+            <p>Now load YUI3 then update the title of the page and heading above.</p>
+```
+
+Now include YUI3 from Yahoo's CDN. We follow that by a small amount of JavaScript 
+to change the contents of the _title_ element and _h1_.
+
+[getting-started.html](Sandbox/getting-started.html)
+```HTML
+            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script>
+                YUI().use("node", function (Y) {
+                    Y.one("title").setHTML("Hello World");
+                    Y.one("h1").setHTML("Hello World");
+                });
+            </script>
+```
+
+Finally close up the rest of your document normally.
+
+[getting-started.html](Sandbox/getting-started.html)
+```HTML
+        </body>
+    </html>
+```
+
+If you've used jQuery before you'll notice a similar pattern albiet with a couple mysterious bits added.
+
+```HTML
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("title").html("Hello World");
+        $("h1").html("Hello World");
+    });
+    </script>
+```
+Both YUI3 and jQuery offer access to the HTML structure via CSS style selectors.  Typically in a YUI3 this is
+done through the _Y_ object passed into the outer function, in jQuery this is done with the _$_ (i.e. dollar sign)
+object. Part of making the transition from jQuery to YUI3 is understanding where and how they are similar. Inside 
+the web page you'll find many parrallels between them.  Where YUI3 moves away from jQuery is embracing modularization
+through composition. Your picture of YUI3 becomes more fully feature particularly when you look at its use across 
+both browsers and server side in the NodeJS environment.  Now that you have YUI3 on the page we will focus there
+first before venturing server side.
+
 
 ## One
 
-First, YUI3 is loaded from the web page.  That means you need to have a working
-web server. I recomment creating a folder where you're going to put your
-site and using httpster turn that folder into a web site.  Here's
-the sequence of steps I use to get started. On my Mac I ran these commands
-from the Terminal and already had NodeJS, my text editor and httpster
-installed.
+Let me backup a bit now that you see how to get YUI3 on a web page.  Working through this tutorial has some
+pre-requisites.  It is handle to have a web server, I suggest using _httpster_ which is available as a NodeJS
+package.  Second it is handle to have a structure to organize your code so I suggest the one below for the
+purposes of this tutorial. If you're running on Linux/Unix then you can follow the reciept below or if you
+are on a Mac or Windows machine use the _Finder_ or the _File Manage_ to create the structure suggested.
+After you've created the folders create an empty _index.html_ file then start _httpster_ from that folder.
 
 ```Shell
      mkdir Sandbox
@@ -88,6 +150,7 @@ this specific case an empty index.html file.
 
 Edit index.html to include the following-
 
+[index.html](Sandbox/index.html)
 ```HTML
     <!DOCTYPE html>
     <html>

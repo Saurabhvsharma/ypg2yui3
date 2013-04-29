@@ -13,4 +13,7 @@ YUI({
     debug: true,
     useSync: true
 }).use("io-base", "handlebars", function (Y) {
+    app.get("/:name.html", function (req, res) {
+        
+    });
 });

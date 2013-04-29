@@ -4,7 +4,7 @@
   "description": "A Young Person's Guide to YUI3",
   "main": "index.js",
   "scripts": {
-    "test": "test_index.js"
+    "test": "node test_index.js"
   },
   "bin": {
       "ypg2yui3": "index.js"
