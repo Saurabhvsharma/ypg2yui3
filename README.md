@@ -34,26 +34,23 @@ to confusion.
 
 # Contents #
 - [Preface](#preface) -- What you'll need to begin
-- [Getting Started](#getting started) -- The minimum to pull YUI3 into the webpage
-- [Selectors](#selectors) -- CSS selectors work the way you expect, but save those handles
-- [innerHTML and Attributes](#innerhtml and attributes) -- Setting tag contents and attributes
-- [Taking action](#taking action) -- mouse clicks, keyboard commands and touch
-- [Elements](#elements) -- Creating, replacing and removing tags
-- [Modules](#modules) -- Using modules
-- [Going Remote](#going remote) -- Interacting with remote content via Y.io
-- [Persistence](#persistence) -- Saving things for latter with StorageLite
-- [Pushing Data](#pushing data) -- http GET, POST, PUT and DELETE
-- [Making Modules](#making modules) -- make a simple module to parse url parameters
-- [SPA](#spa) -- Building a Simple Single Page Application
+- [Starting](#getting started) -- The minimum to pull YUI3 into the webpage
+- [Selectors](#selectors) -- Getting Access to parts of a webpage
+- [DOM](#dom) -- Setting innerHTML and attributes
+- [Action](#action) -- Mouse clicks, keyboard commands and touch
+- [Modules](#modules) -- Moving beyond **node**
+- [Remote](#remote) -- Bring content into the page with **Y.io**
+- [Persistence](#persistence) -- Saving things for latter with Y.StorageLite
+- [Templates](#templates) -- Building out a page with **Y.Handlebars**
+- [API](#api) -- Using http GET, POST, PUT and DELETE
+- [SPA](#spa) -- Building a simple Single Page Application
 - [Reminders](#reminders) -- Should you use YUI for that?
-    * If HTML can do it, usc HTML
-    * If CSS can do it, use CSS
-- [Up Next](#up next) -- Finding helpful YUI3 Modules, documentation and examples
+- [Next](#next) -- Finding helpful YUI3 Modules, documentation and examples
 
 
 ## Preface
 
-### What you're need
+### What you're need to begin
 
 The typical web developer setup is a computer, a web browser, a text editor and a web server.
 Specific examples include--
@@ -102,8 +99,7 @@ nice opportunities--
 I've found the little _Node_ webserver called [httpster]() to be very convient in front-end
 development.  It is worth a look too.
 
-Finally I am also going to make the assumption you have an active 
-connection to the internet.
+Finally I am also going to make the assumption you have an active connection to the internet.
 
 ### Some links
 
@@ -115,7 +111,9 @@ connection to the internet.
 * [httpster](https://github.com/SimbCo/httpster), follow the instructions in the "README.md" to install
 
 
-## Getting Started
+## Starting
+
+### The minimum to pull YUI3 into the webpage
 
 Let's setup a **Sandbox** for our work today.  We need to create the folder (i.e. directory in
 Unix parlance) and change to it. This tutorial will assume all the documents we work on
@@ -236,6 +234,8 @@ side of things.
 
 ### Getting access to parts of a webpage
 
+        CSS selectors work the way you expect but save those refernences!
+
 _YUI3_ like recent [DOM][] API improvements and _jQuery_ lets you use [CSS][] selectors to access parts of the
 webpage you want to interact with.  This typically is by indentifing an element via an _id_ or _class_
 attribute. You may also use CSS psuedo classes and element relationships to target a specific element in the
@@ -303,7 +303,9 @@ we'll update part of the page to indicate the links we found.
 [CSS] http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
 
 
-## innerHTML and Attributes
+## DOM
+
+### Setting innerHTML and attributes
 
 Current [best practice]() for JavaScript in the browser is to orchestrate behaviors. To do this
 we need to beable to get the values on HTML elements as well as their attributes. This is easy
@@ -382,49 +384,43 @@ Modify _selecting-all.html_'s script block to use _div.results.set("text", ...)_
 Now when you display the page you should see _<em>_ and _</em>_ as part of the script.
 
 
-## Taking action
+## Action
 
-- mouse clicks, keyboard commands and touch
-
-## Elements
-
-- Creating, replacing and removing tags
+### Mouse clicks, keyboard commands and touch
 
 ## Modules
 
-- Using modules
+### Moving beyond **node**
 
-## Going Remote
+## Remote
 
-- Interacting with remote content via Y.io
+### Bring content into the page with **Y.io**
 
 ## Persistence
 
-- Saving things for latter with StorageLite
+### Saving things for latter with Y.StorageLite
 
-## Pushing Data
+## Templates
 
-- http GET, POST, PUT and DELETE
+### Building out a page with **Y.Handlebars**
 
-## Making Modules
+## API
 
-- make a simple module to parse url parameters
+### Using http GET, POST, PUT and DELETE
 
 ## SPA
 
-- Building a Simple Single Page Application
+### Building a simple Single Page Application
+
 
 ## Reminders
 
-- Should you use YUI for that?
+### Should you use YUI for that?
 
     * If HTML can do it, usc HTML
     * If CSS can do it, use CSS
 
-## Up Next
+## Next
 
-- Finding helpful YUI3 Modules, documentation and examples
-
-
-
+### Finding helpful YUI3 Modules, documentation and examples
 
