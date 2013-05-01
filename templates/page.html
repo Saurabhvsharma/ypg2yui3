@@ -4,10 +4,15 @@
         <title>{{title}}</title>
     </head>
     <body>
-        <header><h1>Young Person's Guide to YUI3</header>
+        <header><h1>{{title}}</h1></header>
         <section>
         {{{content}}}
         </section>
+        {{#if nav}}
+        <nav>
+            {{nav}}
+        </nav>
+        {{/if}}
         <footer>
             <div class="copyright-notice">copyright &copy; 2013</div>
             <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Y.all() Example</title>
+    </head>
+    <body>
+        <ol>
+            <li><a href="http://yuilibrary.com">YUI Library</a></li>
+            <li><a href="http://github.com/yui/yui3">YUI3 on Github.com</a></li>
+            <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
+        </ol>
+        <div id="results"></div>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+            YUI().use("node", function (Y) {
+                var all_anchors = Y.all("a"),
+                    div_results = Y.one("#results"),
+                    results = [];
+
+                    all_anchors.each(function (anchor) {
+                        // Grab the href from each anchor element and save it
+                        // in the results.
+                        results.push(anchor.get("href"));
+                    });
+                    // Now display the resultsin div.results
+                    div_results.setHTML("The following links were found <em>" + results.join(", ") + "</em>");
+            });
+        </script>
+    </body>
+</html>

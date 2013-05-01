@@ -5,16 +5,11 @@
   "main": "index.js",
   "scripts": {
       "start": "node index.js",
-      "test": "node test_index.js"
-  },
-  "bin": {
-      "ypg2yui3": "index.js"
-  },
-  "devDependencies": {
+      "test": "node test_index.js",
   },
   "dependencies": {
       "yui3": "3.10.x",
-      "markdown": "0.4.x",
+      "marked": "0.2.x",
       "express": "3.x"
   },
   "repository": {
