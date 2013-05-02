@@ -26,17 +26,18 @@ website has the canonical documentation and you can read the source for YUI3 at
 
 A note about using Google Search for learning YUI3. Right now, May 2013, the Google's search
 algorhythm still ranks legacy YUI2 documentation higher than YUI3.  This can easily lead
-to confusion. 
+to confusion. I've found seaching Stackexchange and Google Groups more helpful. Additionally
+there is an active IRC community on icefreeenode.net under #yui.
 
 
 [YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
 
 
 # Contents #
-- [Preface](#preface) -- What you'll need to begin
+- [Preface](#preface) -- What you'll need before you begin
 - [Starting](#getting started) -- The minimum to pull YUI3 into the webpage
 - [Selectors](#selectors) -- Getting Access to parts of a webpage
-- [DOM](#dom) -- Setting innerHTML and attributes
+- [DOM](#dom) -- interacting with innerHTML and attributes
 - [Action](#action) -- Mouse clicks, keyboard commands and touch
 - [Modules](#modules) -- Moving beyond **node**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
@@ -50,7 +51,7 @@ to confusion.
 
 ## Preface
 
-### What you're need to begin
+### What you'll need before you begin
 
 The typical web developer setup is a computer, a web browser, a text editor and a web server.
 Specific examples include--
@@ -58,12 +59,11 @@ Specific examples include--
 * Computers:
     * a Mac, a Windows PC, a Linux Virtual Marchine or even a Raspberry Pi
 * Web Browsers:
-    * Firefox, Chrome, Safari, IE, or Opera
+    * Firefox, Chrome, Safari, IE, or Opera (its good to test on more then one browser)
 * Text Editors:
     * Adobe Brackets, Coda, Text Mate, Sublime Editor, ShiftEdit, vi, Emacs
 * Web Servers:
-    * Apache, NginX, Cherokee, Node, httpster (a Node based http server nice for development use)
-
+    * httpster (a Node based http server nice for development use), NginX, Cherokee and the venerable Apache
 
 
 ## A word about text editors
@@ -84,22 +84,21 @@ with syntax highlighting and jslint/jshint.
 [Adobe Brackets]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
 [Scripted Editor]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
 
-
 ### A word about NodeJS
 
 While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
 [NodeJS](http://nodejs.org) (a.k.a. Node) as a first class platform. This presents several
-nice opportunities--
+nice opportunities when you move beyond the browser--
 
 1) What you learn in the browser can be used server side
 2) _YUI3_'s tool chain is Node based
 3) [Mojito]() is based on on _YUI3_ plus _Node_
-4) It runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
+4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
-I've found the little _Node_ webserver called [httpster]() to be very convient in front-end
-development.  It is worth a look too.
+I've found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
+to be very convient in front-end development.  It is worth a look too.
 
-Finally I am also going to make the assumption you have an active connection to the internet.
+Finally I make the assumption you have an active connection to the internet.
 
 ### Some links
 
@@ -115,20 +114,9 @@ Finally I am also going to make the assumption you have an active connection to 
 
 ### The minimum to pull YUI3 into the webpage
 
-Let's setup a **Sandbox** for our work today.  We need to create the folder (i.e. directory in
-Unix parlance) and change to it. This tutorial will assume all the documents we work on
-(e.g. JavaScript files, HTML files) that are not _YUI_ itself are located there. It is also
-assumed this is the root directory available on your development web server (e.g. if you're using
-httpster that you started it up in the _Sandbox_ directory).
-
-```SHELL
-    mkdir Sandbox
-    cd Sandbox
-```
-
-As this is a short work on using YUI3 library in the _browser_ you need to know how to make
-it available on a webpage. Fortunately this is easy. You use a _script_ tag to include it
-from Yahoo's CDN. As a teaser let's make a simple webpage and use YUI3 to change the
+This is a short work on using YUI3 library in the _browser_. _YUI_ needs to be
+available to the webpage. Fortunately this is easy. You use a _script_ tag to include it
+from Yahoo's CDN. Let us build a simple webpage using YUI3 to change the
 pages' _title_ to "Hello World" and the first _h1_ to "Yippee! It worked.".
 
 Build the first part of your HTML document as you normally would.
@@ -142,18 +130,18 @@ Build the first part of your HTML document as you normally would.
         </head>
         <body>
             <h1>Getting Started</h1>
-            <p>Now load YUI3 then update the title of the page and heading above.</p>
+            <p>When YUI3 is loaded the title and h1 will be updated.</p>
 ```
 
-Now include YUI3 from Yahoo's CDN. We follow that by a small amount of JavaScript 
-to change the contents of the _title_ and _h1_ tags.
+Now include YUI3 from Yahoo's CDN with the following script element.
 
 [getting-started.html](getting-started.html)
 ```HTML
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
 ```
 
-Now add your own code using _YUI_.
+Now we want to change the contents of the _title_ and _h1_ tags.
+Here is the code we add to do that in this script block.
 
 [gitting-started.html](getting-started.html)
 ```HTML
@@ -173,42 +161,17 @@ Finally close up the rest of your document normally.
     </html>
 ```
 
-Save the file in your **Sandbox** folder as _getting-started.html_. Make sure
-your web server is up in running (e.g. start up _httpster_). Point your web browser
-at **getting-started.html** (e.g. http://localhost/getting-started.html assuming
-you're running your local web server on port 80 and the **Sandbox** folder
-is your root web directory)
+Save this as the file _getting-started.html_. Point your web browser at the page
+and take a look (e.g. http://localhost/getting-started.html assuming
+you're running your local web server on port 80 and this document is in the 
+root web folder.)
 
 You should now see your first _YUI3_ enabled web page.
 
-### A Quick aside on **httpster**
-
-In the **Sandbox** directory start _httpster_.
-
-```SHELL
-    httpster
-```
-
-It'll display a message about what port it is working on and what directory it is using to server
-static content to the web.  When I started the command from my _Sandbox_ folder I saw this message--
-
-```
-   Starting Server on port 3333 from /home/rsdoiel/Sandbox
-
-```
-
-Port _3333_ isn't the standard web server port (i.e. not port _80_).  You'll need to include it
-in the host portion of the URL.  For me the full URL looks like
-[http://localhost:3333/getting-started.html](http://localhost:3333/getting-started.html). If you press
-_Ctrl-C_ in the window where _httpster_ is running it will stop the web server. Reloading the URL
-should then present you with "This webpage is not available" message. That lets you know the web server
-has now stopped. _httpster_ starts fast so I commonly start and stop it frequently as needed.
 
 ### A quick comparison with jQuery
 
-If you have used [jQuery]() before you'll notice a similar pattern
-albiet with a couple mysterious bits added to the YUI3 version. Here's the jQuery version 
-of the script tags.
+If you have used [jQuery](http://jquery.com) before I think you'll notice a similar pattern.
 
 ```HTML
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -220,27 +183,24 @@ of the script tags.
     </script>
 ```
 
-Both YUI3 and jQuery offer access to the HTML structure via CSS style selectors.  Typically in YUI3 this is
-done through the _Y_ object passed into the outer _use_ function, in jQuery this is done with the _$_ (i.e. dollar sign)
-object often from the outer _ready_ function. Part of making the transition from jQuery to YUI3 is
-understanding where and how they are similar. Inside the webpage you'll find many parrallels between them.
-Where YUI3 moves away from jQuery is embracing modularization through composition. Additionally YUI3 targets
-not just the browser but server side via support for Node.  This means code you write for the browser may also
-be avaialble to run server side if you need it too.  In this tutorial we're going to focus on the browser 
-side of things.
+The line with document ready includes a wrapping function providing a namespace for your code.
+_YUI_ also does this though technically it loads a module called _node_ to provide the features
+similar to _jQuery_'s _$_ function. In _YUI_ those functions are used from the parameter passed
+in named _Y_.  Part of making the transition from _jQuery_ to _YUI3_ is understanding where
+and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something in YUI3.
 
 
 ## Selectors
 
 ### Getting access to parts of a webpage
 
-        CSS selectors work the way you expect but save those refernences!
+        CSS selectors work the way you expect but save those refernences to be efficient!
 
-_YUI3_ like recent [DOM][] API improvements and _jQuery_ lets you use [CSS][] selectors to access parts of the
-webpage you want to interact with.  This typically is by indentifing an element via an _id_ or _class_
-attribute. You may also use CSS psuedo classes and element relationships to target a specific element in the
+_YUI3_ uses [CSS][] selectors to access parts of the webpage you want to interact with.
+This typically is by indentifing an element via an _id_ or _class_ attribute. You may also
+use CSS psuedo classes and element relationships to target a specific element in the
 page (e.g. the _li_ contained in a _ul_ list). There is a cost to caculating where in the _DOM_ you're
-going to work on. The best practice in both _jQuery_ and _YUI3_ is to save the reference if you need it more
+going to work on. Like in _jQuery_ the best practice in _YUI3_ is to save the reference if you need it more
 than once. Here's an an example _script_ block for improving our first _getting-started.html_ example
 where we're saving the DOM selector results.
 
@@ -252,7 +212,7 @@ where we're saving the DOM selector results.
                         h1 = Y.one("h1");
                     
                     title.setHTML("Hello World - improved.");
-                    h1.setHTML("Yippee! I am more efficient.");
+                    h1.setHTML("Yippee! I can be more efficient.");
                 });
             </script>
 ```
@@ -279,19 +239,25 @@ we'll update part of the page to indicate the links we found.
                 <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
             </ol>
             <div id="results"></div>
+	    <!-- load YUI3 on the page as normal -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <!-- Now write our script to cound the anchor elements and update div.results -->
             <script>
+                // Load the node module and create our Y object.
                 YUI().use("node", function (Y) {
+                    // Enumerate the anchor elements
                     var all_anchors = Y.all("a"),
+                        // Remember the place in the page to update the results
                         div_results = Y.one("#results"),
                         results = [];
 
+			// Now we have our anchors, look through them collecting each href
                         all_anchors.each(function (anchor) {
                             // Grab the href from each anchor element and save it
                             // in the results.
                             results.push(anchor.get("href"));
                         });
-                        // Now display the resultsin div.results
+                        // Display the results in div.results as HTML
                         div_results.setHTML("The following links were found <em>" + results.join(", ") + "</em>");
                 });
             </script>
@@ -305,84 +271,117 @@ we'll update part of the page to indicate the links we found.
 
 ## DOM
 
-### Setting innerHTML and attributes
+### interacting with innerHTML and attributes
 
-Current [best practice]() for JavaScript in the browser is to orchestrate behaviors. To do this
-we need to beable to get the values on HTML elements as well as their attributes. This is easy
-with _YUI3_ (aside: _jQuery_ also makes this easy and you'll spot parrallels here). _YUI3_ is
-modular and accessing the _DOM_ is done through loading a module called [node][]. That is
-what the first line wrapping our code is about--
+JavaScript in the browser is useful for orchestrating behaviors. To do this
+we need to beable to get the values inside HTML elements as well as their attributes. This is easy
+with _YUI3_. The _node_ module provides us with a rich set of methods for interacting with the
+_DOM_ but you only need a few to get useful work done. This is done in two steps
+
+1) Get the node you want to work with via Y.one() or Y.all()
+2) use Y.get(), Y.set(), and Y.setHTML() to interact with that element. 
 
 ```JavaScript
-    YUI().use("node", // and so on
+    YUI().use("node", function (Y) {
+	 // Step 1, get a handle to the node you want to work with in this case an anchor tag
+	 var anchor = Y.one("a"),
+             // Now get the value of the href attribute.
+	     href = anchor.get("href"),
+             // Get the innerHTML of the anchor
+             innerHTML = anchor.get("innerHTML");
+
+             // Too see the results in the JavaScript console of the browser use Y.log()
+	     Y.log("The href is " + href);
+             Y.log("The innerHTML is " + innerHTML);
+    });
 ```
 
-_YUI3_'s _node_ module wraps the _DOM_ is a useful set of functions to working with it. It allows
-us to use the same methods even on very old browsers (e.g. I.E. 6, or Android 2.x' browser). If you don't
-need to work with the _DOM_ via _YUI3_ you don't need to load this module (e.g. if you're writting a _YUI3_
-based server side application then you usually don't need _node_). If you are familiar with _jQuery_ 
-then the _node_ module is where you'll find most of the overlap since _jQuery_ grew out of the need to
-normalize _DOM_ interaction. For now just use _node_ the opening line as boilerplate until we
-dive deeper into _YUI3_ rich module capabilities.
+_YUI3_'s _node_ module wraps the _DOM_ in a rich set of useful functions. It allows
+us to use the same methods even on very old browsers (e.g. I.E. 6, or Android 2.x' browser).
+There are a whole list of additional methods you may find convienent. A good place to 
+begin your exploration is at [yuilibrary.com/yui/docs/node](http://yuilibrary.com/yui/docs/node).
+There are methods that make quick work of interacting with CSS classes and styles as well as
+locations (i.e. x,y coordinates) on the page. Just remember best practice to use CSS to 
+control the view and layout and only resort to JavaScript if there isn't a CSS alternative.
 
 
-This is
-also true of YUI3's _node_ module. A YUI3 _node_ is analgous to a DOM element. It provides many of the same
-access methods but also additional ones.  In this section of the tutorial we're going to explore
-a few the common access methods. I will focus on showing how to get or set the _innerHTML_ of a tag as well
-as how to get or set the attributes of a tag. Let's review out _selecting-all.html_ example and pick it 
-apart.
+Now that you've seen a little of _YUI_ we're going to put what we've shown to use and
+expand on it through a series of exercises. In each exercise you'll be asked to use
+both what you know and also to lookup and find something on the [yuilibrary.com] side
+that will help you expand beyond the specifics discussed previously.
 
+Here is a seed file you can use to start your exercises from.
+
+[seed-file.html](seed-file.html)
 ```JavaScript
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Seed File, put your title here.</title>
+        </head>
+        <body>
+            <header>Header info goes here</header>
+            <section>Main content goes here</section>
+            <footer>Footer things go here</footer>
+            <!-- get YUI3 on the page, and a script block for your code -->
+            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script>
+            YUI().use("node", function (Y) {
+                // Your code goes here
+            });
+            </script>
+        </body>
+    </html>
     var all_anchors = Y.all("a"), 
         div_results = Y.one("#results");
     
 ```
 
-This first block gets the selectors we want to work with.  _Y.all()_ will produce a list of anchor elements
-found on the page. The _Y.one()_ selects a single div element (i.e. div.results). We now have parts of the
-page to work with.
+### Exercise Digital Clock
 
-**all_anchors** is a list and YUI3 provides a nice method called _each()_ that makes it trivial to iterate
-of the parts of that list.  It is similar though not identical to the JavaScript Array method _forEach()_
-or jQuery's list method _each()_. Let us look at the _each()_ method in this example.
+	- Programming goal: build a simple digital clock in the webpage
+	- Learning objective: Explore the _node_ module of _YUI_ and use a few additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
-```JavaScript
-    all_anchors.each(function (anchor) {
-        results.push(anchor.get("href"));
-    });
-```
+Using YUI3 update content in the webpage every five seconds displaying the current time.
 
-In this example we get each _href_ from each _anchor_ and add it (i.e. _push()_) to the _results_ array.
-If there had been a _title_ attribute we wanted to list we could use _anchor.get("title")_ to retrieve its
-value.
+#### Steps
 
-Finally we set the contents of the _div.results_ tag with _setHTML()_.  _setHTML()_ allows you to inject
-HTML elements via a String into the page.  It doesn't escape the angle brackets in the markup.  If you
-want to escape the string you're inserting into the page then use _set("text", value)_ where _value_
-is the string you want to escape and insert into the page. This will make more sense if we show it.
-Modify _selecting-all.html_'s script block to use _div.results.set("text", ...)_
+Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
-```JavaScript
-            <script>
-                YUI().use("node", function (Y) {
-                    var all_anchors = Y.all("a"),
-                        div_results = Y.one("#results"),
-                        results = [];
+1) Add an _id_ attribute of "clock" to _section_.
+2) Add a _style_ element in the _head_ of the document setting font size of section to "2em"
+3) In your _style_ element create two CSS classes
+	- .now-blue { color: blue; background-color: white }
+	- .now-red { color: red; background-color: red }
+4) Go to [yuilibrary.com](http://yuilibrary.com/yui/docs/node) and find three methods for checking if a class is present, adding a class and removing a class.
+5) Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
+6) Each time your update the time swap the classes between _now-blue_ and _now-red_.
+7) Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
-                        all_anchors.each(function (anchor) {
-                            // Grab the href from each anchor element and save it
-                            // in the results.
-                            results.push(anchor.get("href"));
-                        });
-                        // Now display the resultsin div.results as plain, escaped text
-                        div_results.set("text", "The following links were found <em>" + results.join(", ") + "</em>");
-                });
-            </script>
-```
+#### Exercise Notes
 
-Now when you display the page you should see _<em>_ and _</em>_ as part of the script.
+* In this tutorial I've opted for in-line code much of the time, this isn't best practice, it is just convienent here
+* One approach to the solution - [digitial-clock.html](digital-clock.html), review it and compare with your own code.
 
+
+### Exercise Which Page Am I on?
+
+	- Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
+	- Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
+
+Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
+
+1) Add a _nav_ element before section
+2) In the _nav_ element create a list of seven URLs, one should be for the webpage _where-am-i.html_
+3) in the _style_ element of _head_ add a CSS class named "here", that swaps the foreground and background colors
+4) Look up examples for using _Y.all()_ and _Y.each() at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
+4) In your _Y_ function use CSS query solition to get a list of ALL _li_ elements with _anchors_
+5) For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href, update the _li_ if it matches
+
+#### Excercise Notes
+
+* Again we're using in-line code for simplicity in instruction, this is not recommended practice for constructing navigation
+* One approach to the solution - [where-am-i.html](where-am-i.html)
 
 ## Action
 
