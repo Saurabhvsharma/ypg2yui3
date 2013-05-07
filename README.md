@@ -206,7 +206,7 @@ than once. Here's an an example _script_ block for improving our first _getting-
 where we're saving the DOM selector results.
 
 
-```JavaScript
+```HTML
             <script>
                 YUI().use("node", function (Y) {
                     var title = Y.one("title"),
