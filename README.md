@@ -371,17 +371,17 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
 ### Exercise Which Page Am I on?
 
-    - Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
-    - Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
+- Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
+- Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
-1) Add a _nav_ element before section
-2) In the _nav_ element create a list of seven URLs, one should be for the webpage _where-am-i.html_
-3) in the _style_ element of _head_ add a CSS class named "here", that swaps the foreground and background colors
-4) Look up examples for using _Y.all()_ and _Y.each() at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
-4) In your _Y_ function use CSS query solition to get a list of ALL _li_ elements with _anchors_
-5) For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href, update the _li_ if it matches
+- Add a _nav_ element before section
+- In the _nav_ element create a list of seven URLs, one should be for the webpage _where-am-i.html_
+- in the _style_ element of _head_ add a CSS class named "here", that swaps the foreground and background colors
+- Look up examples for using _Y.all()_ and _Y.each() at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
+- In your _Y_ function use CSS query solition to get a list of ALL _li_ elements with _anchors_
+- For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href, update the _li_ if it matches
 
 #### Excercise Notes
 
