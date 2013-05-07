@@ -355,8 +355,8 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 - Add an _id_ attribute of "clock" to _section_.
 - Add a _style_ element in the _head_ of the document setting font size of section to "2em"
 - In your _style_ element create two CSS classes
-    + .now-blue { color: blue; background-color: white }
-    + .now-red { color: red; background-color: red }
+    + .now-blue { color: white; background-color: blue }
+    + .now-red { color: white; background-color: red }
 - Go to [yuilibrary.com](http://yuilibrary.com/yui/docs/node) and find three methods for checking if a class is present, adding a class and removing a class.
 - Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
 - Each time your update the time swap the classes between _now-blue_ and _now-red_.
@@ -365,14 +365,22 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
 #### Exercise Notes
 
-* In this tutorial I've opted for in-line code much of the time, this isn't best practice, it is just convienent here
+* In this tutorial I've opted for [in-line][5] code for convienence
 * One approach to the solution - [digital-clock.html](digital-clock.html), review it and compare with your own code.
 
 
-### Exercise Which Page Am I on?
+### Exercise Where Am I?
 
-- Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
-- Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
+- Programming goal
+    + compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements
+    + if there is a match set replace the anchor element with a span containing a _here_ class.
+- Learning objectives
+    + Work with a list of elements
+    + Look into each one
+    + Replace elements as well as its innerHTML
+
+#### Steps
+
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
@@ -385,8 +393,12 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
 #### Excercise Notes
 
-* Again we're using in-line code for simplicity in instruction, this is not recommended practice for constructing navigation
-* One approach to the solution - [where-am-i.html](where-am-i.html)
+* We're using in-line code for simplicity of instruction
+* One approach to the solution is [where-am-i.html](where-am-i.html)
+
+
+[5]: In-line is not a "best practice" particularlly in more complicated websites and applications.
+
 
 ## Action
 
