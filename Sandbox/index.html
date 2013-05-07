@@ -1,6 +1,6 @@
 <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#x72;&#115;&#100;&#111;&#105;&#101;&#x6c;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#115;&#100;&#111;&#105;&#101;&#x6c;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a>
+<p>by R. S. Doiel, <a href="&#x6d;&#97;&#105;&#108;&#x74;&#x6f;&#x3a;&#114;&#115;&#x64;&#111;&#105;&#101;&#108;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#114;&#115;&#x64;&#111;&#105;&#101;&#108;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>
 Updated: 2013-04-26</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -254,7 +254,8 @@ that will help you expand beyond the specifics discussed previously.</p>
             &lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;</code></pre>
-<h3>Exercise Digital Clock</h3>
+<h3>Exercises</h3>
+<h4>Digital Clock</h4>
 <ul>
 <li>Programming goal<ul>
 <li>build a simple digital clock in the webpage</li>
@@ -267,7 +268,7 @@ that will help you expand beyond the specifics discussed previously.</p>
 </li>
 </ul>
 <p>Using YUI3 update content in the webpage every five seconds displaying the current time.</p>
-<h4>Steps</h4>
+<h5>Steps</h5>
 <p>Copy <em>seed-file.html</em> to <em>digital-clock.html</em>. Do the following things</p>
 <ul>
 <li>Add an <em>id</em> attribute of &quot;clock&quot; to <em>section</em>.</li>
@@ -282,12 +283,12 @@ that will help you expand beyond the specifics discussed previously.</p>
 <li>Each time your update the time swap the classes between <em>now-blue</em> and <em>now-red</em>.</li>
 <li>Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.</li>
 </ul>
-<h4>Exercise Notes</h4>
+<h5>Notes</h5>
 <ul>
 <li>In this tutorial I have opted for <a href="https://en.wikipedia.org/wiki/Inline_expansion" title="In-line is not a &#39;best practice&#39; particularlly in more complicated websites and applications.">in-line</a> code for convienence</li>
 <li>One approach to the solution - <a href="digital-clock.html">digital-clock.html</a>, review it and compare with your own code.</li>
 </ul>
-<h3>Exercise Where Am I?</h3>
+<h4>Where Am I?</h4>
 <ul>
 <li>Programming goal<ul>
 <li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
@@ -301,7 +302,7 @@ that will help you expand beyond the specifics discussed previously.</p>
 </ul>
 </li>
 </ul>
-<h4>Steps</h4>
+<h5>Steps</h5>
 <p>Copy <em>seed-file.html</em> to <em>where-am-i.html</em>.  Do the following things</p>
 <ul>
 <li>Add a <em>nav</em> element before section</li>
@@ -311,7 +312,7 @@ that will help you expand beyond the specifics discussed previously.</p>
 <li>In your <em>Y</em> function use CSS query solition to get a list of ALL <em>li</em> elements with <em>anchors</em></li>
 <li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at the same <em>href</em> as in <em>window.location.href, update the _li</em> if it matches</li>
 </ul>
-<h4>Excercise Notes</h4>
+<h5>Notes</h5>
 <ul>
 <li>We are using in-line code for simplicity of instruction</li>
 <li>One approach to the solution is <a href="where-am-i.html">where-am-i.html</a></li>

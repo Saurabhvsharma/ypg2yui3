@@ -1,4 +1,4 @@
-<h3>Exercise Where Am I?</h3>
+<h2>Exercise Where Am I?</h2>
 <ul>
 <li>Programming goal<ul>
 <li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
@@ -12,7 +12,7 @@
 </ul>
 </li>
 </ul>
-<h4>Steps</h4>
+<h3>Steps</h3>
 <p>Do the following things</p>
 <ul>
 <li>Add a <em>style</em> block in <em>head</em></li>
@@ -26,7 +26,7 @@
 </ul>
 </li>
 </ul>
-<h3>Solution Where am I?</h3>
+<h3>Solution</h3>
 <p>Copy <em>seed-file.html</em> to <em>where-am-i.html</em>.  Add the nav markup and styles blocks in <em>where-am-i.html</em>.</p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
     &lt;html&gt;
@@ -112,3 +112,57 @@ Our JavaScript block should now look something like--</p>
                 });
             });
             &lt;/script&gt;</code></pre>
+<p>Putting this together--</p>
+<p><a href="solution-where-am-i.html">solution-where-am-i.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Where am I?&lt;/title&gt;
+            &lt;style&gt;
+                li {
+                    color: blue;
+                    background-color: white;
+                }
+
+                .here {
+                    color: white;
+                    background-color: blue;
+                }
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Where am I?&lt;/header&gt;
+            &lt;nav&gt;
+                &lt;ol&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/1&quot;&gt;One&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/2&quot;&gt;Two&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/3&quot;&gt;Three&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/4&quot;&gt;Four&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;where-am-i.html&quot;&gt;Am I here?&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/6&quot;&gt;Six&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;http://example.com/7&quot;&gt;Seven&lt;/a&gt;&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/nav&gt;
+            &lt;section&gt;Main content goes here&lt;/section&gt;
+            &lt;footer&gt;Footer things go here&lt;/footer&gt;
+            &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            YUI().use(&quot;node&quot;, function (Y) {
+                // Your code goes here
+                var allLi = Y.all(&quot;nav ol &gt; li&quot;);
+                // Now we should have a list to all the li
+                allLi.each(function (li) {
+                    var anchor = li.one(&quot;a&quot;);
+                    // Write the li to the console
+                    Y.log(li, &quot;debug&quot;);
+                    // Write our anchor element to console
+                    Y.log(anchor, &quot;debug&quot;);
+                    if (anchor.get(&quot;href&quot;) === window.location.href) {
+                        Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
+                    }
+                });
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>

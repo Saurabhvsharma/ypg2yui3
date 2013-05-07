@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital Clock</title>
+        <style>
+        font-size: 2em;
+        .now-blue {
+            color: white;
+            background-color: blue;
+        }
+        .now-red {
+            color: white;
+            background-color: red;
+        }
+
+        </style>
+    </head>
+    <body>
+        <header>Digital Clock</header>
+        <section id="clock" class="now-blue">Main content goes here</section>
+        <footer>Footer things go here</footer>
+        <!-- get YUI3 on the page, and a script block for your code -->
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            // Your code goes here
+            var clock = Y.one("#clock");
+
+            clock.set("text", new Date());
+            // Update the clock every five seconds
+            setInterval(function () {
+                if (clock.hasClass("now-blue")) {
+                    clock.replaceClass("now-blue", "now-red");
+                } else {
+                    clock.replaceClass("now-red", "now-blue");
+                }
+                clock.set("text", new Date());
+            }, 5000);
+        });
+        </script>
+    </body>
+</html>

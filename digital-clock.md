@@ -1,4 +1,5 @@
-### Exercise Digital Clock
+
+## Exercise Digital Clock
 
 - Programming goal
     + build a simple digital clock in the webpage
@@ -10,8 +11,7 @@
 Using YUI3 update content in the webpage every five seconds displaying the current time.
 
 
-#### Steps
-
+### Steps
 
 Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
@@ -26,13 +26,12 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 - Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
 
-### Solution Digital Clock
-
+### Solution
 
 Here is one approach to the digital clock problem.  Ideally you have built yours first before reading this but this is provided
 both as a review of what you discovered and as a comparison.
 
-[digital-clock.html](digital-clock.html)
+[solution-digital-clock.html](solution-digital-clock.html)
 ```JavaScript
     <!DOCTYPE html>
     <html>
