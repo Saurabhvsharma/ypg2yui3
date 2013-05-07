@@ -337,8 +337,9 @@ Here is a seed file you can use to start your exercises from.
 
 ### Exercise Digital Clock
 
-- Programming goal: build a simple digital clock in the webpage
-- Learning objective: 
+- Programming goal
+    + build a simple digital clock in the webpage
+- Learning objective 
     + Explore the _node_ module of _YUI_
     + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
