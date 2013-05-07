@@ -336,9 +336,9 @@ Here is a seed file you can use to start your exercises from.
 ```
 
 
-## Putting your knowledge to work
+### Exercises
 
-### Exercise Digital Clock
+#### Digital Clock
 
 - Programming goal
     + build a simple digital clock in the webpage
@@ -350,7 +350,7 @@ Here is a seed file you can use to start your exercises from.
 Using YUI3 update content in the webpage every five seconds displaying the current time.
 
 
-#### Steps
+##### Steps
 
 Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
@@ -365,13 +365,13 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 - Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
 
-#### Exercise Notes
+##### Notes
 
 * In this tutorial I have opted for [in-line][5] code for convienence
 * One approach to the solution - [digital-clock.html](digital-clock.html), review it and compare with your own code.
 
 
-### Exercise Where Am I?
+#### Where Am I?
 
 - Programming goal
     + compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements
@@ -381,8 +381,8 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
     + Look into each one
     + Replace elements as well as its innerHTML
 
-#### Steps
 
+##### Steps
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
@@ -393,7 +393,7 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 - In your _Y_ function use CSS query solition to get a list of ALL _li_ elements with _anchors_
 - For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href, update the _li_ if it matches
 
-#### Excercise Notes
+##### Notes
 
 * We are using in-line code for simplicity of instruction
 * One approach to the solution is [where-am-i.html](where-am-i.html)
