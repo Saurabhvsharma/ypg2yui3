@@ -59,7 +59,7 @@ Specific examples include--
 * Computers:
     * a Mac, a Windows PC, a Linux Virtual Marchine or even a Raspberry Pi
 * Web Browsers:
-    * Firefox, Chrome, Safari, IE, or Opera (its good to test on more then one browser)
+    * Firefox, Chrome, Safari, IE, or Opera (its good to test on more than one browser)
 * Text Editors:
     * Adobe Brackets, Coda, Text Mate, Sublime Editor, ShiftEdit, vi, Emacs
 * Web Servers:
@@ -84,6 +84,7 @@ with syntax highlighting and jslint/jshint.
 [Adobe Brackets]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
 [Scripted Editor]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
 
+
 ### A word about NodeJS
 
 While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
@@ -91,14 +92,18 @@ While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
 nice opportunities when you move beyond the browser--
 
 1) What you learn in the browser can be used server side
+
 2) _YUI3_'s tool chain is Node based
+
 3) [Mojito]() is based on on _YUI3_ plus _Node_
+
 4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
 I've found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
 to be very convient in front-end development.  It is worth a look too.
 
 Finally I make the assumption you have an active connection to the internet.
+
 
 ### Some links
 
@@ -239,7 +244,7 @@ we'll update part of the page to indicate the links we found.
                 <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
             </ol>
             <div id="results"></div>
-	    <!-- load YUI3 on the page as normal -->
+        <!-- load YUI3 on the page as normal -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <!-- Now write our script to cound the anchor elements and update div.results -->
             <script>
@@ -251,7 +256,7 @@ we'll update part of the page to indicate the links we found.
                         div_results = Y.one("#results"),
                         results = [];
 
-			// Now we have our anchors, look through them collecting each href
+            // Now we have our anchors, look through them collecting each href
                         all_anchors.each(function (anchor) {
                             // Grab the href from each anchor element and save it
                             // in the results.
@@ -283,15 +288,15 @@ _DOM_ but you only need a few to get useful work done. This is done in two steps
 
 ```JavaScript
     YUI().use("node", function (Y) {
-	 // Step 1, get a handle to the node you want to work with in this case an anchor tag
-	 var anchor = Y.one("a"),
+     // Step 1, get a handle to the node you want to work with in this case an anchor tag
+     var anchor = Y.one("a"),
              // Now get the value of the href attribute.
-	     href = anchor.get("href"),
+         href = anchor.get("href"),
              // Get the innerHTML of the anchor
              innerHTML = anchor.get("innerHTML");
 
              // Too see the results in the JavaScript console of the browser use Y.log()
-	     Y.log("The href is " + href);
+         Y.log("The href is " + href);
              Y.log("The innerHTML is " + innerHTML);
     });
 ```
@@ -332,15 +337,12 @@ Here is a seed file you can use to start your exercises from.
             </script>
         </body>
     </html>
-    var all_anchors = Y.all("a"), 
-        div_results = Y.one("#results");
-    
 ```
 
 ### Exercise Digital Clock
 
-	- Programming goal: build a simple digital clock in the webpage
-	- Learning objective: Explore the _node_ module of _YUI_ and use a few additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
+    - Programming goal: build a simple digital clock in the webpage
+    - Learning objective: Explore the _node_ module of _YUI_ and use a few additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
 Using YUI3 update content in the webpage every five seconds displaying the current time.
 
@@ -351,8 +353,8 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 1) Add an _id_ attribute of "clock" to _section_.
 2) Add a _style_ element in the _head_ of the document setting font size of section to "2em"
 3) In your _style_ element create two CSS classes
-	- .now-blue { color: blue; background-color: white }
-	- .now-red { color: red; background-color: red }
+    - .now-blue { color: blue; background-color: white }
+    - .now-red { color: red; background-color: red }
 4) Go to [yuilibrary.com](http://yuilibrary.com/yui/docs/node) and find three methods for checking if a class is present, adding a class and removing a class.
 5) Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
 6) Each time your update the time swap the classes between _now-blue_ and _now-red_.
@@ -366,8 +368,8 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
 ### Exercise Which Page Am I on?
 
-	- Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
-	- Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
+    - Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
+    - Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
