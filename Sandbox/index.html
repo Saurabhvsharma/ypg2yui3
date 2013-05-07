@@ -1,6 +1,6 @@
 <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#x72;&#x73;&#x64;&#x6f;&#x69;&#101;&#108;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x72;&#x73;&#x64;&#x6f;&#x69;&#101;&#108;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+<p>by R. S. Doiel, <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#x6c;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#x6c;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>
 Updated: 2013-04-26</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -29,7 +29,7 @@ there is an active IRC community on icefreeenode.net under #yui.</p>
 <li><a href="#action">Action</a> -- Mouse clicks, keyboard commands and touch</li>
 <li><a href="#modules">Modules</a> -- Moving beyond <strong>node</strong></li>
 <li><a href="#remote">Remote</a> -- Bring content into the page with <strong>Y.io</strong></li>
-<li><a href="#persistence">Persistence</a> -- Saving things for latter with Y.StorageLite</li>
+<li><a href="#persistence">Persistence</a> -- Saving things for latter with <strong>Y.StorageLite</strong></li>
 <li><a href="#templates">Templates</a> -- Building out a page with <strong>Y.Handlebars</strong></li>
 <li><a href="#api">API</a> -- Using http GET, POST, PUT and DELETE</li>
 <li><a href="#spa">SPA</a> -- Building a simple Single Page Application</li>
@@ -273,8 +273,8 @@ that will help you expand beyond the specifics discussed previously.</p>
 <li>Add an <em>id</em> attribute of &quot;clock&quot; to <em>section</em>.</li>
 <li>Add a <em>style</em> element in the <em>head</em> of the document setting font size of section to &quot;2em&quot;</li>
 <li>In your <em>style</em> element create two CSS classes<ul>
-<li>.now-blue { color: blue; background-color: white }</li>
-<li>.now-red { color: red; background-color: red }</li>
+<li>.now-blue { color: white; background-color: blue }</li>
+<li>.now-red { color: white; background-color: red }</li>
 </ul>
 </li>
 <li>Go to <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a> and find three methods for checking if a class is present, adding a class and removing a class.</li>
@@ -284,14 +284,24 @@ that will help you expand beyond the specifics discussed previously.</p>
 </ul>
 <h4>Exercise Notes</h4>
 <ul>
-<li>In this tutorial I&#39;ve opted for in-line code much of the time, this isn&#39;t best practice, it is just convienent here</li>
+<li>In this tutorial I have opted for <a href="https://en.wikipedia.org/wiki/Inline_expansion" title="In-line is not a &#39;best practice&#39; particularlly in more complicated websites and applications.">in-line</a> code for convienence</li>
 <li>One approach to the solution - <a href="digital-clock.html">digital-clock.html</a>, review it and compare with your own code.</li>
 </ul>
-<h3>Exercise Which Page Am I on?</h3>
+<h3>Exercise Where Am I?</h3>
 <ul>
-<li>Programming goal: compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements, if there is a match set a <em>here</em> class on the <em>li</em> element and replace the anchor element with the innerHTML of the anchor. </li>
-<li>Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML</li>
+<li>Programming goal<ul>
+<li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
+<li>if there is a match set replace the anchor element with a span containing a <em>here</em> class.</li>
 </ul>
+</li>
+<li>Learning objectives<ul>
+<li>Work with a list of elements</li>
+<li>Look into each one</li>
+<li>Replace elements as well as its innerHTML</li>
+</ul>
+</li>
+</ul>
+<h4>Steps</h4>
 <p>Copy <em>seed-file.html</em> to <em>where-am-i.html</em>.  Do the following things</p>
 <ul>
 <li>Add a <em>nav</em> element before section</li>
@@ -303,8 +313,8 @@ that will help you expand beyond the specifics discussed previously.</p>
 </ul>
 <h4>Excercise Notes</h4>
 <ul>
-<li>Again we&#39;re using in-line code for simplicity in instruction, this is not recommended practice for constructing navigation</li>
-<li>One approach to the solution - <a href="where-am-i.html">where-am-i.html</a></li>
+<li>We are using in-line code for simplicity of instruction</li>
+<li>One approach to the solution is <a href="where-am-i.html">where-am-i.html</a></li>
 </ul>
 <h2>Action</h2>
 <h3>Mouse clicks, keyboard commands and touch</h3>

@@ -90,13 +90,13 @@ While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
 [NodeJS](http://nodejs.org) (a.k.a. Node) as a first class platform. This presents several
 nice opportunities when you move beyond the browser--
 
-    1) What you learn in the browser can be used server side
-    2) _YUI3_'s tool chain is Node based
-    3) [Mojito]() is based on on _YUI3_ plus _Node_
-    4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
+1) What you learn in the browser can be used server side
+2) The _YUI3_ tool chain is Node based
+3) [Mojito](http://developer.yahoo.com/cocktails/mojito/) is based on on _YUI3_ plus _Node_
+4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
-I've found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
-to be very convient in front-end development.  It is worth a look too.
+I have found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
+to be very convient in front-end development.
 
 Finally I make the assumption you have an active connection to the internet.
 
@@ -365,7 +365,7 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
 #### Exercise Notes
 
-* In this tutorial I've opted for [in-line][5] code for convienence
+* In this tutorial I have opted for [in-line][5] code for convienence
 * One approach to the solution - [digital-clock.html](digital-clock.html), review it and compare with your own code.
 
 
@@ -393,11 +393,11 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
 #### Excercise Notes
 
-* We're using in-line code for simplicity of instruction
+* We are using in-line code for simplicity of instruction
 * One approach to the solution is [where-am-i.html](where-am-i.html)
 
 
-[5]: In-line is not a "best practice" particularlly in more complicated websites and applications.
+[5]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not a 'best practice' particularlly in more complicated websites and applications."
 
 
 ## Action
