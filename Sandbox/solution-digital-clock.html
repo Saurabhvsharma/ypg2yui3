@@ -4,20 +4,20 @@
         <title>Digital Clock</title>
         <style>
         font-size: 2em;
-        .now-blue {
-            color: white;
-            background-color: blue;
-        }
-        .now-red {
-            color: white;
+        .red {
             background-color: red;
+            color: white;
         }
 
+        .blue {
+            background-color: blue;
+            color: white;
+        }
         </style>
     </head>
     <body>
         <header>Digital Clock</header>
-        <section id="clock" class="now-blue">Main content goes here</section>
+        <section id="clock" class="blue">Main content goes here</section>
         <footer>Footer things go here</footer>
         <!-- get YUI3 on the page, and a script block for your code -->
         <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
@@ -27,12 +27,17 @@
             var clock = Y.one("#clock");
 
             clock.set("text", new Date());
+            clock.addClass("blue");
             // Update the clock every five seconds
             setInterval(function () {
-                if (clock.hasClass("now-blue")) {
-                    clock.replaceClass("now-blue", "now-red");
+                if (clock.hasClass("blue")) {
+                    Y.log("does hasClase(blue)", "debug");
+                    Y.log(clock.hasClass("blue"), "debug");
+                    clock.replaceClass("blue", "red");
                 } else {
-                    clock.replaceClass("now-red", "now-blue");
+                    Y.log("does not hasClase(blue)", "debug");
+                    Y.log(clock.hasClass("red"), "debug");
+                    clock.replaceClass("red", "blue");
                 }
                 clock.set("text", new Date());
             }, 5000);

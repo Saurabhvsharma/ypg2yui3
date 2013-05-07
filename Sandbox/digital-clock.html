@@ -36,20 +36,20 @@ both as a review of what you discovered and as a comparison.</p>
             &lt;title&gt;Digital Clock&lt;/title&gt;
             &lt;style&gt;
             font-size: 2em;
-            .now-blue {
-                color: white;
-                background-color: blue;
-            }
-            .now-red {
-                color: white;
+            .red {
                 background-color: red;
+                color: white;
             }
 
+            .blue {
+                background-color: blue;
+                color: white;
+            }
             &lt;/style&gt;
         &lt;/head&gt;
         &lt;body&gt;
             &lt;header&gt;Digital Clock&lt;/header&gt;
-            &lt;section id=&quot;clock&quot; class=&quot;now-blue&quot;&gt;Main content goes here&lt;/section&gt;
+            &lt;section id=&quot;clock&quot; class=&quot;blue&quot;&gt;Main content goes here&lt;/section&gt;
             &lt;footer&gt;Footer things go here&lt;/footer&gt;
             &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
             &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
@@ -59,12 +59,17 @@ both as a review of what you discovered and as a comparison.</p>
                 var clock = Y.one(&quot;#clock&quot;);
 
                 clock.set(&quot;text&quot;, new Date());
+                clock.addClass(&quot;blue&quot;);
                 // Update the clock every five seconds
                 setInterval(function () {
-                    if (clock.hasClass(&quot;now-blue&quot;)) {
-                        clock.replaceClass(&quot;now-blue&quot;, &quot;now-red&quot;);
+                    if (clock.hasClass(&quot;blue&quot;)) {
+                        Y.log(&quot;does hasClase(blue)&quot;, &quot;debug&quot;);
+                        Y.log(clock.hasClass(&quot;blue&quot;), &quot;debug&quot;);
+                        clock.replaceClass(&quot;blue&quot;, &quot;red&quot;);
                     } else {
-                        clock.replaceClass(&quot;now-red&quot;, &quot;now-blue&quot;);
+                        Y.log(&quot;does not hasClase(blue)&quot;, &quot;debug&quot;);
+                        Y.log(clock.hasClass(&quot;red&quot;), &quot;debug&quot;);
+                        clock.replaceClass(&quot;red&quot;, &quot;blue&quot;);
                     }
                     clock.set(&quot;text&quot;, new Date());
                 }, 5000);
