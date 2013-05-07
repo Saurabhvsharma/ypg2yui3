@@ -12,6 +12,18 @@ both as a review of what you discovered and as a comparison.
     <html>
         <head>
             <title>Digital Clock</title>
+            <style>
+            font-size: 2em;
+            .now-blue {
+                color: blue;
+                background-color: white;
+            }
+            .now-white {
+                color: white;
+                background-color: blue;
+            }
+
+            </style>
         </head>
         <body>
             <header>Header info goes here</header>
@@ -25,7 +37,14 @@ both as a review of what you discovered and as a comparison.
                 var clock = Y.one("#clock");
 
                 // Update the clock every five seconds
+                clock.set("class", "now-blue");
+                clock.set("text", new Date());
                 setInterval(function () {
+                    if (clock.hasClass("now-blue")) {
+                        clock.replaceClass("now-blue", "now-white");
+                    } else {
+                        clock.replaceClass("now-white", "now-blue");
+                    }
                     clock.set("text", new Date());
                 }, 5000);
             });
