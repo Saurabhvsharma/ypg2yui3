@@ -227,7 +227,7 @@ by showing.  Let us create a short element with a list of links to YUI3 resource
 we'll update part of the page to indicate the links we found.
 
 [selecting-all.html](selecting-all.html)
-```JavaScript
+```HTML
     <!DOCTYPE html>
     <html>
         <head>
@@ -314,7 +314,7 @@ that will help you expand beyond the specifics discussed previously.
 Here is a seed file you can use to start your exercises from.
 
 [seed-file.html](seed-file.html)
-```JavaScript
+```HTML
     <!DOCTYPE html>
     <html>
         <head>
