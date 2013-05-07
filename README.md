@@ -266,8 +266,8 @@ we'll update part of the page to indicate the links we found.
     </html>
 ```
 
-[3] http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
-[4] http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
+[3]: http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
+[4]: http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
 
 
 ## DOM
@@ -284,16 +284,16 @@ _DOM_ but you only need a few to get useful work done. This is done in two steps
 
 ```JavaScript
     YUI().use("node", function (Y) {
-     // Step 1, get a handle to the node you want to work with in this case an anchor tag
-     var anchor = Y.one("a"),
-             // Now get the value of the href attribute.
-         href = anchor.get("href"),
-             // Get the innerHTML of the anchor
-             innerHTML = anchor.get("innerHTML");
+        // Step 1, get a handle to the node you want to work with in this case an anchor tag
+        var anchor = Y.one("a"),
+            // Now get the value of the href attribute.
+            href = anchor.get("href"),
+            // Get the innerHTML of the anchor
+            innerHTML = anchor.get("innerHTML");
 
-             // Too see the results in the JavaScript console of the browser use Y.log()
+         // Too see the results in the JavaScript console of the browser use Y.log()
          Y.log("The href is " + href);
-             Y.log("The innerHTML is " + innerHTML);
+         Y.log("The innerHTML is " + innerHTML);
     });
 ```
 
@@ -338,7 +338,10 @@ Here is a seed file you can use to start your exercises from.
 ### Exercise Digital Clock
 
 - Programming goal: build a simple digital clock in the webpage
-- Learning objective: Explore the _node_ module of _YUI_ and use a few additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
+- Learning objective: 
+    + Explore the _node_ module of _YUI_
+    + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
+
 
 Using YUI3 update content in the webpage every five seconds displaying the current time.
 
@@ -356,6 +359,7 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 5) Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
 6) Each time your update the time swap the classes between _now-blue_ and _now-red_.
 7) Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
+
 
 #### Exercise Notes
 
