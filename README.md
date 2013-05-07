@@ -91,13 +91,10 @@ While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
 [NodeJS](http://nodejs.org) (a.k.a. Node) as a first class platform. This presents several
 nice opportunities when you move beyond the browser--
 
-1) What you learn in the browser can be used server side
-
-2) _YUI3_'s tool chain is Node based
-
-3) [Mojito]() is based on on _YUI3_ plus _Node_
-
-4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
+    1) What you learn in the browser can be used server side
+    2) _YUI3_'s tool chain is Node based
+    3) [Mojito]() is based on on _YUI3_ plus _Node_
+    4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
 I've found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
 to be very convient in front-end development.  It is worth a look too.
