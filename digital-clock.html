@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital Clock</title>
+    </head>
+    <body>
+        <header>Header info goes here</header>
+        <section id="clock">Main content goes here</section>
+        <footer>Footer things go here</footer>
+        <!-- get YUI3 on the page, and a script block for your code -->
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            // Your code goes here
+            var clock = Y.one("#clock");
+
+            // Update the clock every five seconds
+            setInterval(function () {
+                clock.set("text", new Date());
+            }, 5000);
+        });
+        </script>
+    </body>
+</html>

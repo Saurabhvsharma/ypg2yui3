@@ -1,6 +1,6 @@
 <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#114;&#x73;&#100;&#x6f;&#105;&#101;&#x6c;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#114;&#x73;&#100;&#x6f;&#105;&#101;&#x6c;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#111;&#x6d;</a>
+<p>by R. S. Doiel, <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#114;&#115;&#100;&#111;&#105;&#101;&#108;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#114;&#115;&#100;&#111;&#105;&#101;&#108;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;</a>
 Updated: 2013-04-26</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -46,7 +46,7 @@ Specific examples include--</p>
 </ul>
 </li>
 <li>Web Browsers:<ul>
-<li>Firefox, Chrome, Safari, IE, or Opera (its good to test on more then one browser)</li>
+<li>Firefox, Chrome, Safari, IE, or Opera (its good to test on more than one browser)</li>
 </ul>
 </li>
 <li>Text Editors:<ul>
@@ -73,10 +73,10 @@ with syntax highlighting and jslint/jshint.</p>
 <p>While this tutorial is focused on <em>YUI3</em> in the web browser <em>YUI3</em> also supports
 <a href="http://nodejs.org">NodeJS</a> (a.k.a. Node) as a first class platform. This presents several
 nice opportunities when you move beyond the browser--</p>
-<p>1) What you learn in the browser can be used server side
-2) <em>YUI3</em>&#39;s tool chain is Node based
-3) <a href="">Mojito</a> is based on on <em>YUI3</em> plus <em>Node</em>
-4) Node runs on <em>Mac</em>, <em>Windows</em> and many <em>Unix</em> (e.g. Intel and Arm based <em>Linux</em>)</p>
+<pre><code>1) What you learn in the browser can be used server side
+2) _YUI3_&#39;s tool chain is Node based
+3) [Mojito]() is based on on _YUI3_ plus _Node_
+4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)</code></pre>
 <p>I&#39;ve found the little <em>Node</em> webserver called <a href="https://github.com/SimbCo/httpster">httpster</a>
 to be very convient in front-end development.  It is worth a look too.</p>
 <p>Finally I make the assumption you have an active connection to the internet.</p>
@@ -143,7 +143,7 @@ and how they are similar. If you used a <em>$</em> in jQuery look for <em>Y</em>
 <h2>Selectors</h2>
 <h3>Getting access to parts of a webpage</h3>
 <pre><code>    CSS selectors work the way you expect but save those refernences to be efficient!</code></pre>
-<p><em>YUI3</em> uses [CSS][] selectors to access parts of the webpage you want to interact with.
+<p><em>YUI3</em> uses <a href="http://en.wikipedia.org/wiki/CSS" title="Cascading Style Sheets, they way to control how a webpage looks.">CSS</a> selectors to access parts of the webpage you want to interact with.
 This typically is by indentifing an element via an <em>id</em> or <em>class</em> attribute. You may also
 use CSS psuedo classes and element relationships to target a specific element in the
 page (e.g. the <em>li</em> contained in a <em>ul</em> list). There is a cost to caculating where in the <em>DOM</em> you&#39;re
@@ -160,7 +160,7 @@ where we&#39;re saving the DOM selector results.</p>
                 });
             &lt;/script&gt;</code></pre>
 <p>YUI3 provides two function that take a selector.  The first is <em>Y.one()</em>. It will give you the 
-first element in the DOM matching that selector. In our example above that was <em>title</em> and <em>h1</em>.  If
+first element in the <a href="http://en.wikipedia.org/wiki/Document_Object_Model" title="The Object which the browser uses to allow access to parts of a webpage.">DOM</a> matching that selector. In our example above that was <em>title</em> and <em>h1</em>.  If
 you had more than <em>h1</em> it would only give the first <em>h1</em> it found. Usually this is what you want.
 Sometimes you want all the elements that have that selector. E.g. all the anchor tags in a page. 
 To get that you use <em>Y.all()</em>.  That returns a list of elements. It is easiest to explain
@@ -179,7 +179,7 @@ we&#39;ll update part of the page to indicate the links we found.</p>
                 &lt;li&gt;&lt;a href=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;Seed File&lt;/a&gt; for YUI3 at the CDN&lt;/li&gt;
             &lt;/ol&gt;
             &lt;div id=&quot;results&quot;&gt;&lt;/div&gt;
-        &lt;!-- load YUI3 on the page as normal --&gt;
+            &lt;!-- load YUI3 on the page as normal --&gt;
             &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
             &lt;!-- Now write our script to cound the anchor elements and update div.results --&gt;
             &lt;script&gt;
@@ -191,7 +191,7 @@ we&#39;ll update part of the page to indicate the links we found.</p>
                         div_results = Y.one(&quot;#results&quot;),
                         results = [];
 
-            // Now we have our anchors, look through them collecting each href
+                        // Now we have our anchors, look through them collecting each href
                         all_anchors.each(function (anchor) {
                             // Grab the href from each anchor element and save it
                             // in the results.
@@ -203,8 +203,6 @@ we&#39;ll update part of the page to indicate the links we found.</p>
             &lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;</code></pre>
-<p>[DOM] <a href="http://en.wikipedia.org/wiki/Document_Object_Model">http://en.wikipedia.org/wiki/Document_Object_Model</a> &quot;The Object which the browser uses to allow access to parts of a webpage.&quot;
-[CSS] <a href="http://en.wikipedia.org/wiki/CSS">http://en.wikipedia.org/wiki/CSS</a> &quot;Cascading Style Sheets, they way to control how a webpage looks.&quot;</p>
 <h2>DOM</h2>
 <h3>interacting with innerHTML and attributes</h3>
 <p>JavaScript in the browser is useful for orchestrating behaviors. To do this
@@ -214,16 +212,16 @@ with <em>YUI3</em>. The <em>node</em> module provides us with a rich set of meth
 <p>1) Get the node you want to work with via Y.one() or Y.all()
 2) use Y.get(), Y.set(), and Y.setHTML() to interact with that element. </p>
 <pre><code class="language-JavaScript">    YUI().use(&quot;node&quot;, function (Y) {
-     // Step 1, get a handle to the node you want to work with in this case an anchor tag
-     var anchor = Y.one(&quot;a&quot;),
-             // Now get the value of the href attribute.
-         href = anchor.get(&quot;href&quot;),
-             // Get the innerHTML of the anchor
-             innerHTML = anchor.get(&quot;innerHTML&quot;);
+        // Step 1, get a handle to the node you want to work with in this case an anchor tag
+        var anchor = Y.one(&quot;a&quot;),
+            // Now get the value of the href attribute.
+            href = anchor.get(&quot;href&quot;),
+            // Get the innerHTML of the anchor
+            innerHTML = anchor.get(&quot;innerHTML&quot;);
 
-             // Too see the results in the JavaScript console of the browser use Y.log()
+         // Too see the results in the JavaScript console of the browser use Y.log()
          Y.log(&quot;The href is &quot; + href);
-             Y.log(&quot;The innerHTML is &quot; + innerHTML);
+         Y.log(&quot;The innerHTML is &quot; + innerHTML);
     });</code></pre>
 <p><em>YUI3</em>&#39;s <em>node</em> module wraps the <em>DOM</em> in a rich set of useful functions. It allows
 us to use the same methods even on very old browsers (e.g. I.E. 6, or Android 2.x&#39; browser).
@@ -255,39 +253,54 @@ that will help you expand beyond the specifics discussed previously.</p>
             });
             &lt;/script&gt;
         &lt;/body&gt;
-    &lt;/html&gt;
-    var all_anchors = Y.all(&quot;a&quot;), 
-        div_results = Y.one(&quot;#results&quot;);</code></pre>
+    &lt;/html&gt;</code></pre>
 <h3>Exercise Digital Clock</h3>
-<pre><code>- Programming goal: build a simple digital clock in the webpage
-- Learning objective: Explore the _node_ module of _YUI_ and use a few additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.</code></pre>
+<ul>
+<li>Programming goal<ul>
+<li>build a simple digital clock in the webpage</li>
+</ul>
+</li>
+<li>Learning objective <ul>
+<li>Explore the <em>node</em> module of <em>YUI</em></li>
+<li>Use additional methods besides <em>Y.get()</em>, <em>Y.set()</em> and <em>Y.setHTML()</em>.</li>
+</ul>
+</li>
+</ul>
 <p>Using YUI3 update content in the webpage every five seconds displaying the current time.</p>
 <h4>Steps</h4>
 <p>Copy <em>seed-file.html</em> to <em>digital-clock.html</em>. Do the following things</p>
-<p>1) Add an <em>id</em> attribute of &quot;clock&quot; to <em>section</em>.
-2) Add a <em>style</em> element in the <em>head</em> of the document setting font size of section to &quot;2em&quot;
-3) In your <em>style</em> element create two CSS classes
-    - .now-blue { color: blue; background-color: white }
-    - .now-red { color: red; background-color: red }
-4) Go to <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a> and find three methods for checking if a class is present, adding a class and removing a class.
-5) Inside your <em>Y</em> function use a JavaScript <em>setInterval()</em> to update the innerHTML with the current time every five seconds.
-6) Each time your update the time swap the classes between <em>now-blue</em> and <em>now-red</em>.
-7) Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.</p>
+<ul>
+<li>Add an <em>id</em> attribute of &quot;clock&quot; to <em>section</em>.</li>
+<li>Add a <em>style</em> element in the <em>head</em> of the document setting font size of section to &quot;2em&quot;</li>
+<li>In your <em>style</em> element create two CSS classes<ul>
+<li>.now-blue { color: blue; background-color: white }</li>
+<li>.now-red { color: red; background-color: red }</li>
+</ul>
+</li>
+<li>Go to <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a> and find three methods for checking if a class is present, adding a class and removing a class.</li>
+<li>Inside your <em>Y</em> function use a JavaScript <em>setInterval()</em> to update the innerHTML with the current time every five seconds.</li>
+<li>Each time your update the time swap the classes between <em>now-blue</em> and <em>now-red</em>.</li>
+<li>Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.</li>
+</ul>
 <h4>Exercise Notes</h4>
 <ul>
 <li>In this tutorial I&#39;ve opted for in-line code much of the time, this isn&#39;t best practice, it is just convienent here</li>
 <li>One approach to the solution - <a href="digital-clock.html">digitial-clock.html</a>, review it and compare with your own code.</li>
 </ul>
 <h3>Exercise Which Page Am I on?</h3>
-<pre><code>- Programming goal: compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements, if there is a match set a _here_ class on the _li_ element and replace the anchor element with the innerHTML of the anchor. 
-- Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML</code></pre>
+<ul>
+<li>Programming goal: compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements, if there is a match set a <em>here</em> class on the <em>li</em> element and replace the anchor element with the innerHTML of the anchor. </li>
+<li>Learning objectives: Query a list of elements and look at each one, update the attributes in an element as well as its innerHTML</li>
+</ul>
 <p>Copy <em>seed-file.html</em> to <em>where-am-i.html</em>.  Do the following things</p>
-<p>1) Add a <em>nav</em> element before section
-2) In the <em>nav</em> element create a list of seven URLs, one should be for the webpage <em>where-am-i.html</em>
-3) in the <em>style</em> element of <em>head</em> add a CSS class named &quot;here&quot;, that swaps the foreground and background colors
-4) Look up examples for using <em>Y.all()</em> and <em>Y.each() at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a>
-4) In your _Y</em> function use CSS query solition to get a list of ALL <em>li</em> elements with <em>anchors</em>
-5) For each <em>li</em> get the containing anchor, check if the <em>href</em> points at the same <em>href</em> as in <em>window.location.href, update the _li</em> if it matches</p>
+<ul>
+<li>Add a <em>nav</em> element before section</li>
+<li>In the <em>nav</em> element create a list of seven URLs, one should be for the webpage <em>where-am-i.html</em></li>
+<li>in the <em>style</em> element of <em>head</em> add a CSS class named &quot;here&quot;, that swaps the foreground and background colors</li>
+<li>Look up examples for using <em>Y.all()</em> and _Y.each() at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a></li>
+<li>In your <em>Y</em> function use CSS query solition to get a list of ALL <em>li</em> elements with <em>anchors</em></li>
+<li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at the same <em>href</em> as in <em>window.location.href, update the _li</em> if it matches</li>
+</ul>
 <h4>Excercise Notes</h4>
 <ul>
 <li>Again we&#39;re using in-line code for simplicity in instruction, this is not recommended practice for constructing navigation</li>
