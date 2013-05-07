@@ -75,14 +75,13 @@ It makes it much easier to read code quickly. Another is an integrated linting t
 [jslint](http://jslint.com) or [jshint](http://jshint.com)). I find both of these features to
 be helpful in spotting the sillier things I type.
 
-If you don't have an editor you like may I suggest [Adobe Brackets][] or [Scripted Editor][]. They
+If you don't have an editor you like may I suggest [Adobe Brackets][1] or [Scripted Editor][2]. They
 are both built from the same building blocks we use on the web -- HTML, CSS, JavaScript. That
 makes it easy to extend and improve to meet your own needs. They also come out of the box
 with syntax highlighting and jslint/jshint.
 
-
-[Adobe Brackets]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
-[Scripted Editor]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
+[1]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
+[2]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
 
 
 ### A word about NodeJS
@@ -198,7 +197,7 @@ and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something
 
         CSS selectors work the way you expect but save those refernences to be efficient!
 
-_YUI3_ uses [CSS][] selectors to access parts of the webpage you want to interact with.
+_YUI3_ uses [CSS][3] selectors to access parts of the webpage you want to interact with.
 This typically is by indentifing an element via an _id_ or _class_ attribute. You may also
 use CSS psuedo classes and element relationships to target a specific element in the
 page (e.g. the _li_ contained in a _ul_ list). There is a cost to caculating where in the _DOM_ you're
@@ -220,7 +219,7 @@ where we're saving the DOM selector results.
 ```
 
 YUI3 provides two function that take a selector.  The first is _Y.one()_. It will give you the 
-first element in the DOM matching that selector. In our example above that was _title_ and _h1_.  If
+first element in the [DOM][4] matching that selector. In our example above that was _title_ and _h1_.  If
 you had more than _h1_ it would only give the first _h1_ it found. Usually this is what you want.
 Sometimes you want all the elements that have that selector. E.g. all the anchor tags in a page. 
 To get that you use _Y.all()_.  That returns a list of elements. It is easiest to explain
@@ -241,7 +240,7 @@ we'll update part of the page to indicate the links we found.
                 <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
             </ol>
             <div id="results"></div>
-        <!-- load YUI3 on the page as normal -->
+            <!-- load YUI3 on the page as normal -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <!-- Now write our script to cound the anchor elements and update div.results -->
             <script>
@@ -253,7 +252,7 @@ we'll update part of the page to indicate the links we found.
                         div_results = Y.one("#results"),
                         results = [];
 
-            // Now we have our anchors, look through them collecting each href
+                        // Now we have our anchors, look through them collecting each href
                         all_anchors.each(function (anchor) {
                             // Grab the href from each anchor element and save it
                             // in the results.
@@ -267,8 +266,8 @@ we'll update part of the page to indicate the links we found.
     </html>
 ```
 
-[DOM] http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
-[CSS] http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
+[3] http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
+[4] http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
 
 
 ## DOM
