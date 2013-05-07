@@ -41,7 +41,7 @@ there is an active IRC community on icefreeenode.net under #yui.
 - [Action](#action) -- Mouse clicks, keyboard commands and touch
 - [Modules](#modules) -- Moving beyond **node**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
-- [Persistence](#persistence) -- Saving things for latter with Y.StorageLite
+- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
 - [API](#api) -- Using http GET, POST, PUT and DELETE
 - [SPA](#spa) -- Building a simple Single Page Application
