@@ -349,17 +349,18 @@ Using YUI3 update content in the webpage every five seconds displaying the curre
 
 #### Steps
 
+
 Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
-1) Add an _id_ attribute of "clock" to _section_.
-2) Add a _style_ element in the _head_ of the document setting font size of section to "2em"
-3) In your _style_ element create two CSS classes
-    - .now-blue { color: blue; background-color: white }
-    - .now-red { color: red; background-color: red }
-4) Go to [yuilibrary.com](http://yuilibrary.com/yui/docs/node) and find three methods for checking if a class is present, adding a class and removing a class.
-5) Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
-6) Each time your update the time swap the classes between _now-blue_ and _now-red_.
-7) Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
+- Add an _id_ attribute of "clock" to _section_.
+- Add a _style_ element in the _head_ of the document setting font size of section to "2em"
+- In your _style_ element create two CSS classes
+    + .now-blue { color: blue; background-color: white }
+    + .now-red { color: red; background-color: red }
+- Go to [yuilibrary.com](http://yuilibrary.com/yui/docs/node) and find three methods for checking if a class is present, adding a class and removing a class.
+- Inside your _Y_ function use a JavaScript _setInterval()_ to update the innerHTML with the current time every five seconds.
+- Each time your update the time swap the classes between _now-blue_ and _now-red_.
+- Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
 
 #### Exercise Notes
