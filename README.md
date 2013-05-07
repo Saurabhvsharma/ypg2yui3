@@ -335,6 +335,9 @@ Here is a seed file you can use to start your exercises from.
     </html>
 ```
 
+
+## Putting your knowledge to work
+
 ### Exercise Digital Clock
 
 - Programming goal
@@ -348,7 +351,6 @@ Using YUI3 update content in the webpage every five seconds displaying the curre
 
 
 #### Steps
-
 
 Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
