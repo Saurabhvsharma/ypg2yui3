@@ -1,0 +1,47 @@
+<h3><a href="solution-digital-clock.html">Solution Digital Clock</a></h3>
+<p>Here is one approach to the digital clock problem.  Ideally you have built yours first before reading this but this is provided
+both as a review of what you discovered and as a comparison.</p>
+<p><a href="digital-clock.html">digital-clock.html</a></p>
+<pre><code class="language-JavaScript">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Digital Clock&lt;/title&gt;
+            &lt;style&gt;
+            font-size: 2em;
+            .now-blue {
+                color: blue;
+                background-color: white;
+            }
+            .now-white {
+                color: white;
+                background-color: blue;
+            }
+
+            &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Header info goes here&lt;/header&gt;
+            &lt;section id=&quot;clock&quot;&gt;Main content goes here&lt;/section&gt;
+            &lt;footer&gt;Footer things go here&lt;/footer&gt;
+            &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            YUI().use(&quot;node&quot;, function (Y) {
+                // Your code goes here
+                var clock = Y.one(&quot;#clock&quot;);
+
+                // Update the clock every five seconds
+                clock.set(&quot;class&quot;, &quot;now-blue&quot;);
+                clock.set(&quot;text&quot;, new Date());
+                setInterval(function () {
+                    if (clock.hasClass(&quot;now-blue&quot;)) {
+                        clock.replaceClass(&quot;now-blue&quot;, &quot;now-white&quot;);
+                    } else {
+                        clock.replaceClass(&quot;now-white&quot;, &quot;now-blue&quot;);
+                    }
+                    clock.set(&quot;text&quot;, new Date());
+                }, 5000);
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>

@@ -1,0 +1,33 @@
+<p>This first block gets the selectors we want to work with.  <em>Y.all()</em> will produce a list of anchor elements
+found on the page. The <em>Y.one()</em> selects a single div element (i.e. div.results). We now have parts of the
+page to work with.</p>
+<p><strong>all_anchors</strong> is a list and YUI3 provides a nice method called <em>each()</em> that makes it trivial to iterate
+of the parts of that list.  It is similar though not identical to the JavaScript Array method <em>forEach()</em>
+or jQuery&#39;s list method <em>each()</em>. Let us look at the <em>each()</em> method in this example.</p>
+<pre><code class="language-JavaScript">    all_anchors.each(function (anchor) {
+        results.push(anchor.get(&quot;href&quot;));
+    });</code></pre>
+<p>In this example we get each <em>href</em> from each <em>anchor</em> and add it (i.e. <em>push()</em>) to the <em>results</em> array.
+If there had been a <em>title</em> attribute we wanted to list we could use <em>anchor.get(&quot;title&quot;)</em> to retrieve its
+value.</p>
+<p>Finally we set the contents of the <em>div.results</em> tag with <em>setHTML()</em>.  <em>setHTML()</em> allows you to inject
+HTML elements via a String into the page.  It doesn&#39;t escape the angle brackets in the markup.  If you
+want to escape the string you&#39;re inserting into the page then use <em>set(&quot;text&quot;, value)</em> where <em>value</em>
+is the string you want to escape and insert into the page. This will make more sense if we show it.
+Modify <em>selecting-all.html</em>&#39;s script block to use <em>div.results.set(&quot;text&quot;, ...)</em></p>
+<pre><code class="language-JavaScript">            &lt;script&gt;
+                YUI().use(&quot;node&quot;, function (Y) {
+                    var all_anchors = Y.all(&quot;a&quot;),
+                        div_results = Y.one(&quot;#results&quot;),
+                        results = [];
+
+                        all_anchors.each(function (anchor) {
+                            // Grab the href from each anchor element and save it
+                            // in the results.
+                            results.push(anchor.get(&quot;href&quot;));
+                        });
+                        // Now display the resultsin div.results as plain, escaped text
+                        div_results.set(&quot;text&quot;, &quot;The following links were found &lt;em&gt;&quot; + results.join(&quot;, &quot;) + &quot;&lt;/em&gt;&quot;);
+                });
+            &lt;/script&gt;</code></pre>
+<p>Now when you display the page you should see <em>&lt;em&gt;</em> and <em>&lt;/em&gt;</em> as part of the script.</p>

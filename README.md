@@ -35,7 +35,7 @@ there is an active IRC community on icefreeenode.net under #yui.
 
 # Contents #
 - [Preface](#preface) -- What you'll need before you begin
-- [Starting](#getting started) -- The minimum to pull YUI3 into the webpage
+- [Starting](#starting) -- The minimum to pull YUI3 into the webpage
 - [Selectors](#selectors) -- Getting Access to parts of a webpage
 - [DOM](#dom) -- interacting with innerHTML and attributes
 - [Action](#action) -- Mouse clicks, keyboard commands and touch
@@ -366,7 +366,7 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 #### Exercise Notes
 
 * In this tutorial I've opted for in-line code much of the time, this isn't best practice, it is just convienent here
-* One approach to the solution - [digitial-clock.html](digital-clock.html), review it and compare with your own code.
+* One approach to the solution - [digital-clock.html](digital-clock.html), review it and compare with your own code.
 
 
 ### Exercise Which Page Am I on?
