@@ -8,7 +8,7 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#x6c;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#x6c;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a>
+<p>by R. S. Doiel, <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#108;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#108;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>
 Updated: 2013-05-07</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -522,7 +522,73 @@ Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following 
 <li>One possible solition is <a href="digital-clock-2.html">digital-clock-2.html</a> and <a href="digital-clock.js">digital-clock.js</a> holding our module code.</li>
 </ul>
 <h2>Remote</h2>
+<pre><code>Some times you want data from someplace else, say Dave Winer&#39;s blog Scripting News...</code></pre>
 <h3>Bring content into the page with <strong>Y.io</strong></h3>
+<p>Sometimes we need data from other websites or even an API in our hosting website. It is nice to have that option
+in the browser and <em>YUI</em> has a module for that :-).  The module is called <em>IO</em> or more specifically in your <em>Y</em> function
+<em>Y.io</em>. It abstracts content input and output. That means it can be used to load other content (e.g. RSS, XML, HTML, JSON)
+as well as used to push data to a server (e.g. a forms&#39; POST, PUT, GET or DELETE).  The module takes a URL as a source
+then supplies an event where you can hook into a number of conditions (e.g. success, failure, complete).</p>
+<p>To demonstrate this I&#39;m going to read the RSS feed from Dave Winer&#39;s Scripting News and display the results as headlines
+and links in the <em>section</em> element of our HTML page.  Since <em>Y.io</em> is on Yahoo&#39;s CDN where we get <em>YUI</em> itself we don&#39;t
+need any special configuration like we did with our <em>DigitalClock</em> module.  Here&#39;s the basic idea
+for pulling in the RSS data and displaying it.</p>
+<p><a href="scripting-news-rss.html">scripting-news-rss.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Scripting News RSS&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Scripting News RSS&lt;/header&gt;
+            &lt;section&gt;RSS will go here when we have them.&lt;/section&gt;
+            &lt;footer&gt;See [Scripting News](http://scripting.com) for the source of the feed. Dave Winer has a great explanation
+            of RSS as [JSON](http://rssjs.org/) at rssjs.org.&lt;/footer&gt;
+            &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            // We need to include the IO module in our use method call.
+            YUI().use(&quot;node&quot;, &quot;io&quot;, function (Y) {
+                // Your code goes here
+                var url = &quot;http://scripting.com/rss.json&quot;,
+                    section = Y.one(&quot;section&quot;);
+                // The first parameter is the URL we&#39;re contacting then
+                // we give it an object literal for our listener methods
+                // and any other methods...
+                Y.io(url, {
+                    on: {
+                        success: function (id, response, args) {
+                            var rss = JSON.parse(response.responseText),
+                                output = [];
+
+                            if (rss) {
+                                if (rss.channel.item.length &gt; 0) {
+                                    rss.channel.item.forEach(function (item) {
+                                        output.push(&#39;&lt;h3&gt;&#39; + item.title + &#39;&lt;/h3&gt;&#39; +
+                                            &#39;&lt;a href=&quot;&#39; + item.link + &#39;&quot;&gt;&#39; + item.pubDate + &#39;&lt;/a&gt;&#39;);
+                                    });
+                                    section.setHTML(output.join(&quot;&lt;p&gt;&quot;));
+                                } else {
+                                    section.set(&quot;text&quot;, &quot;No articles found.&quot;);
+                                }
+                            } else {
+                                section.set(&quot;text&quot;, &quot;Could not parse RSS response&quot;);
+                            }
+                        },
+                        failure: function () {
+                            section.set(&quot;text&quot;, &quot;Cound not get RSS from &quot; + url)
+                        }
+                    }
+                });
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>On the <em>YUI</em> modules I really like is <em>Y.io</em>. It works both in the browser and in <em>Node</em>.  That gives a common way to setup remote
+API access that might be processed in a middle layer or directly in the client browser. These days I&#39;m usually fetching
+JSON content and Dave Winer&#39;s Scripting News blog is gracious enough to provide a version in excellent JSON version of his
+RSS feed). The URL for the is <a href="http://scripting.com/rss.json">http://scripting.com/rss.json</a>.  We&#39;ll use that as a reference source as we explore
+the <em>Y.io</em> module.</p>
 <h2>Persistence</h2>
 <h3>Saving things for latter with Y.StorageLite</h3>
 <h2>Templates</h2>

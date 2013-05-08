@@ -641,7 +641,78 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
 ## Remote
 
+    Some times you want data from someplace else, say Dave Winer's blog Scripting News...
+
 ### Bring content into the page with **Y.io**
+
+Sometimes we need data from other websites or even an API in our hosting website. It is nice to have that option
+in the browser and _YUI_ has a module for that :-).  The module is called _IO_ or more specifically in your _Y_ function
+_Y.io_. It abstracts content input and output. That means it can be used to load other content (e.g. RSS, XML, HTML, JSON)
+as well as used to push data to a server (e.g. a forms' POST, PUT, GET or DELETE).  The module takes a URL as a source
+then supplies an event where you can hook into a number of conditions (e.g. success, failure, complete).
+
+[rss-as-json.html](rss-as-json.html)
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Scripting News RSS</title>
+        </head>
+        <body>
+            <header>Scripting News RSS</header>
+            <section>RSS will go here when we have them.</section>
+            <footer>See [Scripting News](http://scripting.com) for the source of the feed. Dave Winer has a great explanation
+            of RSS as [JSON](http://rssjs.org/) at rssjs.org.</footer>
+            <!-- get YUI3 on the page, and a script block for your code -->
+            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script>
+            // We need to include the IO module in our use method call.
+            YUI().use("node", "io", function (Y) {
+                // Your code goes here
+                var url = "http://scripting.com/rss.json",
+                    section = Y.one("section");
+                // The first parameter is the URL we're contacting then
+                // we give it an object literal for our listener methods
+                // and any other methods...
+                Y.io(url, {
+                    on: {
+                        success: function (id, response, args) {
+                            var rss = JSON.parse(response.responseText),
+                                output = [];
+
+                            if (rss) {
+                                if (rss.channel.item.length > 0) {
+                                    rss.channel.item.forEach(function (item) {
+                                        output.push('<h3>' + item.title + '</h3>' +
+                                            '<a href="' + item.link + '">' + item.pubDate + '</a>');
+                                    });
+                                    section.setHTML(output.join("<p>"));
+                                } else {
+                                    section.set("text", "No articles found.");
+                                }
+                            } else {
+                                section.set("text", "Could not parse RSS response");
+                            }
+                        },
+                        failure: function () {
+                            section.set("text", "Cound not get RSS from " + url)
+                        }
+                    }
+                });
+            });
+            </script>
+        </body>
+    </html>
+```
+
+On the _YUI_ modules I really like is _Y.io_. It works both in the browser and in _Node_.  That gives a common way to setup remote
+API access that might be processed in a middle layer or directly in the client browser. These days I'm usually fetching
+JSON content and Dave Winer's Scripting News blog is gracious enough to provide a version in excellent JSON version of his
+RSS feed). The URL for the is http://scripting.com/rss.json.  We'll use that as a reference source as we explore
+the _Y.io_ module.
+
+
+
 
 ## Persistence
 
