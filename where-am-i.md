@@ -127,7 +127,7 @@ We can add a check of the _href_ attribute of the _anchor_ and decide if we need
             </script>
 ```
 
-Putting this together--
+If we add in chaning the _innerHTML_ of the _li_ as needed we ready to put this all together--
 
 [solution-where-am-i.html](solution-where-am-i.html)
 ```HTML
@@ -177,6 +177,7 @@ Putting this together--
                     Y.log(anchor, "debug");
                     if (anchor.get("href") === window.location.href) {
                         Y.log("Need to update the anchor", "debug");
+                        li.setHTML('<span class="here">' + anchor.get('text') + '</span>');
                     }
                 });
             });
@@ -184,3 +185,4 @@ Putting this together--
         </body>
     </html>
 ```
+
