@@ -4,14 +4,13 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-04-26
+Updated: 2013-05-07
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 
 * You have a basic knowledge of JavaScript, HTML, CSS
 * A basic idea of how the web works
-* Know how to install things on your computer
 
 For those who might be familiar with jQuery I'll point out the similarities
 to speed you along.
@@ -19,7 +18,7 @@ to speed you along.
 
 For a much more complete look at YUI3 I recommend [Evan Goer](http://www.goer.org/)'s
 [YUI3 Cookbook](http://shop.oreilly.com/product/0636920013303.do). It has been the goto
-text for bootstrapping my own understanding of YUI3. It is also a handy set of recipes
+text for bootstrapping my understanding of YUI3. It is also a handy set of recipes
 for YUI3's practical application.  Additionally the [YUILibrary](http://yuilibrary.com)
 website has the canonical documentation and you can read the source for YUI3 at
 [Github](https://github.com/yui/yui3) under yui/yui3.
@@ -27,7 +26,7 @@ website has the canonical documentation and you can read the source for YUI3 at
 A note about using Google Search for learning YUI3. Right now, May 2013, the Google's search
 algorhythm still ranks legacy YUI2 documentation higher than YUI3.  This can easily lead
 to confusion. I've found seaching Stackexchange and Google Groups more helpful. Additionally
-there is an active IRC community on icefreeenode.net under #yui.
+there is an active IRC community on irc.freeenode.net under #yui.
 
 
 [YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
@@ -63,7 +62,7 @@ Specific examples include--
 * Text Editors:
     * Adobe Brackets, Coda, Text Mate, Sublime Editor, ShiftEdit, vi, Emacs
 * Web Servers:
-    * httpster (a Node based http server nice for development use), NginX, Cherokee and the venerable Apache
+    * httpster (a [Node][] based http server nice for development use), NginX, Cherokee and the venerable Apache and IIS
 
 
 ## A word about text editors
@@ -82,9 +81,9 @@ with syntax highlighting and jslint/jshint.
 
 [1]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
 [2]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
+[node]: http://nodejs.org "A JavaScript environment for building network, file system and other services"
 
-
-### A word about NodeJS
+### A word about Node
 
 While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
 [NodeJS](http://nodejs.org) (a.k.a. Node) as a first class platform. This presents several
@@ -441,4 +440,3 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 ## Next
 
 ### Finding helpful YUI3 Modules, documentation and examples
-
