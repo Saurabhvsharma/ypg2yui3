@@ -65,7 +65,7 @@ Specific examples include--
     * httpster (a [Node][] based http server nice for development use), NginX, Cherokee and the venerable Apache and IIS
 
 
-## A word about text editors
+### A word about text editors
 
 Most developers have opinions about text editors. Sometimes very strong opinions. I don't.
 They are just a computer program and I tend to use the ones available to me. That isn't to
