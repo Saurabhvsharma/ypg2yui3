@@ -9,7 +9,7 @@
         <h2>Exercise Where Am I?</h2>
 <ul>
 <li>Programming goal<ul>
-<li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
+<li>compare the page name <em>where-am-i.html</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
 <li>if there is a match set replace the anchor element with a span containing a <em>here</em> class.</li>
 </ul>
 </li>
@@ -29,7 +29,7 @@
 <li>in the <em>style</em> element of <em>head</em> add a CSS class named &quot;here&quot;, that swaps the foreground and background colors</li>
 <li>Look up examples for using <em>Y.all()</em> and _Y.each() at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a></li>
 <li>In your <em>Y</em> function use CSS solitor to get a list of ALL <em>li</em> elements with <em>anchors</em></li>
-<li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at the same <em>href</em> as in _window.location.href<ul>
+<li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at <em>where-am-i.html</em><ul>
 <li>If so update the <em>li</em> so it has a span instead of an anchor and a class of <em>here</em></li>
 </ul>
 </li>
@@ -92,13 +92,18 @@ Our JavaScript block should now look something like--</p>
             YUI().use(&quot;node&quot;, function (Y) {
                 // Your code goes here
                 var allLi = Y.all(&quot;nav ol &gt; li&quot;);
+                Y.log(allLi, &quot;debug&quot;);
                 // Now we should have a list to all the li
                 allLi.each(function (li) {
                     var anchor = li.one(&quot;a&quot;);
-                    // Write the li to the console
-                    Y.log(li, &quot;debug&quot;);
-                    // Write our anchor element to console
-                    Y.log(anchor, &quot;debug&quot;);
+                    if (anchor) {
+                        // Write the li to the console
+                        Y.log(li, &quot;debug&quot;);
+                        // Write our anchor element to console
+                        Y.log(anchor, &quot;debug&quot;);
+                    } else {
+                        Y.log(&quot;Could not find anchor in li&quot;, &quot;error&quot;);
+                    }
                 });
             });
             &lt;/script&gt;</code></pre>
@@ -107,15 +112,20 @@ Our JavaScript block should now look something like--</p>
             YUI().use(&quot;node&quot;, function (Y) {
                 // Your code goes here
                 var allLi = Y.all(&quot;nav ol &gt; li&quot;);
+                Y.log(allLi, &quot;debug&quot;);
                 // Now we should have a list to all the li
                 allLi.each(function (li) {
                     var anchor = li.one(&quot;a&quot;);
-                    // Write the li to the console
-                    Y.log(li, &quot;debug&quot;);
-                    // Write our anchor element to console
-                    Y.log(anchor, &quot;debug&quot;);
-                    if (anchor.get(&quot;href&quot;) === window.location.href) {
-                        Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
+                    if (anchor) {
+                        // Write the li to the console
+                        Y.log(li, &quot;debug&quot;);
+                        // Write our anchor element to console
+                        Y.log(anchor, &quot;debug&quot;);
+                        if (anchor.get(&quot;href&quot;).indexOf(&quot;where-am-i.html&quot;) &gt; 0) {
+                            Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
+                        }
+                    } else {
+                        Y.log(&quot;Could not find anchor in li&quot;, &quot;error&quot;);
                     }
                 });
             });
@@ -151,24 +161,29 @@ Our JavaScript block should now look something like--</p>
                     &lt;li&gt;&lt;a href=&quot;http://example.com/7&quot;&gt;Seven&lt;/a&gt;&lt;/li&gt;
                 &lt;/ol&gt;
             &lt;/nav&gt;
-            &lt;section&gt;Main content goes here&lt;/section&gt;
-            &lt;footer&gt;Footer things go here&lt;/footer&gt;
+            &lt;section&gt;Our navigation should update to show visually which link is &quot;here&quot; and swap
+            that for a span. Browser console should include log messages.&lt;/section&gt;
+            &lt;footer&gt;&lt;/footer&gt;
             &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
             &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
             &lt;script&gt;
             YUI().use(&quot;node&quot;, function (Y) {
                 // Your code goes here
-                var allLi = Y.all(&quot;nav ol &gt; li&quot;);
+                var allLi = Y.all(&quot;nav &gt; ol &gt; li&quot;);
                 // Now we should have a list to all the li
+                Y.log(allLi, &quot;debug&quot;);
                 allLi.each(function (li) {
                     var anchor = li.one(&quot;a&quot;);
-                    // Write the li to the console
-                    Y.log(li, &quot;debug&quot;);
-                    // Write our anchor element to console
-                    Y.log(anchor, &quot;debug&quot;);
-                    if (anchor.get(&quot;href&quot;) === window.location.href) {
-                        Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
-                        li.setHTML(&#39;&lt;span class=&quot;here&quot;&gt;&#39; + anchor.get(&#39;text&#39;) + &#39;&lt;/span&gt;&#39;);
+                    if (anchor) {
+                        // Write the li to the console
+                        // Write our anchor element to console
+                        Y.log(anchor.get(&quot;href&quot;), &quot;debug&quot;);
+                        if (anchor.get(&quot;href&quot;).indexOf(&quot;where-am-i.html&quot;) &gt; 0) {
+                            Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
+                            li.setHTML(&#39;&lt;span class=&quot;here&quot;&gt;&#39; + anchor.get(&#39;text&#39;) + &#39;&lt;/span&gt;&#39;);
+                        }
+                    } else {
+                        Y.log(&quot;Could not find anchor in li&quot;, &quot;error&quot;);
                     }
                 });
             });

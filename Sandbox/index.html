@@ -8,7 +8,7 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a>
+<p>by R. S. Doiel, <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#114;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#114;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a>
 Updated: 2013-05-07</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -61,7 +61,7 @@ Specific examples include--</p>
 </ul>
 </li>
 <li>Web Servers:<ul>
-<li>httpster (a <a href="http://nodejs.org" title="A JavaScript environment for building network, file system and other services">Node</a> based http server nice for development use), NginX, Cherokee and the venerable Apache and IIS</li>
+<li>httpster (a <a href="http://yuilibrary.com/yui/docs/node/" title="The YUI3 Node module provides access to DOM elements.">Node</a> based http server nice for development use), NginX, Cherokee and the venerable Apache and IIS</li>
 </ul>
 </li>
 </ul>
@@ -77,15 +77,18 @@ are both built from the same building blocks we use on the web -- HTML, CSS, Jav
 makes it easy to extend and improve to meet your own needs. They also come out of the box
 with syntax highlighting and jslint/jshint.</p>
 <h3>A word about Node</h3>
-<p>While this tutorial is focused on <em>YUI3</em> in the web browser <em>YUI3</em> also supports
-<a href="http://nodejs.org">NodeJS</a> (a.k.a. Node) as a first class platform. This presents several
-nice opportunities when you move beyond the browser--</p>
-<p>1) What you learn in the browser can be used server side
-2) The <em>YUI3</em> tool chain is Node based
-3) <a href="http://developer.yahoo.com/cocktails/mojito/">Mojito</a> is based on on <em>YUI3</em> plus <em>Node</em>
-4) Node runs on <em>Mac</em>, <em>Windows</em> and many <em>Unix</em> (e.g. Intel and Arm based <em>Linux</em>)</p>
+<p>While this tutorial is focused on the web browser <em>YUI3</em> also supports <a href="http://nodejs.org">NodeJS</a> 
+(a.k.a. Node) as a first class platform. This presents several nice opportunities when you 
+move beyond the browser--</p>
+<ol>
+<li>What you learn in the browser can be used server side</li>
+<li>The <em>YUI3</em> tool chain is Node based</li>
+<li><a href="http://developer.yahoo.com/cocktails/mojito/">Mojito</a> is based on on <em>YUI3</em> plus <em>Node</em></li>
+<li>Node runs on <em>Mac</em>, <em>Windows</em> and many <em>Unix</em> (e.g. Intel and Arm based <em>Linux</em>)</li>
+</ol>
 <p>I have found the little <em>Node</em> webserver called <a href="https://github.com/SimbCo/httpster">httpster</a>
-to be very convient in front-end development.</p>
+to be very help for front-end development. It allows to easily serve content from your current working folder
+as easily as typing <em>httpster</em>. </p>
 <p>Finally I make the assumption you have an active connection to the internet.</p>
 <h3>Some links</h3>
 <ul>
@@ -98,10 +101,9 @@ to be very convient in front-end development.</p>
 </ul>
 <h2>Starting</h2>
 <h3>The minimum to pull YUI3 into the webpage</h3>
-<p>This is a short work on using YUI3 library in the <em>browser</em>. <em>YUI</em> needs to be
-available to the webpage. Fortunately this is easy. You use a <em>script</em> tag to include it
-from Yahoo&#39;s CDN. Let us build a simple webpage using YUI3 to change the
-pages&#39; <em>title</em> to &quot;Hello World&quot; and the first <em>h1</em> to &quot;Yippee! It worked.&quot;.</p>
+<p><em>YUI</em> needs to be available to the webpage to be useful. Fortunately this is <a href="http://yuilibrary.com/yui/quick-start/" title="YUI Quick Start at yuilibrary.com">easy</a>. 
+You use a <em>script</em> tag to include it from Yahoo&#39;s CDN. Let us build a simple webpage 
+using YUI3 to change the pages&#39; <em>title</em> to &quot;Hello World&quot; and the first <em>h1</em> to &quot;Yippee! It worked.&quot;.</p>
 <p>Build the first part of your HTML document as you normally would.</p>
 <p><a href="getting-started.html">getting-started.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
@@ -115,8 +117,8 @@ pages&#39; <em>title</em> to &quot;Hello World&quot; and the first <em>h1</em> t
 <p>Now include YUI3 from Yahoo&#39;s CDN with the following script element.</p>
 <p><a href="getting-started.html">getting-started.html</a></p>
 <pre><code class="language-HTML">            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;</code></pre>
-<p>Now we want to change the contents of the <em>title</em> and <em>h1</em> tags.
-Here is the code we add to do that in this script block.</p>
+<p>Now we want to change the contents of the <em>title</em> and <em>h1</em> tags to show that this worked.
+We add another script block for that.</p>
 <p><a href="getting-started.html">gitting-started.html</a></p>
 <pre><code class="language-HTML">            &lt;script&gt;
                 YUI().use(&quot;node&quot;, function (Y) {
@@ -144,19 +146,21 @@ root web folder.)</p>
     &lt;/script&gt;</code></pre>
 <p>The line with document ready includes a wrapping function providing a namespace for your code.
 <em>YUI</em> also does this though technically it loads a module called <em>node</em> to provide the features
-similar to <em>jQuery</em>&#39;s <em>$</em> function. In <em>YUI</em> those functions are used from the parameter passed
+similar to <em>jQuery</em>&#39;s <em>$</em> object. In <em>YUI</em> those functions are used from the parameter passed
 in named <em>Y</em>.  Part of making the transition from <em>jQuery</em> to <em>YUI3</em> is understanding where
-and how they are similar. If you used a <em>$</em> in jQuery look for <em>Y</em> dot something in YUI3.</p>
+and how they are similar. If you used a <em>$</em> in jQuery look for <em>Y</em> dot something in YUI3, if
+you used a <em>$( ... )</em> then look at using either a <em>Y.one()</em> or <em>Y.all()</em> depending on whether
+you need a single element or a list of elements.</p>
 <h2>Selectors</h2>
 <h3>Getting access to parts of a webpage</h3>
-<pre><code>    CSS selectors work the way you expect but save those refernences to be efficient!</code></pre>
-<p><em>YUI3</em> uses <a href="http://en.wikipedia.org/wiki/CSS" title="Cascading Style Sheets, they way to control how a webpage looks.">CSS</a> selectors to access parts of the webpage you want to interact with.
-This typically is by indentifing an element via an <em>id</em> or <em>class</em> attribute. You may also
-use CSS psuedo classes and element relationships to target a specific element in the
-page (e.g. the <em>li</em> contained in a <em>ul</em> list). There is a cost to caculating where in the <em>DOM</em> you&#39;re
-going to work on. Like in <em>jQuery</em> the best practice in <em>YUI3</em> is to save the reference if you need it more
-than once. Here&#39;s an an example <em>script</em> block for improving our first <em>getting-started.html</em> example
-where we&#39;re saving the DOM selector results.</p>
+<pre><code>    CSS selectors work the way you expect but save those references to be efficient!</code></pre>
+<p><em>YUI3</em> uses <a href="http://en.wikipedia.org/wiki/CSS" title="Cascading Style Sheets, they way to control how a webpage looks.">CSS</a> selectors to access parts of the webpage. This typically is by indentifing 
+an element via an <em>id</em> or <em>class</em> attribute. You may also use CSS psuedo classes and element 
+relationships to target a specific element in the page (e.g. the <em>li</em> contained in a <em>ul</em> list). 
+There is a cost to caculating where in the <em>DOM</em> you&#39;re going to work on. Like in <em>jQuery</em> the
+best practice in <em>YUI3</em> is to save the reference if you need it more than once. Here&#39;s an example 
+<em>script</em> block for improving our first <em>getting-started.html</em> example where we&#39;re saving the 
+DOM selector results.</p>
 <pre><code class="language-HTML">            &lt;script&gt;
                 YUI().use(&quot;node&quot;, function (Y) {
                     var title = Y.one(&quot;title&quot;),
@@ -168,10 +172,10 @@ where we&#39;re saving the DOM selector results.</p>
             &lt;/script&gt;</code></pre>
 <p>YUI3 provides two function that take a selector.  The first is <em>Y.one()</em>. It will give you the 
 first element in the <a href="http://en.wikipedia.org/wiki/Document_Object_Model" title="The Object which the browser uses to allow access to parts of a webpage.">DOM</a> matching that selector. In our example above that was <em>title</em> and <em>h1</em>.  If
-you had more than <em>h1</em> it would only give the first <em>h1</em> it found. Usually this is what you want.
-Sometimes you want all the elements that have that selector. E.g. all the anchor tags in a page. 
+you had more than one <em>h1</em> it would only give the first <em>h1</em> it found. Usually this is what you want.
+Sometimes you want all the elements that match`a selector (e.g. all the anchor tags in a page). 
 To get that you use <em>Y.all()</em>.  That returns a list of elements. It is easiest to explain
-by showing.  Let us create a short element with a list of links to YUI3 resources. Then
+by showing.  Let us create a short element with a list of links to YUI3 resources. Next
 we&#39;ll update part of the page to indicate the links we found.</p>
 <p><a href="selecting-all.html">selecting-all.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
@@ -214,10 +218,12 @@ we&#39;ll update part of the page to indicate the links we found.</p>
 <h3>interacting with innerHTML and attributes</h3>
 <p>JavaScript in the browser is useful for orchestrating behaviors. To do this
 we need to beable to get the values inside HTML elements as well as their attributes. This is easy
-with <em>YUI3</em>. The <em>node</em> module provides us with a rich set of methods for interacting with the
+with <em>YUI3</em>. The <a href="http://yuilibrary.com/yui/docs/node/" title="The YUI3 Node module provides access to DOM elements.">node</a> module provides us with a rich set of methods for interacting with the
 <em>DOM</em> but you only need a few to get useful work done. This is done in two steps</p>
-<p>1) Get the node you want to work with via Y.one() or Y.all()
-2) use Y.get(), Y.set(), and Y.setHTML() to interact with that element. </p>
+<ol>
+<li>Get the node you want to work with via <em>Y.one()</em> or <em>Y.all()</em></li>
+<li>use <em>Y.get()</em>, <em>Y.set()</em>, and <em>Y.setHTML()</em> to interact with that element. </li>
+</ol>
 <pre><code class="language-JavaScript">    YUI().use(&quot;node&quot;, function (Y) {
         // Step 1, get a handle to the node you want to work with in this case an anchor tag
         var anchor = Y.one(&quot;a&quot;),
@@ -231,15 +237,15 @@ with <em>YUI3</em>. The <em>node</em> module provides us with a rich set of meth
          Y.log(&quot;The innerHTML is &quot; + innerHTML);
     });</code></pre>
 <p><em>YUI3</em>&#39;s <em>node</em> module wraps the <em>DOM</em> in a rich set of useful functions. It allows
-us to use the same methods even on very old browsers (e.g. I.E. 6, or Android 2.x&#39; browser).
+us to use the same methods even on very old browsers (e.g. I.E. 6, Android 2.x browser).
 There are a whole list of additional methods you may find convienent. A good place to 
 begin your exploration is at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com/yui/docs/node</a>.
 There are methods that make quick work of interacting with CSS classes and styles as well as
-locations (i.e. x,y coordinates) on the page. Just remember best practice to use CSS to 
+locations (i.e. x,y coordinates) on the page. Remember best practice is to use CSS to 
 control the view and layout and only resort to JavaScript if there isn&#39;t a CSS alternative.</p>
 <p>Now that you&#39;ve seen a little of <em>YUI</em> we&#39;re going to put what we&#39;ve shown to use and
 expand on it through a series of exercises. In each exercise you&#39;ll be asked to use
-both what you know and also to lookup and find something on the [yuilibrary.com] side
+both what you know and also to lookup and find something on <a href="http://yuilibrary.com">yuilibrary.com</a> 
 that will help you expand beyond the specifics discussed previously.</p>
 <p>Here is a seed file you can use to start your exercises from.</p>
 <p><a href="seed-file.html">seed-file.html</a></p>
@@ -265,16 +271,17 @@ that will help you expand beyond the specifics discussed previously.</p>
 <h4>Digital Clock</h4>
 <ul>
 <li>Programming goal<ul>
-<li>build a simple digital clock in the webpage</li>
+<li>build a simple digital clock webpage</li>
 </ul>
 </li>
 <li>Learning objective <ul>
-<li>Explore the <em>node</em> module of <em>YUI</em></li>
+<li>Explore the <em>node</em> module of <em>YUI3</em></li>
 <li>Use additional methods besides <em>Y.get()</em>, <em>Y.set()</em> and <em>Y.setHTML()</em>.</li>
 </ul>
 </li>
 </ul>
-<p>Using YUI3 update content in the webpage every five seconds displaying the current time.</p>
+<p>Using YUI3 update content in the webpage every five seconds displaying the current time manipulate
+the CSS classes attach to the element showing the time.</p>
 <h5>Steps</h5>
 <p>Copy <em>seed-file.html</em> to <em>digital-clock.html</em>. Do the following things</p>
 <ul>
@@ -293,12 +300,12 @@ that will help you expand beyond the specifics discussed previously.</p>
 <h5>Notes</h5>
 <ul>
 <li>In this tutorial I have opted for <a href="https://en.wikipedia.org/wiki/Inline_expansion" title="In-line is not a &#39;best practice&#39; particularlly in more complicated websites and applications.">in-line</a> code for convienence</li>
-<li>One approach to the solution - <a href="digital-clock.html">digital-clock.html</a>, review it and compare with your own code.</li>
+<li>One approach to the solution is <a href="digital-clock.html">digital-clock.html</a>. Review it and compare with your own code.</li>
 </ul>
 <h4>Where Am I?</h4>
 <ul>
 <li>Programming goal<ul>
-<li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
+<li>compare the page name of <em>where-am-i.html</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
 <li>if there is a match set replace the anchor element with a span containing a <em>here</em> class.</li>
 </ul>
 </li>
@@ -315,9 +322,12 @@ that will help you expand beyond the specifics discussed previously.</p>
 <li>Add a <em>nav</em> element before section</li>
 <li>In the <em>nav</em> element create a list of seven URLs, one should be for the webpage <em>where-am-i.html</em></li>
 <li>in the <em>style</em> element of <em>head</em> add a CSS class named &quot;here&quot;, that swaps the foreground and background colors</li>
-<li>Look up examples for using <em>Y.all()</em> and _Y.each() at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a></li>
+<li>Look up examples for using <em>Y.all()</em> and <em>Y.each()</em> at <a href="http://yuilibrary.com/yui/docs/node">yuilibrary.com</a></li>
 <li>In your <em>Y</em> function use CSS query solition to get a list of ALL <em>li</em> elements with <em>anchors</em></li>
-<li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at the same <em>href</em> as in <em>window.location.href, update the _li</em> if it matches</li>
+<li>For each <em>li</em> get the containing anchor, check if the <em>href</em> points at <em>where-am-i.html</em><ul>
+<li>update the <em>li</em> if it matches</li>
+</ul>
+</li>
 </ul>
 <h5>Notes</h5>
 <ul>
@@ -325,9 +335,45 @@ that will help you expand beyond the specifics discussed previously.</p>
 <li>One approach to the solution is <a href="where-am-i.html">where-am-i.html</a></li>
 </ul>
 <h2>Action</h2>
+<p><em>YUI3</em> provides a robust event system which includes listening for mouse, key and touch events. Unlike other
+JavaScript frameworks <em>YUI3</em> approaches the development problem wholistically and doesn&#39;t create a 
+separate library for touch devices (e.g. phones and tablets). Instead your code can work across all devices.
+<em>YUI3</em> loader also makes it efficient and how much code you download to the device. To add support
+for touch guesters, mouse interaction and the like I am introducing another module called <a href="http://yuilibrary.com/yui/docs/event/" title="The Event modules provide access clicks, touch, touch guestures and keypress">event</a>.  It will
+let us <em>listen</em> for interesting things on the <em>DOM</em>.</p>
 <h3>Mouse clicks, keyboard commands and touch</h3>
+<p>Interaction with the elements in the page by a mouse, keyboard or touch triggers an event. If you are listening
+for an event then you can get an event object. This is like the normal DOM events exposed in JavaScript or
+in libraries like <em>jQuery</em>. You can choose to handle the event, alter the propogation and stop listening to it.
+The key is to get a handle to the object and then use the <em>on()</em> method to setup a callback to use when the event
+happens.</p>
+<h3>Exercise</h3>
+<h4>What happened?</h4>
+<p>This is another example of showing making more sense than telling but let me quickly outline the
+steps you normally take to get started.</p>
+<ol>
+<li>Load <em>YUI3</em> in the page</li>
+<li>In your Script blog (or JavaScript file using <em>YUI3</em>) include the <em>event</em> module.</li>
+<li>In your <em>Y</em> function select the object you want to listen to (e.g. a button) then use <em>on()</em> to add behavior.</li>
+</ol>
+<p>That is the basic approach. In this example let us create a simple webpage with a button in the middle and
+a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
+key pressed if a your clicks on the button). This is example let&#39;s listen for mouse clicks and touch guestures.</p>
+<h4>Steps</h4>
+<p>Copy <em>seed-file.html</em> to <em>what-happened.html</em>. Do the following things</p>
+<ol>
+<li>Add a <em>button</em> element to the <em>section</em> element in our HTML markup</li>
+<li>Update the line where we <em>use()</em> <em>YUI</em> and generate our <em>Y</em> function to to include the <em>event</em> module.</li>
+<li>Select our button using <em>Y.one()</em></li>
+<li>Add listeners via <em>on()</em> method for mouse click, touch and swipe</li>
+</ol>
+<h4>Notes</h4>
+<ul>
+<li>It is important to remember that event listeners do have an overhead, if you don&#39;t need it anymore then remove the listener.</li>
+<li>One approach to the solution is <a href="what-happened.html">what-happened.html</a></li>
+</ul>
 <h2>Modules</h2>
-<h3>Moving beyond <strong>node</strong></h3>
+<h3>Moving beyond <strong>node</strong> and <strong>event</strong></h3>
 <h2>Remote</h2>
 <h3>Bring content into the page with <strong>Y.io</strong></h3>
 <h2>Persistence</h2>

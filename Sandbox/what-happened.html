@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html lang="en">
+    <head>
+        <title>what-happened.md</title>
+    </head>
+    <body>
+        <header><h1>what-happened.md</h1></header>
+        <section>
+        <h4>What happened?</h4>
+<p>This is another example of showing making more sense than telling but let me quickly outline the
+steps you normally take to get started.</p>
+<ol>
+<li>Load <em>YUI3</em> in the page</li>
+<li>In your Script blog (or JavaScript file using <em>YUI3</em>) include the <em>event</em> module.</li>
+<li>In your <em>Y</em> function select the object you want to listen to (e.g. a button) then use <em>on()</em> to add behavior.</li>
+</ol>
+<p>That is the basic approach. In this example let us create a simple webpage with a button in the middle and
+a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
+key pressed if a your clicks on the button). This is example let&#39;s listen for mouse clicks and touch guestures.</p>
+<h4>Steps</h4>
+<p>Copy <em>seed-file.html</em> to <em>what-happened.html</em>. Do the following things</p>
+<ol>
+<li>Add a <em>button</em> element to the <em>section</em> element in our HTML markup</li>
+<li>Update the line where we <em>use()</em> <em>YUI</em> and generate our <em>Y</em> function to to include the <em>event</em> module.</li>
+<li>Select our button using <em>Y.one()</em></li>
+<li>Add listeners via <em>on()</em> method for mouse click, touch and swipe</li>
+</ol>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

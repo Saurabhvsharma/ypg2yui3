@@ -15,7 +15,6 @@ This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 For those who might be familiar with jQuery I'll point out the similarities
 to speed you along.
 
-
 For a much more complete look at YUI3 I recommend [Evan Goer](http://www.goer.org/)'s
 [YUI3 Cookbook](http://shop.oreilly.com/product/0636920013303.do). It has been the goto
 text for bootstrapping my understanding of YUI3. It is also a handy set of recipes
@@ -85,17 +84,18 @@ with syntax highlighting and jslint/jshint.
 
 ### A word about Node
 
-While this tutorial is focused on _YUI3_ in the web browser _YUI3_ also supports
-[NodeJS](http://nodejs.org) (a.k.a. Node) as a first class platform. This presents several
-nice opportunities when you move beyond the browser--
+While this tutorial is focused on the web browser _YUI3_ also supports [NodeJS](http://nodejs.org) 
+(a.k.a. Node) as a first class platform. This presents several nice opportunities when you 
+move beyond the browser--
 
-1) What you learn in the browser can be used server side
-2) The _YUI3_ tool chain is Node based
-3) [Mojito](http://developer.yahoo.com/cocktails/mojito/) is based on on _YUI3_ plus _Node_
-4) Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
+1. What you learn in the browser can be used server side
+2. The _YUI3_ tool chain is Node based
+3. [Mojito](http://developer.yahoo.com/cocktails/mojito/) is based on on _YUI3_ plus _Node_
+4. Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
 I have found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
-to be very convient in front-end development.
+to be very help for front-end development. It allows to easily serve content from your current working folder
+as easily as typing _httpster_. 
 
 Finally I make the assumption you have an active connection to the internet.
 
@@ -114,10 +114,11 @@ Finally I make the assumption you have an active connection to the internet.
 
 ### The minimum to pull YUI3 into the webpage
 
-This is a short work on using YUI3 library in the _browser_. _YUI_ needs to be
-available to the webpage. Fortunately this is easy. You use a _script_ tag to include it
-from Yahoo's CDN. Let us build a simple webpage using YUI3 to change the
-pages' _title_ to "Hello World" and the first _h1_ to "Yippee! It worked.".
+_YUI_ needs to be available to the webpage to be useful. Fortunately this is [easy][]. 
+You use a _script_ tag to include it from Yahoo's CDN. Let us build a simple webpage 
+using YUI3 to change the pages' _title_ to "Hello World" and the first _h1_ to "Yippee! It worked.".
+
+[easy]: http://yuilibrary.com/yui/quick-start/ "YUI Quick Start at yuilibrary.com"
 
 Build the first part of your HTML document as you normally would.
 
@@ -140,8 +141,8 @@ Now include YUI3 from Yahoo's CDN with the following script element.
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
 ```
 
-Now we want to change the contents of the _title_ and _h1_ tags.
-Here is the code we add to do that in this script block.
+Now we want to change the contents of the _title_ and _h1_ tags to show that this worked.
+We add another script block for that.
 
 [gitting-started.html](getting-started.html)
 ```HTML
@@ -185,24 +186,26 @@ If you have used [jQuery](http://jquery.com) before I think you'll notice a simi
 
 The line with document ready includes a wrapping function providing a namespace for your code.
 _YUI_ also does this though technically it loads a module called _node_ to provide the features
-similar to _jQuery_'s _$_ function. In _YUI_ those functions are used from the parameter passed
+similar to _jQuery_'s _$_ object. In _YUI_ those functions are used from the parameter passed
 in named _Y_.  Part of making the transition from _jQuery_ to _YUI3_ is understanding where
-and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something in YUI3.
+and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something in YUI3, if
+you used a _$( ... )_ then look at using either a _Y.one()_ or _Y.all()_ depending on whether
+you need a single element or a list of elements.
 
 
 ## Selectors
 
 ### Getting access to parts of a webpage
 
-        CSS selectors work the way you expect but save those refernences to be efficient!
+        CSS selectors work the way you expect but save those references to be efficient!
 
-_YUI3_ uses [CSS][3] selectors to access parts of the webpage you want to interact with.
-This typically is by indentifing an element via an _id_ or _class_ attribute. You may also
-use CSS psuedo classes and element relationships to target a specific element in the
-page (e.g. the _li_ contained in a _ul_ list). There is a cost to caculating where in the _DOM_ you're
-going to work on. Like in _jQuery_ the best practice in _YUI3_ is to save the reference if you need it more
-than once. Here's an an example _script_ block for improving our first _getting-started.html_ example
-where we're saving the DOM selector results.
+_YUI3_ uses [CSS][3] selectors to access parts of the webpage. This typically is by indentifing 
+an element via an _id_ or _class_ attribute. You may also use CSS psuedo classes and element 
+relationships to target a specific element in the page (e.g. the _li_ contained in a _ul_ list). 
+There is a cost to caculating where in the _DOM_ you're going to work on. Like in _jQuery_ the
+best practice in _YUI3_ is to save the reference if you need it more than once. Here's an example 
+_script_ block for improving our first _getting-started.html_ example where we're saving the 
+DOM selector results.
 
 
 ```HTML
@@ -219,10 +222,10 @@ where we're saving the DOM selector results.
 
 YUI3 provides two function that take a selector.  The first is _Y.one()_. It will give you the 
 first element in the [DOM][4] matching that selector. In our example above that was _title_ and _h1_.  If
-you had more than _h1_ it would only give the first _h1_ it found. Usually this is what you want.
-Sometimes you want all the elements that have that selector. E.g. all the anchor tags in a page. 
+you had more than one _h1_ it would only give the first _h1_ it found. Usually this is what you want.
+Sometimes you want all the elements that match`a selector (e.g. all the anchor tags in a page). 
 To get that you use _Y.all()_.  That returns a list of elements. It is easiest to explain
-by showing.  Let us create a short element with a list of links to YUI3 resources. Then
+by showing.  Let us create a short element with a list of links to YUI3 resources. Next
 we'll update part of the page to indicate the links we found.
 
 [selecting-all.html](selecting-all.html)
@@ -275,11 +278,12 @@ we'll update part of the page to indicate the links we found.
 
 JavaScript in the browser is useful for orchestrating behaviors. To do this
 we need to beable to get the values inside HTML elements as well as their attributes. This is easy
-with _YUI3_. The _node_ module provides us with a rich set of methods for interacting with the
+with _YUI3_. The [node] module provides us with a rich set of methods for interacting with the
 _DOM_ but you only need a few to get useful work done. This is done in two steps
 
-1) Get the node you want to work with via Y.one() or Y.all()
-2) use Y.get(), Y.set(), and Y.setHTML() to interact with that element. 
+1. Get the node you want to work with via _Y.one()_ or _Y.all()_
+2. use _Y.get()_, _Y.set()_, and _Y.setHTML()_ to interact with that element. 
+
 
 ```JavaScript
     YUI().use("node", function (Y) {
@@ -296,18 +300,20 @@ _DOM_ but you only need a few to get useful work done. This is done in two steps
     });
 ```
 
+[node]: http://yuilibrary.com/yui/docs/node/ "The YUI3 Node module provides access to DOM elements."
+
 _YUI3_'s _node_ module wraps the _DOM_ in a rich set of useful functions. It allows
-us to use the same methods even on very old browsers (e.g. I.E. 6, or Android 2.x' browser).
+us to use the same methods even on very old browsers (e.g. I.E. 6, Android 2.x browser).
 There are a whole list of additional methods you may find convienent. A good place to 
 begin your exploration is at [yuilibrary.com/yui/docs/node](http://yuilibrary.com/yui/docs/node).
 There are methods that make quick work of interacting with CSS classes and styles as well as
-locations (i.e. x,y coordinates) on the page. Just remember best practice to use CSS to 
+locations (i.e. x,y coordinates) on the page. Remember best practice is to use CSS to 
 control the view and layout and only resort to JavaScript if there isn't a CSS alternative.
 
 
 Now that you've seen a little of _YUI_ we're going to put what we've shown to use and
 expand on it through a series of exercises. In each exercise you'll be asked to use
-both what you know and also to lookup and find something on the [yuilibrary.com] side
+both what you know and also to lookup and find something on [yuilibrary.com](http://yuilibrary.com) 
 that will help you expand beyond the specifics discussed previously.
 
 Here is a seed file you can use to start your exercises from.
@@ -340,13 +346,14 @@ Here is a seed file you can use to start your exercises from.
 #### Digital Clock
 
 - Programming goal
-    + build a simple digital clock in the webpage
+    + build a simple digital clock webpage
 - Learning objective 
-    + Explore the _node_ module of _YUI_
+    + Explore the _node_ module of _YUI3_
     + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
 
-Using YUI3 update content in the webpage every five seconds displaying the current time.
+Using YUI3 update content in the webpage every five seconds displaying the current time manipulate
+the CSS classes attach to the element showing the time.
 
 
 ##### Steps
@@ -367,13 +374,13 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 ##### Notes
 
 * In this tutorial I have opted for [in-line][5] code for convienence
-* One approach to the solution - [digital-clock.html](digital-clock.html), review it and compare with your own code.
+* One approach to the solution is [digital-clock.html](digital-clock.html). Review it and compare with your own code.
 
 
 #### Where Am I?
 
 - Programming goal
-    + compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements
+    + compare the page name of _where-am-i.html_ with the _href_ in a _ul_ list of anchors elements
     + if there is a match set replace the anchor element with a span containing a _here_ class.
 - Learning objectives
     + Work with a list of elements
@@ -388,9 +395,10 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 - Add a _nav_ element before section
 - In the _nav_ element create a list of seven URLs, one should be for the webpage _where-am-i.html_
 - in the _style_ element of _head_ add a CSS class named "here", that swaps the foreground and background colors
-- Look up examples for using _Y.all()_ and _Y.each() at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
+- Look up examples for using _Y.all()_ and _Y.each()_ at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
 - In your _Y_ function use CSS query solition to get a list of ALL _li_ elements with _anchors_
-- For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href, update the _li_ if it matches
+- For each _li_ get the containing anchor, check if the _href_ points at _where-am-i.html_
+    - update the _li_ if it matches
 
 ##### Notes
 
@@ -403,11 +411,58 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
 ## Action
 
+_YUI3_ provides a robust event system which includes listening for mouse, key and touch events. Unlike other
+JavaScript frameworks _YUI3_ approaches the development problem wholistically and doesn't create a 
+separate library for touch devices (e.g. phones and tablets). Instead your code can work across all devices.
+_YUI3_ loader also makes it efficient and how much code you download to the device. To add support
+for touch guesters, mouse interaction and the like I am introducing another module called [event][].  It will
+let us _listen_ for interesting things on the _DOM_.
+
+[event]: http://yuilibrary.com/yui/docs/event/ "The Event modules provide access clicks, touch, touch guestures and keypress"
+
+
 ### Mouse clicks, keyboard commands and touch
+
+Interaction with the elements in the page by a mouse, keyboard or touch triggers an event. If you are listening
+for an event then you can get an event object. This is like the normal DOM events exposed in JavaScript or
+in libraries like _jQuery_. You can choose to handle the event, alter the propogation and stop listening to it.
+The key is to get a handle to the object and then use the _on()_ method to setup a callback to use when the event
+happens.
+
+### Exercise
+
+#### What happened?
+
+This is another example of showing making more sense than telling but let me quickly outline the
+steps you normally take to get started.
+
+1. Load _YUI3_ in the page
+2. In your Script blog (or JavaScript file using _YUI3_) include the _event_ module.
+3. In your _Y_ function select the object you want to listen to (e.g. a button) then use _on()_ to add behavior.
+
+That is the basic approach. In this example let us create a simple webpage with a button in the middle and
+a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
+key pressed if a your clicks on the button). This is example let's listen for mouse clicks and touch guestures.
+
+#### Steps
+
+Copy _seed-file.html_ to _what-happened.html_. Do the following things
+
+1. Add a _button_ element to the _section_ element in our HTML markup
+2. Update the line where we _use()_ _YUI_ and generate our _Y_ function to to include the _event_ module.
+3. Select our button using _Y.one()_
+4. Add listeners via _on()_ method for mouse click, touch and swipe
+
+#### Notes
+
+* It is important to remember that event listeners do have an overhead, if you don't need it anymore then remove the listener.
+* One approach to the solution is [what-happened.html](what-happened.html)
+
+
 
 ## Modules
 
-### Moving beyond **node**
+### Moving beyond **node** and **event**
 
 ## Remote
 

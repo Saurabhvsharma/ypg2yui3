@@ -2,7 +2,7 @@
 ## Exercise Where Am I?
 
 - Programming goal
-    + compare the page name in _window.location.href_ with the _href_ in a _ul_ list of anchors elements
+    + compare the page name _where-am-i.html_ with the _href_ in a _ul_ list of anchors elements
     + if there is a match set replace the anchor element with a span containing a _here_ class.
 - Learning objectives
     + Work with a list of elements
@@ -20,7 +20,7 @@ Do the following things
 - in the _style_ element of _head_ add a CSS class named "here", that swaps the foreground and background colors
 - Look up examples for using _Y.all()_ and _Y.each() at [yuilibrary.com](http://yuilibrary.com/yui/docs/node)
 - In your _Y_ function use CSS solitor to get a list of ALL _li_ elements with _anchors_
-- For each _li_ get the containing anchor, check if the _href_ points at the same _href_ as in _window.location.href
+- For each _li_ get the containing anchor, check if the _href_ points at _where-am-i.html_
     + If so update the _li_ so it has a span instead of an anchor and a class of _here_
 
 ### Solution
@@ -93,13 +93,18 @@ Our JavaScript block should now look something like--
             YUI().use("node", function (Y) {
                 // Your code goes here
                 var allLi = Y.all("nav ol > li");
+                Y.log(allLi, "debug");
                 // Now we should have a list to all the li
                 allLi.each(function (li) {
                     var anchor = li.one("a");
-                    // Write the li to the console
-                    Y.log(li, "debug");
-                    // Write our anchor element to console
-                    Y.log(anchor, "debug");
+                    if (anchor) {
+                        // Write the li to the console
+                        Y.log(li, "debug");
+                        // Write our anchor element to console
+                        Y.log(anchor, "debug");
+                    } else {
+                        Y.log("Could not find anchor in li", "error");
+                    }
                 });
             });
             </script>
@@ -112,15 +117,20 @@ We can add a check of the _href_ attribute of the _anchor_ and decide if we need
             YUI().use("node", function (Y) {
                 // Your code goes here
                 var allLi = Y.all("nav ol > li");
+                Y.log(allLi, "debug");
                 // Now we should have a list to all the li
                 allLi.each(function (li) {
                     var anchor = li.one("a");
-                    // Write the li to the console
-                    Y.log(li, "debug");
-                    // Write our anchor element to console
-                    Y.log(anchor, "debug");
-                    if (anchor.get("href") === window.location.href) {
-                        Y.log("Need to update the anchor", "debug");
+                    if (anchor) {
+                        // Write the li to the console
+                        Y.log(li, "debug");
+                        // Write our anchor element to console
+                        Y.log(anchor, "debug");
+                        if (anchor.get("href").indexOf("where-am-i.html") > 0) {
+                            Y.log("Need to update the anchor", "debug");
+                        }
+                    } else {
+                        Y.log("Could not find anchor in li", "error");
                     }
                 });
             });
@@ -160,24 +170,29 @@ If we add in chaning the _innerHTML_ of the _li_ as needed we ready to put this 
                     <li><a href="http://example.com/7">Seven</a></li>
                 </ol>
             </nav>
-            <section>Main content goes here</section>
-            <footer>Footer things go here</footer>
+            <section>Our navigation should update to show visually which link is "here" and swap
+            that for a span. Browser console should include log messages.</section>
+            <footer></footer>
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", function (Y) {
                 // Your code goes here
-                var allLi = Y.all("nav ol > li");
+                var allLi = Y.all("nav > ol > li");
                 // Now we should have a list to all the li
+                Y.log(allLi, "debug");
                 allLi.each(function (li) {
                     var anchor = li.one("a");
-                    // Write the li to the console
-                    Y.log(li, "debug");
-                    // Write our anchor element to console
-                    Y.log(anchor, "debug");
-                    if (anchor.get("href") === window.location.href) {
-                        Y.log("Need to update the anchor", "debug");
-                        li.setHTML('<span class="here">' + anchor.get('text') + '</span>');
+                    if (anchor) {
+                        // Write the li to the console
+                        // Write our anchor element to console
+                        Y.log(anchor.get("href"), "debug");
+                        if (anchor.get("href").indexOf("where-am-i.html") > 0) {
+                            Y.log("Need to update the anchor", "debug");
+                            li.setHTML('<span class="here">' + anchor.get('text') + '</span>');
+                        }
+                    } else {
+                        Y.log("Could not find anchor in li", "error");
                     }
                 });
             });

@@ -8,7 +8,9 @@
     + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
 
-Using YUI3 update content in the webpage every five seconds displaying the current time.
+Using YUI3 update content in the webpage every five seconds displaying the current time manipulate
+the CSS classes attach to the element showing the time.
+
 
 
 ### Steps
@@ -53,7 +55,7 @@ both as a review of what you discovered and as a comparison.
         <body>
             <header>Digital Clock</header>
             <section id="clock" class="blue">Main content goes here</section>
-            <footer>Footer things go here</footer>
+            <footer>The section above should display the date and time. It should change every five seconds.</footer>
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
@@ -82,4 +84,6 @@ both as a review of what you discovered and as a comparison.
     </html>
     
 ```
+
+With the exception of adding the _setInterval()_ block this looks allot like the first several examples.
 
