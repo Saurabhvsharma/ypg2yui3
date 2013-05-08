@@ -82,7 +82,6 @@ both as a review of what you discovered and as a comparison.
             </script>
         </body>
     </html>
-    
 ```
 
 With the exception of adding the _setInterval()_ block this looks allot like the first several examples.

@@ -8,7 +8,7 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#x61;&#105;&#x6c;&#116;&#111;&#58;&#114;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#114;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a>
+<p>by R. S. Doiel, <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#114;&#x73;&#100;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x73;&#100;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a>
 Updated: 2013-05-07</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -349,6 +349,17 @@ The key is to get a handle to the object and then use the <em>on()</em> method t
 happens.</p>
 <h3>Exercise</h3>
 <h4>What happened?</h4>
+<ul>
+<li>Programming goal<ul>
+<li>Display a button and monitor for click and flick events</li>
+</ul>
+</li>
+<li>Learning objectives<ul>
+<li>Learn how to include the event module</li>
+<li>Learn how to a listeners on elements</li>
+</ul>
+</li>
+</ul>
 <p>This is another example of showing making more sense than telling but let me quickly outline the
 steps you normally take to get started.</p>
 <ol>
@@ -358,14 +369,14 @@ steps you normally take to get started.</p>
 </ol>
 <p>That is the basic approach. In this example let us create a simple webpage with a button in the middle and
 a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
-key pressed if a your clicks on the button). This is example let&#39;s listen for mouse clicks and touch guestures.</p>
+key pressed if a your clicks on the button). This is example let&#39;s listen for clicks and flick guesture.</p>
 <h4>Steps</h4>
 <p>Copy <em>seed-file.html</em> to <em>what-happened.html</em>. Do the following things</p>
 <ol>
 <li>Add a <em>button</em> element to the <em>section</em> element in our HTML markup</li>
 <li>Update the line where we <em>use()</em> <em>YUI</em> and generate our <em>Y</em> function to to include the <em>event</em> module.</li>
 <li>Select our button using <em>Y.one()</em></li>
-<li>Add listeners via <em>on()</em> method for mouse click, touch and swipe</li>
+<li>Add listeners via <em>on()</em> method for click and flick</li>
 </ol>
 <h4>Notes</h4>
 <ul>
@@ -374,6 +385,142 @@ key pressed if a your clicks on the button). This is example let&#39;s listen fo
 </ul>
 <h2>Modules</h2>
 <h3>Moving beyond <strong>node</strong> and <strong>event</strong></h3>
+<p>The concept of modules is important in <em>YUI</em>. I would go so far as to say it defines
+the nature of <em>YUI</em>.  <em>YUI</em> strength and longevity has been its flexibility in loading
+modules either via <em>script</em> elements, dynamic loading or rollups. What people are using
+<em>RequireJS</em>, <em>AMD</em> for today <em>YUI</em> has had for years. Unlike many other browser module
+loaders <em>YUI</em>&#39;s approach works both in the browser and server side in <em>Node</em>. </p>
+<p>Why modules? It allows for effective code re-use.  It allows you to tailor what code is
+delivered to the browser and when it should be delivered to the browser.  If you have
+confunctionality that is only need at certain times (e.g. when someone is logged in or
+is using an old version of a browser) modules help you do that. Modules also support
+versioning and allow for multiple instancies with different versions.  You can even
+include other libraries (e.g. jQuery) via <em>YUI</em>&#39;s module and loader system.</p>
+<p>What is a module? A block of JavaScript wrapped in <em>YUI().add()</em>. That is all it is. It
+can be more than that (e.g. you can add version info, dependency information) but at its
+simplest form it is what you attach to <em>Y</em> via <em>add()</em>.</p>
+<pre><code class="language-JavaScript">    // Here we define a module called Hello World
+    YUI.add(&quot;hello-world&quot;, function (Y) {
+        Y.namespace(&quot;hello-world&quot;);
+        Y.helloWorld = &quot;Hello World!&quot;; 
+    });
+
+    // Here we use a module called Hello World
+    YUI().use(&quot;hello-world&quot;, function (Y) {
+        // We can display Hello World message in the p element
+        Y.one(&quot;p&quot;).set(&quot;text&quot;, Y.helloWorld);
+    });</code></pre>
+<p>We can also put our module in a separate file (e.g. <em>hello-world.js</em>).</p>
+<p><a href="hello-world.js">hello-world.js</a></p>
+<pre><code class="language-JavaScript">    // Here we define a module called Hello World
+    YUI.add(&quot;hello-world&quot;, function (Y) {
+        Y.namespace(&quot;hello-world&quot;);
+        Y.helloWorld = &quot;Hello World!&quot;; 
+    });</code></pre>
+<p>We can re-use that module by including it in a <em>script</em> element before our <em>use()</em> script element.</p>
+<p><a href="hello-world.html">hello-world.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;&lt;/head&gt;
+        &lt;body&gt;
+            &lt;p&gt;Our message goes here&lt;/p&gt;
+            &lt;!-- Include YUI --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;!-- Include our module --&gt;
+            &lt;script src=&quot;hello-world.js&quot;&gt;&lt;/script&gt;
+            &lt;!-- Now use our module --&gt;
+            &lt;script&gt;
+            // Now we&#39;re ready to &#39;use&#39; our Hello World and the YUI node module.
+            YUI().use(&quot;node&quot;, &quot;hello-world&quot;, function (Y) {
+                // We can display Hello World message in the p element
+                Y.one(&quot;p&quot;).set(&quot;text&quot;, Y.helloWorld);
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>If we don&#39;t want to use an extra <em>script</em> element then we can tell <em>YUI</em> where to find our
+module with a little bit of <a href="http://yuilibrary.com/yui/docs/yui/#loading-modules" title="YUI is extremely flexible in how you load modules.">configuration</a>.</p>
+<p><a href="hello-world-2.html">hello-world-2.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;&lt;title&gt;Hello World&lt;/title&gt;&lt;/head&gt;
+        &lt;body&gt;
+            &lt;p&gt;Our message goes here&lt;/p&gt;
+            &lt;!-- Include YUI --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;!-- Include our module via configuration --&gt;
+            &lt;script&gt;
+            // Tell YUI where to find our module, then &quot;use&quot; it.
+            YUI({
+                modules: {
+                    &quot;hello-world&quot;: {
+                        fullpath: &quot;hello-world.js&quot;
+                    }
+                }
+            }).use(&quot;node&quot;, &quot;hello-world&quot;, function (Y) {
+                // We can display Hello World message in the p element
+                Y.one(&quot;p&quot;).set(&quot;text&quot;, Y.helloWorld);
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>Take away points</p>
+<ul>
+<li>Modules helps in code re-use</li>
+<li>Modules can be references locally via a <em>script</em> element</li>
+<li>Modules can be dynamically (and asynchronously loaded)</li>
+<li>Modules can be local to your web server and that location can be defined through configuration</li>
+<li>Modules can be also submitted to <em>YUI</em>&#39;s gallery and be hosted in Yahoo&#39;s CDN</li>
+</ul>
+<p>Like events, working with modues is easier shown.</p>
+<h4>A quick aside on YUI Gallery</h4>
+<p><em>YUI</em> supports a whole <a href="http://yuilibrary.com/gallery/" title="Gallery modules are linked from yuilibrary, many are available on Yahoo&#39;s CDN, but the source is often on github.com">gallery</a> of user contributed modules. Some specialized and more general
+purpose. The good thing is that only load them if you need them and infact if you want to load
+only a specific version you can do that too. Before something becomes part of <em>YUI3 core</em> it
+is first additioned as a gallery module.  Some features that are in <em>core</em> but will migrate
+out to the <em>gallery</em> if it is determined they are not frequently needed. Being in the gallery
+is not a statement on the quality or importance of the code. Being in the gallery means your
+code could be included on Yahoo&#39;s CDN which simplifies using it for others. </p>
+<h3>Excercise</h3>
+<h4>What Time is it?</h4>
+<ul>
+<li>Programming Goal<ul>
+<li>Create a simple <em>YUI</em> module out of our digital clock</li>
+</ul>
+</li>
+<li>Learning Objectives<ul>
+<li>Increase understanding on how to load modules</li>
+<li>Illustrate the a simple case of creating a module</li>
+<li>Explore loading a module based on configuration</li>
+</ul>
+</li>
+</ul>
+<p>Let us turn our &quot;digital clock&quot; into a module. The idea is to create 
+an Object attached to your <em>Y</em> called <em>DigitalClock</em> you could then add
+that to a <em>DOM</em> element.  An optional callback function to supported
+extending the module with a custom render function (e.g. an analog clock
+using Canvas).</p>
+<h4>Steps</h4>
+<p>Create a new file called <em>digital-clock.js</em>. We will put our module code there.
+Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following things</p>
+<ol>
+<li>In <em>digital-clock-2.html&#39;s _script</em> in-line element add configuration to point our our module.</li>
+<li>In <em>digital-clock-2.html&#39;s _script</em> in-line element update the <em>use()</em> function to include our module.</li>
+<li>Open our empty digital-clock.js file and create our module
+ a. create a namespace
+ b. create a <em>render()</em> method that returns HTML markup as a string of our clock&#39;s current time<pre><code> - this should expect a _Date_ object as a parameter to be rendered.</code></pre>
+ c. create a <em>run()</em> method that uses setInterval to update our clock every second. <pre><code> - first paramter is a CSS selector of an element which will hold our clock
+ - An optional second parameter should allow for a custom render method
+ - If a render method is not provided use our default _render()_ we implemented.</code></pre>
+</li>
+<li>Go back to our <em>digital-clock-2.html</em> file.</li>
+<li>Inside the <em>Y</em> on our in-line <em>script</em> element use <em>Y.DigitalClock.render()</em> to run our clock.</li>
+</ol>
+<h4>Notes</h4>
+<ul>
+<li>We are using a external file for some of our JavaScript this time (i.e. our module)</li>
+<li>One possible solition is <a href="digital-clock-2.html">digital-clock-2.html</a> and <a href="digital-clock.js">digital-clock.js</a> holding our module code.</li>
+</ul>
 <h2>Remote</h2>
 <h3>Bring content into the page with <strong>Y.io</strong></h3>
 <h2>Persistence</h2>

@@ -1,5 +1,5 @@
 
-all: Sandbox/index.html Sandbox/getting-started.html Sandbox/selecting-all.html Sandbox/seed-file.html Sandbox/digital-clock.html Sandbox/where-am-i.html Sandbox/what-happened.html
+all: Sandbox/index.html Sandbox/getting-started.html Sandbox/selecting-all.html Sandbox/seed-file.html Sandbox/digital-clock.html Sandbox/where-am-i.html Sandbox/what-happened.html Sandbox/digital-clock-2.html
 
 Sandbox/index.html: README.md
 	mweave README.md -t templates/page.html -d Sandbox -o index.html
@@ -22,4 +22,8 @@ Sandbox/where-am-i.html: where-am-i.md
 Sandbox/what-happened.html: what-happened.md
 	mweave what-happened.md -d Sandbox -o what-happened.html -t templates/page.html
 
+Sandbox/hello-world.html: README.md
+	mweave README.md -t templates/page.html -d Sandbox -o index.html
 
+Sandbox/digital-clock-2.html: digital-clock-2.md
+	mweave digital-clock-2.md -d Sandbox -o digital-clock-2.html -t templates/page.html
