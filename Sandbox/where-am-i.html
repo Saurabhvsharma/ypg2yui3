@@ -1,4 +1,12 @@
-<h2>Exercise Where Am I?</h2>
+<!DOCTYPE>
+<html lang="en">
+    <head>
+        <title>where-am-i.md</title>
+    </head>
+    <body>
+        <header><h1>where-am-i.md</h1></header>
+        <section>
+        <h2>Exercise Where Am I?</h2>
 <ul>
 <li>Programming goal<ul>
 <li>compare the page name in <em>window.location.href</em> with the <em>href</em> in a <em>ul</em> list of anchors elements</li>
@@ -112,7 +120,7 @@ Our JavaScript block should now look something like--</p>
                 });
             });
             &lt;/script&gt;</code></pre>
-<p>Putting this together--</p>
+<p>If we add in chaning the <em>innerHTML</em> of the <em>li</em> as needed we ready to put this all together--</p>
 <p><a href="solution-where-am-i.html">solution-where-am-i.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
     &lt;html&gt;
@@ -160,9 +168,32 @@ Our JavaScript block should now look something like--</p>
                     Y.log(anchor, &quot;debug&quot;);
                     if (anchor.get(&quot;href&quot;) === window.location.href) {
                         Y.log(&quot;Need to update the anchor&quot;, &quot;debug&quot;);
+                        li.setHTML(&#39;&lt;span class=&quot;here&quot;&gt;&#39; + anchor.get(&#39;text&#39;) + &#39;&lt;/span&gt;&#39;);
                     }
                 });
             });
             &lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;</code></pre>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

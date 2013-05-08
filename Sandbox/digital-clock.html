@@ -1,4 +1,12 @@
-<h2>Exercise Digital Clock</h2>
+<!DOCTYPE>
+<html lang="en">
+    <head>
+        <title>digital-clock.md</title>
+    </head>
+    <body>
+        <header><h1>digital-clock.md</h1></header>
+        <section>
+        <h2>Exercise Digital Clock</h2>
 <ul>
 <li>Programming goal<ul>
 <li>build a simple digital clock in the webpage</li>
@@ -77,3 +85,25 @@ both as a review of what you discovered and as a comparison.</p>
             &lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;</code></pre>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>
