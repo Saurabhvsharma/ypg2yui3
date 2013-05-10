@@ -358,7 +358,7 @@ the CSS classes attach to the element showing the time.
 
 ##### Steps
 
-Copy _seed-file.html_ to _digital-clock.html_. Do the following things
+Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
 
 - Add an _id_ attribute of "clock" to _section_.
 - Add a _style_ element in the _head_ of the document setting font size of section to "2em"
@@ -374,7 +374,7 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 ##### Notes
 
 * In this tutorial I have opted for [in-line][5] code for convienence
-* One approach to the solution is [digital-clock.html](digital-clock.html). Review it and compare with your own code.
+* One approach to the solution is [digital-clock-1.html](digital-clock-1.html). Review it and compare with your own code.
 
 
 #### Where Am I?
@@ -618,12 +618,12 @@ using Canvas).
 
 ##### Steps
 
-Create a new file called _digital-clock.js_. We will put our module code there.
+Create a new file called _digital-clock-2.js_. We will put our module code there.
 Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
 1. In _digital-clock-2.html's _script_ in-line element add configuration to point our our module.
 2. In _digital-clock-2.html's _script_ in-line element update the _use()_ function to include our module.
-3. Open our empty digital-clock.js file and create our module
+3. Open our empty digital-clock-2.js file and create our module
     a. create a namespace
     b. create a _render()_ method that returns HTML markup as a string of our clock's current time
         - this should expect a _Date_ object as a parameter to be rendered.
@@ -637,7 +637,7 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 #### Notes
 
 * We are using a external file for some of our JavaScript this time (i.e. our module)
-* One possible solition is [digital-clock-2.html](digital-clock-2.html) and [digital-clock.js](digital-clock.js) holding our module code.
+* One possible solition is [digital-clock-2.html](digital-clock-2.html) and [digital-clock-2.js](digital-clock-2.js) holding our module code.
 
 
 ## Templates
@@ -706,15 +706,11 @@ for a truely pregressively enhanced experience.
             <footer></footer>
             <!-- Define a template to render our UL list with -->
             <script id="list-template" type="text/x-handlebars-template">
-            {{#if data}}
                 <ul>
                 {{#data}}
                     <li><span class="name">{{name}}</span> <span class="phonenumber">{{phonenumber}}</span></li>
                 {{/data}}
                 </ul>
-            {{#else}}
-                <p>No data to display</p>
-            {{/if}}
             </script>
             <!-- Define some data to put in the template -->
             <script type="text/javascript" rel="javascript">
@@ -729,11 +725,11 @@ for a truely pregressively enhanced experience.
             <script>
             YUI().use("node", "handlebars", function (Y) {
                 // Your code goes here
-                var template_source = Y.one("#list-template").getHTML(),
-                    template = Y.Handlebars.compile(template_source),
+                var source = Y.one("#list-template").getHTML(),
+                    template = Y.Handlebars.compile(source),
                     section = Y.one("section");
                 
-                section.setHTML(template(data));
+                section.setHTML(template({data: data}));
             });
             </script>
         </body>

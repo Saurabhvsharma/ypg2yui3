@@ -25,12 +25,12 @@ that to a <em>DOM</em> element.  An optional callback function to supported
 extending the module with a custom render function (e.g. an analog clock
 using Canvas).</p>
 <h3>Steps</h3>
-<p>Create a new file called <em>digital-clock.js</em>. We will put our module code there.
+<p>Create a new file called <em>digital-clock-2.js</em>. We will put our module code there.
 Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following things</p>
 <ol>
 <li>In <em>digital-clock-2.html&#39;s _script</em> in-line element add configuration to point our our module.</li>
 <li>In <em>digital-clock-2.html&#39;s _script</em> in-line element update the <em>use()</em> function to include our module.</li>
-<li>Open our empty digital-clock.js file and create our module
+<li>Open our empty <em>digital-clock-2.js</em> file and create our module
  a. create a namespace
  b. create a <em>render()</em> method that returns HTML markup as a string with current time<pre><code> - this should expect a _Date_ object as a parameter to be rendered.</code></pre>
  c. create a <em>run()</em> method that uses setInterval to update our clock every second. <pre><code> - first paramter is a CSS selector of an element which will hold our clock
@@ -60,7 +60,7 @@ Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following 
             YUI({
                 modules: {
                     &quot;digital-clock&quot;: {
-                        fullpath: &quot;digital-clock.js&quot;
+                        fullpath: &quot;digital-clock-2.js&quot;
                     }
                 }
             }).use(&quot;node&quot;, &quot;digital-clock&quot;, function (Y) {
@@ -75,7 +75,7 @@ Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following 
 our modules core we then include a version number (e.g. 0.0.1) and
 a configuration options object including the required list of modules
 we need to run.</p>
-<p><a href="digital-clock.js">digital-clock.js</a></p>
+<p><a href="digital-clock-2.js">digital-clock-2.js</a></p>
 <pre><code class="language-JavaScript">    // Define out module using _YUI.add()_
     YUI.add(&quot;digital-clock&quot;, function (Y) {
         // Create our namespace

@@ -16,12 +16,12 @@ using Canvas).
 
 ### Steps
 
-Create a new file called _digital-clock.js_. We will put our module code there.
+Create a new file called _digital-clock-2.js_. We will put our module code there.
 Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
 1. In _digital-clock-2.html's _script_ in-line element add configuration to point our our module.
 2. In _digital-clock-2.html's _script_ in-line element update the _use()_ function to include our module.
-3. Open our empty digital-clock.js file and create our module
+3. Open our empty _digital-clock-2.js_ file and create our module
     a. create a namespace
     b. create a _render()_ method that returns HTML markup as a string with current time
         - this should expect a _Date_ object as a parameter to be rendered.
@@ -56,7 +56,7 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
             YUI({
                 modules: {
                     "digital-clock": {
-                        fullpath: "digital-clock.js"
+                        fullpath: "digital-clock-2.js"
                     }
                 }
             }).use("node", "digital-clock", function (Y) {
@@ -74,7 +74,7 @@ our modules core we then include a version number (e.g. 0.0.1) and
 a configuration options object including the required list of modules
 we need to run.
 
-[digital-clock.js](digital-clock.js)
+[digital-clock-2.js](digital-clock-2.js)
 ```JavaScript
     // Define out module using _YUI.add()_
     YUI.add("digital-clock", function (Y) {

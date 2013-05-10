@@ -8,7 +8,7 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>
+<p>by R. S. Doiel, <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#x72;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x72;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a>
 Updated: 2013-05-09</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -283,7 +283,7 @@ that will help you expand beyond the specifics discussed previously.</p>
 <p>Using YUI3 update content in the webpage every five seconds displaying the current time manipulate
 the CSS classes attach to the element showing the time.</p>
 <h5>Steps</h5>
-<p>Copy <em>seed-file.html</em> to <em>digital-clock.html</em>. Do the following things</p>
+<p>Copy <em>seed-file.html</em> to <em>digital-clock-1.html</em>. Do the following things</p>
 <ul>
 <li>Add an <em>id</em> attribute of &quot;clock&quot; to <em>section</em>.</li>
 <li>Add a <em>style</em> element in the <em>head</em> of the document setting font size of section to &quot;2em&quot;</li>
@@ -300,7 +300,7 @@ the CSS classes attach to the element showing the time.</p>
 <h5>Notes</h5>
 <ul>
 <li>In this tutorial I have opted for <a href="https://en.wikipedia.org/wiki/Inline_expansion" title="In-line is not a &#39;best practice&#39; particularlly in more complicated websites and applications.">in-line</a> code for convienence</li>
-<li>One approach to the solution is <a href="digital-clock.html">digital-clock.html</a>. Review it and compare with your own code.</li>
+<li>One approach to the solution is <a href="digital-clock-1.html">digital-clock-1.html</a>. Review it and compare with your own code.</li>
 </ul>
 <h4>Where Am I?</h4>
 <ul>
@@ -501,12 +501,12 @@ that to a <em>DOM</em> element.  An optional callback function to supported
 extending the module with a custom render function (e.g. an analog clock
 using Canvas).</p>
 <h5>Steps</h5>
-<p>Create a new file called <em>digital-clock.js</em>. We will put our module code there.
+<p>Create a new file called <em>digital-clock-2.js</em>. We will put our module code there.
 Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following things</p>
 <ol>
 <li>In <em>digital-clock-2.html&#39;s _script</em> in-line element add configuration to point our our module.</li>
 <li>In <em>digital-clock-2.html&#39;s _script</em> in-line element update the <em>use()</em> function to include our module.</li>
-<li>Open our empty digital-clock.js file and create our module
+<li>Open our empty digital-clock-2.js file and create our module
  a. create a namespace
  b. create a <em>render()</em> method that returns HTML markup as a string of our clock&#39;s current time<pre><code> - this should expect a _Date_ object as a parameter to be rendered.</code></pre>
  c. create a <em>run()</em> method that uses setInterval to update our clock every second. <pre><code> - first paramter is a CSS selector of an element which will hold our clock
@@ -519,7 +519,7 @@ Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following 
 <h4>Notes</h4>
 <ul>
 <li>We are using a external file for some of our JavaScript this time (i.e. our module)</li>
-<li>One possible solition is <a href="digital-clock-2.html">digital-clock-2.html</a> and <a href="digital-clock.js">digital-clock.js</a> holding our module code.</li>
+<li>One possible solition is <a href="digital-clock-2.html">digital-clock-2.html</a> and <a href="digital-clock-2.js">digital-clock-2.js</a> holding our module code.</li>
 </ul>
 <h2>Templates</h2>
 <h3>Building out a page with <strong>Y.Handlebars</strong></h3>
@@ -564,15 +564,11 @@ for a truely pregressively enhanced experience.</p>
             &lt;footer&gt;&lt;/footer&gt;
             &lt;!-- Define a template to render our UL list with --&gt;
             &lt;script id=&quot;list-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;
-            {{#if data}}
                 &lt;ul&gt;
                 {{#data}}
                     &lt;li&gt;&lt;span class=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span class=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/li&gt;
                 {{/data}}
                 &lt;/ul&gt;
-            {{#else}}
-                &lt;p&gt;No data to display&lt;/p&gt;
-            {{/if}}
             &lt;/script&gt;
             &lt;!-- Define some data to put in the template --&gt;
             &lt;script type=&quot;text/javascript&quot; rel=&quot;javascript&quot;&gt;
@@ -587,11 +583,11 @@ for a truely pregressively enhanced experience.</p>
             &lt;script&gt;
             YUI().use(&quot;node&quot;, &quot;handlebars&quot;, function (Y) {
                 // Your code goes here
-                var template_source = Y.one(&quot;#list-template&quot;).getHTML(),
-                    template = Y.Handlebars.compile(template_source),
+                var source = Y.one(&quot;#list-template&quot;).getHTML(),
+                    template = Y.Handlebars.compile(source),
                     section = Y.one(&quot;section&quot;);
 
-                section.setHTML(template(data));
+                section.setHTML(template({data: data}));
             });
             &lt;/script&gt;
         &lt;/body&gt;
