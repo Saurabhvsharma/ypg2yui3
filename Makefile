@@ -1,5 +1,5 @@
 
-all: Sandbox/index.html Sandbox/getting-started.html Sandbox/selecting-all.html Sandbox/seed-file.html Sandbox/digital-clock-1.html Sandbox/where-am-i.html Sandbox/what-happened.html Sandbox/digital-clock-2.html Sandbox/digital-clock-3.html Sandbox/digital-clock.html Sandbox/rss-as-json.html
+all: Sandbox/index.html Sandbox/getting-started.html Sandbox/selecting-all.html Sandbox/seed-file.html Sandbox/digital-clock-1.html Sandbox/where-am-i.html Sandbox/what-happened.html Sandbox/digital-clock-2.html Sandbox/digital-clock-3.html Sandbox/clock.html Sandbox/rss-as-json.html
 
 Sandbox/index.html: README.md
 	mweave README.md -t templates/page.html -d Sandbox -o index.html
@@ -34,6 +34,9 @@ Sandbox/digital-clock-2.html: digital-clock-2.md
 Sandbox/digital-clock-3.html: digital-clock-2.md
 	mweave digital-clock-3.md -d Sandbox -o digital-clock-3.html -t templates/page.html
 	
-Sandbox/digital-clock.html: digital-clock.md
-	mweave digital-clock.md -d Sandbox -o digital-clock.html -t templates/page.html
+Sandbox/clock.html: clock.md
+	mweave clock.md -d Sandbox -o clock.html -t templates/page.html
+
+clean:
+	/bin/rm -fR Sandbox/*
 
