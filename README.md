@@ -852,9 +852,11 @@ the _Y.io_ module.
 
 ### Should you use YUI for that?
 
-    * If HTML can do it, usc HTML
-    * If CSS can do it, use CSS
+While _YUI3_ is a very good library it is easy to get carried away. Here's some heuristic
+in deciding when to use _YUI3_ (or really any JavaScript at all)
 
-## Next
+- If it is structure then use HTML
+- If it is layout or visual look and feel use CSS
+- If it is behavior use JavaScript if you can achieve it in HTML and CSS
+- If you can do it in simply in JavaScript then do so, if it is more complicated consider _YUI3_
 
-### Finding helpful YUI3 Modules, documentation and examples
