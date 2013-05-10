@@ -450,7 +450,7 @@ That is the basic approach. In this example let us create a simple webpage with 
 a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
 key pressed if a your clicks on the button). This is example let's listen for clicks and flick guesture.
 
-#### Steps
+##### Steps
 
 Copy _seed-file.html_ to _what-happened.html_. Do the following things
 
@@ -616,7 +616,7 @@ that to a _DOM_ element.  An optional callback function to supported
 extending the module with a custom render function (e.g. an analog clock
 using Canvas).
 
-#### Steps
+##### Steps
 
 Create a new file called _digital-clock.js_. We will put our module code there.
 Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
@@ -754,9 +754,9 @@ Of course you could also define your templates outside the document and bring th
 - Learning Objective
     + Become with familiar with the basics of _Handlebars_ as implemented in _YUI_
 
-#### Steps
+##### Steps
 
-#### Notes
+##### Notes
 
 * One implementation is [digital-clock-3.html](digital-clock-3.html)
 
