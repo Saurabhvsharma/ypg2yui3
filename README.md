@@ -4,7 +4,7 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-05-07
+Updated: 2013-05-09
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
@@ -38,9 +38,9 @@ there is an active IRC community on irc.freeenode.net under #yui.
 - [DOM](#dom) -- interacting with innerHTML and attributes
 - [Action](#action) -- Mouse clicks, keyboard commands and touch
 - [Modules](#modules) -- Moving beyond **node**
-- [Remote](#remote) -- Bring content into the page with **Y.io**
-- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
+- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
+- [Remote](#remote) -- Bring content into the page with **Y.io**
 - [API](#api) -- Using http GET, POST, PUT and DELETE
 - [SPA](#spa) -- Building a simple Single Page Application
 - [Reminders](#reminders) -- Should you use YUI for that?
@@ -639,6 +639,133 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 * We are using a external file for some of our JavaScript this time (i.e. our module)
 * One possible solition is [digital-clock-2.html](digital-clock-2.html) and [digital-clock.js](digital-clock.js) holding our module code.
 
+
+## Templates
+
+### Building out a page with **Y.Handlebars**
+
+Templates are a convient solution to generating HTML from JavaScript functions. Templates on JavaScript
+can often be rendered server side as well as in the browser. This is true of _Handlbars_ templates.  _Handlebars_
+is an extention to a popular template notation called _Mustache_.  The basic idea is your surround the 
+parts of the markup you want to replace with double curly brackets surrounding a variable name.  When
+you provide the template generate function with an object that contains attributes that matches those
+curly bracket variable names then the template engine replaces the content.  Here's a quick
+example of a template--
+
+
+```HTML
+    <div><span id="name">{{name}}</span> <span id="phonenumber">{{phonenumber}}</span></div>
+```
+
+Here's an example of a JSON object that could be used to populate the template--
+
+```JavaScript
+    {"name": "John Doe", "phonenumber": "+1-222-333-4444"}
+```
+
+If you applied that object to that template you'd get something like
+
+```HTML
+    <div><span id="name">John Doe</span> <span id="phonenumber">+1-222-333-4444</span></div>    
+```
+
+In the past it was common to see code that look like this to generate the same HTML fragment from
+JavaScript--
+
+```JavaScript
+    record = {"name": "John Doe", "phonenumber": "+1-222-333-4444"},
+    html = '<div><span id="name">' + record.name + '</span> <span id="phonenumber">' +
+        record.phonenumber + '</span></div>;    
+```
+
+It is not too bad but when you get lots of fields (e.g. a person's profile, an event listing) you
+get lots of concatenation operations. That isn't terribly effecient for JavaScript and if you miss a
+closing quotation can be tough to debug.
+
+#### Embedding your handlebars template
+
+The easiest place to embed your template is in the HTML file itself.  A practice of using _script_ elements
+has been evolving as a way of designating the template but getting the templates with the page. Building
+on our previous example here is a simple webpage that displays our that displays a list of names and
+phone numbers embedded in a _ul_ element.  We load _YUI_ normally but include _handlebars_ as a module.
+We fetch the templates using _Y.one()_ by id. We compile them and then apply them to our target
+element.  While our example as one template in principle you can do this as many times as you need
+for the page's content.  With slight modification in approach you could pre-render this server side
+for a truely pregressively enhanced experience.
+
+[handlebars-demo-1.html](handlebars-demo-1.html)
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Handlebars Demo 1</title>
+        </head>
+        <body>
+            <header>Handlebars Demo 1</header>
+            <section>Main content goes here</section>
+            <footer></footer>
+            <!-- Define a template to render our UL list with -->
+            <script id="list-template" type="text/x-handlebars-template">
+            {{#if data}}
+                <ul>
+                {{#data}}
+                    <li><span class="name">{{name}}</span> <span class="phonenumber">{{phonenumber}}</span></li>
+                {{/data}}
+                </ul>
+            {{#else}}
+                <p>No data to display</p>
+            {{/if}}
+            </script>
+            <!-- Define some data to put in the template -->
+            <script type="text/javascript" rel="javascript">
+                var data = [
+                    {name: "Jane Doe", phonenumber: "+1-222-333-5555"},
+                    {name: "John Doe", phonenumber: "+1-222-333-4444"},
+                    {name: "Tina Doe", phonenumber: "+1-222-333-6666"}
+                ];
+            </script>
+            <!-- get YUI3 on the page, and a script block for your code -->
+            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script>
+            YUI().use("node", "handlebars", function (Y) {
+                // Your code goes here
+                var template_source = Y.one("#list-template").getHTML(),
+                    template = Y.Handlebars.compile(template_source),
+                    section = Y.one("section");
+                
+                section.setHTML(template(data));
+            });
+            </script>
+        </body>
+    </html>
+```
+
+Of course you could also define your templates outside the document and bring them in via an [xdr][] call.
+
+
+[xdr]: http://docs.webplatform.org/wiki/apis/xhr "xdr - Cross Domain Request, also referred to as Ajax."
+
+### Exercise
+
+#### Digital Clock with Template
+
+- Programming Goal
+    + Re-factor our Digital Clock _YUI_ module to use templates rather than a custom render method.
+- Learning Objective
+    + Become with familiar with the basics of _Handlebars_ as implemented in _YUI_
+
+#### Steps
+
+#### Notes
+
+* One implementation is [digital-clock-3.html](digital-clock-3.html)
+
+
+## Persistence
+
+### Saving things for latter with Y.StorageLite
+
+
 ## Remote
 
     Some times you want data from someplace else, say Dave Winer's blog Scripting News...
@@ -711,16 +838,6 @@ JSON content and Dave Winer's Scripting News blog is gracious enough to provide 
 RSS feed). The URL for the is http://scripting.com/rss.json.  We'll use that as a reference source as we explore
 the _Y.io_ module.
 
-
-
-
-## Persistence
-
-### Saving things for latter with Y.StorageLite
-
-## Templates
-
-### Building out a page with **Y.Handlebars**
 
 ## API
 
