@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Handlebars Demo 1</title>
+    </head>
+    <body>
+        <header>Handlebars Demo 1</header>
+        <section>Main content goes here</section>
+        <footer></footer>
+        <!-- Define a template to render our UL list with -->
+        <script id="list-template" type="text/x-handlebars-template">
+        {{#if data}}
+            <ul>
+            {{#data}}
+                <li><span class="name">{{name}}</span> <span class="phonenumber">{{phonenumber}}</span></li>
+            {{/data}}
+            </ul>
+        {{#else}}
+            <p>No data to display</p>
+        {{/if}}
+        </script>
+        <!-- Define some data to put in the template -->
+        <script type="text/javascript" rel="javascript">
+            var data = [
+                {name: "Jane Doe", phonenumber: "+1-222-333-5555"},
+                {name: "John Doe", phonenumber: "+1-222-333-4444"},
+                {name: "Tina Doe", phonenumber: "+1-222-333-6666"}
+            ];
+        </script>
+        <!-- get YUI3 on the page, and a script block for your code -->
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", "handlebars", function (Y) {
+            // Your code goes here
+            var template_source = Y.one("#list-template").getHTML(),
+                template = Y.Handlebars.compile(template_source),
+                section = Y.one("section");
+            
+            section.setHTML(template(data));
+        });
+        </script>
+    </body>
+</html>

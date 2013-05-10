@@ -8,8 +8,8 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#108;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x72;&#x73;&#x64;&#x6f;&#x69;&#x65;&#108;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>
-Updated: 2013-05-07</p>
+<p>by R. S. Doiel, <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x72;&#x73;&#x64;&#x6f;&#105;&#x65;&#108;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>
+Updated: 2013-05-09</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
 <li>You have a basic knowledge of JavaScript, HTML, CSS</li>
@@ -35,9 +35,9 @@ there is an active IRC community on irc.freeenode.net under #yui.</p>
 <li><a href="#dom">DOM</a> -- interacting with innerHTML and attributes</li>
 <li><a href="#action">Action</a> -- Mouse clicks, keyboard commands and touch</li>
 <li><a href="#modules">Modules</a> -- Moving beyond <strong>node</strong></li>
-<li><a href="#remote">Remote</a> -- Bring content into the page with <strong>Y.io</strong></li>
-<li><a href="#persistence">Persistence</a> -- Saving things for latter with <strong>Y.StorageLite</strong></li>
 <li><a href="#templates">Templates</a> -- Building out a page with <strong>Y.Handlebars</strong></li>
+<li><a href="#persistence">Persistence</a> -- Saving things for latter with <strong>Y.StorageLite</strong></li>
+<li><a href="#remote">Remote</a> -- Bring content into the page with <strong>Y.io</strong></li>
 <li><a href="#api">API</a> -- Using http GET, POST, PUT and DELETE</li>
 <li><a href="#spa">SPA</a> -- Building a simple Single Page Application</li>
 <li><a href="#reminders">Reminders</a> -- Should you use YUI for that?</li>
@@ -370,7 +370,7 @@ steps you normally take to get started.</p>
 <p>That is the basic approach. In this example let us create a simple webpage with a button in the middle and
 a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
 key pressed if a your clicks on the button). This is example let&#39;s listen for clicks and flick guesture.</p>
-<h4>Steps</h4>
+<h5>Steps</h5>
 <p>Copy <em>seed-file.html</em> to <em>what-happened.html</em>. Do the following things</p>
 <ol>
 <li>Add a <em>button</em> element to the <em>section</em> element in our HTML markup</li>
@@ -500,7 +500,7 @@ an Object attached to your <em>Y</em> called <em>DigitalClock</em> you could the
 that to a <em>DOM</em> element.  An optional callback function to supported
 extending the module with a custom render function (e.g. an analog clock
 using Canvas).</p>
-<h4>Steps</h4>
+<h5>Steps</h5>
 <p>Create a new file called <em>digital-clock.js</em>. We will put our module code there.
 Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following things</p>
 <ol>
@@ -521,6 +521,101 @@ Copy <em>seed-file.html</em> to <em>digital-clock-2.html</em>. Do the following 
 <li>We are using a external file for some of our JavaScript this time (i.e. our module)</li>
 <li>One possible solition is <a href="digital-clock-2.html">digital-clock-2.html</a> and <a href="digital-clock.js">digital-clock.js</a> holding our module code.</li>
 </ul>
+<h2>Templates</h2>
+<h3>Building out a page with <strong>Y.Handlebars</strong></h3>
+<p>Templates are a convient solution to generating HTML from JavaScript functions. Templates on JavaScript
+can often be rendered server side as well as in the browser. This is true of <em>Handlbars</em> templates.  <em>Handlebars</em>
+is an extention to a popular template notation called <em>Mustache</em>.  The basic idea is your surround the 
+parts of the markup you want to replace with double curly brackets surrounding a variable name.  When
+you provide the template generate function with an object that contains attributes that matches those
+curly bracket variable names then the template engine replaces the content.  Here&#39;s a quick
+example of a template--</p>
+<pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/div&gt;</code></pre>
+<p>Here&#39;s an example of a JSON object that could be used to populate the template--</p>
+<pre><code class="language-JavaScript">    {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4444&quot;}</code></pre>
+<p>If you applied that object to that template you&#39;d get something like</p>
+<pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;John Doe&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;+1-222-333-4444&lt;/span&gt;&lt;/div&gt;</code></pre>
+<p>In the past it was common to see code that look like this to generate the same HTML fragment from
+JavaScript--</p>
+<pre><code class="language-JavaScript">    record = {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4444&quot;},
+    html = &#39;&lt;div&gt;&lt;span id=&quot;name&quot;&gt;&#39; + record.name + &#39;&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;&#39; +
+        record.phonenumber + &#39;&lt;/span&gt;&lt;/div&gt;;</code></pre>
+<p>It is not too bad but when you get lots of fields (e.g. a person&#39;s profile, an event listing) you
+get lots of concatenation operations. That isn&#39;t terribly effecient for JavaScript and if you miss a
+closing quotation can be tough to debug.</p>
+<h4>Embedding your handlebars template</h4>
+<p>The easiest place to embed your template is in the HTML file itself.  A practice of using <em>script</em> elements
+has been evolving as a way of designating the template but getting the templates with the page. Building
+on our previous example here is a simple webpage that displays our that displays a list of names and
+phone numbers embedded in a <em>ul</em> element.  We load <em>YUI</em> normally but include <em>handlebars</em> as a module.
+We fetch the templates using <em>Y.one()</em> by id. We compile them and then apply them to our target
+element.  While our example as one template in principle you can do this as many times as you need
+for the page&#39;s content.  With slight modification in approach you could pre-render this server side
+for a truely pregressively enhanced experience.</p>
+<p><a href="handlebars-demo-1.html">handlebars-demo-1.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Handlebars Demo 1&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Handlebars Demo 1&lt;/header&gt;
+            &lt;section&gt;Main content goes here&lt;/section&gt;
+            &lt;footer&gt;&lt;/footer&gt;
+            &lt;!-- Define a template to render our UL list with --&gt;
+            &lt;script id=&quot;list-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;
+            {{#if data}}
+                &lt;ul&gt;
+                {{#data}}
+                    &lt;li&gt;&lt;span class=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span class=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/li&gt;
+                {{/data}}
+                &lt;/ul&gt;
+            {{#else}}
+                &lt;p&gt;No data to display&lt;/p&gt;
+            {{/if}}
+            &lt;/script&gt;
+            &lt;!-- Define some data to put in the template --&gt;
+            &lt;script type=&quot;text/javascript&quot; rel=&quot;javascript&quot;&gt;
+                var data = [
+                    {name: &quot;Jane Doe&quot;, phonenumber: &quot;+1-222-333-5555&quot;},
+                    {name: &quot;John Doe&quot;, phonenumber: &quot;+1-222-333-4444&quot;},
+                    {name: &quot;Tina Doe&quot;, phonenumber: &quot;+1-222-333-6666&quot;}
+                ];
+            &lt;/script&gt;
+            &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            YUI().use(&quot;node&quot;, &quot;handlebars&quot;, function (Y) {
+                // Your code goes here
+                var template_source = Y.one(&quot;#list-template&quot;).getHTML(),
+                    template = Y.Handlebars.compile(template_source),
+                    section = Y.one(&quot;section&quot;);
+
+                section.setHTML(template(data));
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>Of course you could also define your templates outside the document and bring them in via an <a href="http://docs.webplatform.org/wiki/apis/xhr" title="xdr - Cross Domain Request, also referred to as Ajax.">xdr</a> call.</p>
+<h3>Exercise</h3>
+<h4>Digital Clock with Template</h4>
+<ul>
+<li>Programming Goal<ul>
+<li>Re-factor our Digital Clock <em>YUI</em> module to use templates rather than a custom render method.</li>
+</ul>
+</li>
+<li>Learning Objective<ul>
+<li>Become with familiar with the basics of <em>Handlebars</em> as implemented in <em>YUI</em></li>
+</ul>
+</li>
+</ul>
+<h5>Steps</h5>
+<h5>Notes</h5>
+<ul>
+<li>One implementation is <a href="digital-clock-3.html">digital-clock-3.html</a></li>
+</ul>
+<h2>Persistence</h2>
+<h3>Saving things for latter with Y.StorageLite</h3>
 <h2>Remote</h2>
 <pre><code>Some times you want data from someplace else, say Dave Winer&#39;s blog Scripting News...</code></pre>
 <h3>Bring content into the page with <strong>Y.io</strong></h3>
@@ -529,11 +624,7 @@ in the browser and <em>YUI</em> has a module for that :-).  The module is called
 <em>Y.io</em>. It abstracts content input and output. That means it can be used to load other content (e.g. RSS, XML, HTML, JSON)
 as well as used to push data to a server (e.g. a forms&#39; POST, PUT, GET or DELETE).  The module takes a URL as a source
 then supplies an event where you can hook into a number of conditions (e.g. success, failure, complete).</p>
-<p>To demonstrate this I&#39;m going to read the RSS feed from Dave Winer&#39;s Scripting News and display the results as headlines
-and links in the <em>section</em> element of our HTML page.  Since <em>Y.io</em> is on Yahoo&#39;s CDN where we get <em>YUI</em> itself we don&#39;t
-need any special configuration like we did with our <em>DigitalClock</em> module.  Here&#39;s the basic idea
-for pulling in the RSS data and displaying it.</p>
-<p><a href="scripting-news-rss.html">scripting-news-rss.html</a></p>
+<p><a href="rss-as-json.html">rss-as-json.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
@@ -589,20 +680,20 @@ API access that might be processed in a middle layer or directly in the client b
 JSON content and Dave Winer&#39;s Scripting News blog is gracious enough to provide a version in excellent JSON version of his
 RSS feed). The URL for the is <a href="http://scripting.com/rss.json">http://scripting.com/rss.json</a>.  We&#39;ll use that as a reference source as we explore
 the <em>Y.io</em> module.</p>
-<h2>Persistence</h2>
-<h3>Saving things for latter with Y.StorageLite</h3>
-<h2>Templates</h2>
-<h3>Building out a page with <strong>Y.Handlebars</strong></h3>
 <h2>API</h2>
 <h3>Using http GET, POST, PUT and DELETE</h3>
 <h2>SPA</h2>
 <h3>Building a simple Single Page Application</h3>
 <h2>Reminders</h2>
 <h3>Should you use YUI for that?</h3>
-<pre><code>* If HTML can do it, usc HTML
-* If CSS can do it, use CSS</code></pre>
-<h2>Next</h2>
-<h3>Finding helpful YUI3 Modules, documentation and examples</h3>
+<p>While <em>YUI3</em> is a very good library it is easy to get carried away. Here&#39;s some heuristic
+in deciding when to use <em>YUI3</em> (or really any JavaScript at all)</p>
+<ul>
+<li>If it is structure then use HTML</li>
+<li>If it is layout or visual look and feel use CSS</li>
+<li>If it is behavior use JavaScript if you can achieve it in HTML and CSS</li>
+<li>If you can do it in simply in JavaScript then do so, if it is more complicated consider <em>YUI3</em></li>
+</ul>
 
         </section>
         
