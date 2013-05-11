@@ -31,8 +31,11 @@ Sandbox/digital-clock-1.html: digital-clock-1.md
 Sandbox/digital-clock-2.html: digital-clock-2.md
 	mweave digital-clock-2.md -d Sandbox -o digital-clock-2.html -t templates/page.html
 	
-Sandbox/digital-clock-3.html: digital-clock-2.md
+Sandbox/digital-clock-3.html: digital-clock-3.md
 	mweave digital-clock-3.md -d Sandbox -o digital-clock-3.html -t templates/page.html
+	
+Sandbox/digital-clock-4.html: digital-clock-4.md
+	mweave digital-clock-4.md -d Sandbox -o digital-clock-4.html -t templates/page.html
 	
 Sandbox/clock.html: clock.md
 	mweave clock.md -d Sandbox -o clock.html -t templates/page.html

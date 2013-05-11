@@ -8,7 +8,7 @@
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#x72;&#115;&#100;&#x6f;&#105;&#x65;&#x6c;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#115;&#100;&#x6f;&#105;&#x65;&#x6c;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a>
+<p>by R. S. Doiel, <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x72;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#x72;&#x73;&#x64;&#111;&#x69;&#x65;&#x6c;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a>
 Updated: 2013-05-11</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
@@ -703,13 +703,13 @@ and <a href="http://yuilibrary.com/yui/docs/io/">IO Utility</a>. Additional you 
 extracted from the source code at <a href="http://yuilibrary.com/yui/docs/api/classes/IO.html">YUI Library, API Docs, IO</a>
 for specific implementation details.</p>
 <h5>An aside about IO</h5>
-<p><em>IO</em>&#39;s <em>Y.io</em> is a very configurable and flexible module.  I have shown only one way to use to keep things simple.
+<p><em>IO</em>&#39;s <em>Y.io</em> is a very configurable and flexible object.  I have shown only an idiomatic use to keep things simple.
 If all you were doing in your site is fetch <em>JSON</em> objects there is a <em>getJSON()</em> function for which really simplifies
 things. I have chosen to show you this idomatic implementation so we can interative build on it adding
 API interaction and culminating in our <a href="http://en.wikipedia.org/wiki/Single_page_application" title="Single-Page Application">SPA</a>.</p>
-<p><em>IO</em>&#39;s <em>io-base</em> is one of my favorite modules. It works both in the browser and in <em>Node</em>.  That gives us a common way 
-to setup remote API access that might be processed in a middle layer running on the server or directly in the client 
-browser. The setup I&#39;ve shown here is based on <em>io-base</em>. </p>
+<p><em>IO</em>&#39;s (i.e. <em>io-base</em> in our use module list) is one of my favorite modules. It works both in the browser and in <em>Node</em>.
+That gives us a common way to setup remote API access that might be processed in a middle layer running on the server
+or directly in the client browser. The setup I&#39;ve shown here is based on <em>io-base</em>. </p>
 <h3>Exercise</h3>
 <h4>Digital Clock with alarms</h4>
 <h5>Steps</h5>

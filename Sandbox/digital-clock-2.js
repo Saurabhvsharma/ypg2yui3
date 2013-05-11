@@ -33,6 +33,6 @@ YUI.add("digital-clock", function (Y) {
     Y.DigitalClock = DigitalClock;
 },
 // Semantic Version number
-"0.0.1",
+"0.0.2",
 // Configuration with list of modules we 'require' 
 {requires: ["node"]});
