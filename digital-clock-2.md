@@ -31,7 +31,8 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
         - an optional third parameter should allow for a custom render method overriding our default render method
     d. Include a requirement for our module of _node_ so we can update the _DOM_ elements targetted.
 4. Go back to our _digital-clock-2.html_ file.
-5. Inside the _Y_ on our in-line _script_ element use _Y.DigitalClock.render()_ to run our clock.
+5. Inside the _Y_ on our in-line _script_ element use _Y.DigitalClock()_ to create our _clock_ object and _run() to run it.
+
 
 ### Solution
 

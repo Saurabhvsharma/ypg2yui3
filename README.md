@@ -4,7 +4,7 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-05-09
+Updated: 2013-05-10
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
@@ -853,6 +853,8 @@ in deciding when to use _YUI3_ (or really any JavaScript at all)
 
 - If it is structure then use HTML
 - If it is layout or visual look and feel use CSS
-- If it is behavior use JavaScript if you can achieve it in HTML and CSS
-- If you can do it in simply in JavaScript then do so, if it is more complicated consider _YUI3_
+- If it is behavior use JavaScript if you can not achieve it in HTML and CSS
+- If you can do it in simply in plain JavaScript then do so. 
+- If it is more complicated or can benefit from modularization consider _YUI3_
+
 
