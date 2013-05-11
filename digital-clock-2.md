@@ -71,7 +71,8 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
 ```
 
 That is the easy part. Now let us create our module. After we define
-our modules core we then include a version number (e.g. 0.0.1) and
+our modules core we then include a version number (e.g. 0.0.2 since this is our second
+digital clock prototype) and
 a configuration options object including the required list of modules
 we need to run.
 
@@ -112,7 +113,7 @@ we need to run.
         Y.DigitalClock = DigitalClock;
     },
     // Semantic Version number
-    "0.0.1",
+    "0.0.2",
     // Configuration with list of modules we 'require' 
     {requires: ["node"]});
 ```
