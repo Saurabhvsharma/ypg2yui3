@@ -223,7 +223,7 @@ DOM selector results.
 YUI3 provides two function that take a selector.  The first is _Y.one()_. It will give you the 
 first element in the [DOM][4] matching that selector. In our example above that was _title_ and _h1_.  If
 you had more than one _h1_ it would only give the first _h1_ it found. Usually this is what you want.
-Sometimes you want all the elements that match`a selector (e.g. all the anchor tags in a page). 
+Sometimes you want all the elements that match a selector (e.g. all the anchor tags in a page). 
 To get that you use _Y.all()_.  That returns a list of elements. It is easiest to explain
 by showing.  Let us create a short element with a list of links to YUI3 resources. Next
 we'll update part of the page to indicate the links we found.

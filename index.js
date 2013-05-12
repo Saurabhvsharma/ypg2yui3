@@ -26,6 +26,49 @@ YUI({
                     content: "",
                     javascript: ""
                 }
+            },
+            "/digital-clock-1.html": {
+                filename: "digital-clock-1.md",
+                data: {
+                    content: ""
+                }
+            },
+            "/digital-clock-2.html" : {
+                filename: "digital-clock-2.md",
+                data: {
+                    content: ""
+                }
+            },  
+            "/digital-clock-3.html": {
+                filename: "digital-clock-3.md",
+                data: {
+                    content: ""
+                }
+            },
+            "/digital-clock-4.html": {
+                filename: "digital-clock-4.md",
+                data: {
+                    content: ""
+                }
+            },
+            "/digital-clock.html": {
+                filename: "digital-clock.md",
+                data: {
+                    content: ""
+                }
+            },
+            "/what-happened.html": {
+                filename: "what-happened.md",
+                data: {
+                    content: ""
+                }
+
+            },
+            "/where-am-i.html": {
+                filename: "where-am-i.md",
+                data: {
+                    content: ""
+                }
             }
         },
         source = fs.readFileSync("templates/page.html").toString(),
@@ -47,7 +90,9 @@ YUI({
               return code;
           }
     });
-    book["/"].data.content = marked(fs.readFileSync("README.md").toString());
+    Object.keys(book).forEach(function (page) {
+        book[page].data.content = marked(fs.readFileSync("README.md").toString());
+    });
     http.createServer(function (request, response) {
         var parts = url.parse(request.url, true),
             page;
