@@ -4,7 +4,7 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-05-11
+Updated: 2013-05-13
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
