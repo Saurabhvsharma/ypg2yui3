@@ -899,13 +899,16 @@ or directly in the client browser. The setup I've shown here is based on _io-bas
 * One implementation of our Digital Clock with Alarms pull is [digital-clock-4.html](digital-clock-4.html)
 
 
-## API
-
-### Using http GET, POST, PUT and DELETE
-
 ## SPA
 
 ### Building a simple Single Page Application
+
+Now that we have covered the basics its time to turn our digital clock prototypes into a Single-page Application. Mostly
+it is a matter of polish but also we need to have things like *manifest* files, and *package* files for both [Chrome](http://developer.chrome.com/extensions/apps.html) and [Firefox](https://developer.mozilla.org/en-US/docs/Web/Apps/Packaged_apps).
+
+Before we work on our digital clock though lets explore how this site works both to generate an ePub as well as packages for 
+_Chrome_ and _Firefix_.
+
 
 
 ## Reminders
@@ -920,5 +923,4 @@ in deciding when to use _YUI3_ (or really any JavaScript at all)
 - If it is behavior use JavaScript if you can not achieve it in HTML and CSS
 - If you can do it in simply in plain JavaScript then do so. 
 - If it is more complicated or can benefit from modularization consider _YUI3_
-
 
