@@ -31,7 +31,8 @@ there is an active IRC community on irc.freeenode.net under #yui.
 [YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
 
 
-# Contents #
+# Contents
+
 - [Preface](#preface) -- What you'll need before you begin
 - [Starting](#starting) -- The minimum to pull YUI3 into the webpage
 - [Selectors](#selectors) -- Getting Access to parts of a webpage
@@ -41,9 +42,8 @@ there is an active IRC community on irc.freeenode.net under #yui.
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
 - [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
-- [SPA](#spa) -- Building a simple Single Page Application
+- [Apps](#apps) -- Building a simple Single Page Application
 - [Reminders](#reminders) -- Should you use YUI for that?
-- [Next](#next) -- Finding helpful YUI3 Modules, documentation and examples
 
 
 ## Preface
@@ -898,15 +898,15 @@ or directly in the client browser. The setup I've shown here is based on _io-bas
 * One implementation of our Digital Clock with Alarms pull is [digital-clock-4.html](digital-clock-4.html)
 
 
-## SPA
+## Apps
 
-### Building a simple Single Page Application
+### Building a simple Web Application
 
 Now that we have covered the basics its time to turn our digital clock prototypes into a Single-page Application. Mostly
 it is a matter of polish but also we need to have things like *manifest* files, and *package* files for both [Chrome](http://developer.chrome.com/extensions/apps.html) and [Firefox](https://developer.mozilla.org/en-US/docs/Web/Apps/Packaged_apps).
 
 Before we work on our digital clock though lets explore how this site works both to generate an ePub as well as packages for 
-_Chrome_ and _Firefix_.
+_Chrome_ and _Firefox_.
 
 
 
