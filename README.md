@@ -41,7 +41,6 @@ there is an active IRC community on irc.freeenode.net under #yui.
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
 - [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
-- [API](#api) -- Using http GET, POST, PUT and DELETE
 - [SPA](#spa) -- Building a simple Single Page Application
 - [Reminders](#reminders) -- Should you use YUI for that?
 - [Next](#next) -- Finding helpful YUI3 Modules, documentation and examples
