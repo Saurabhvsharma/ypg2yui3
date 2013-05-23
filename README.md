@@ -20,14 +20,13 @@ electronic text (e.g. via the web or ePub). The primary corpous is in
 
 _ypg2yui3_ was written using in Markdown and uses [Markdown-Weave](http://github.com/rsdoiel/mweave)
 to generate the code examples and HTML exercises pages from the primary text. This is
-done through a _build.js_ NodeJS script. To generate browser friendly version run---
+done through a _build.js_ NodeJS' package manager _npm_. To generate browser friendly version run---
 
 ```Shell
     npm run-script build.js
 ```
 
-This will render content to an _htdocs_ folder which you can use with your web server. It will
-also generate an ePub document in eBook folder.
+This will render content to an _htdocs_ folder which you can use with your web server.
 
 
 
