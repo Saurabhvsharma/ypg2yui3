@@ -16,17 +16,23 @@ Young Person's Guide to YUI3 is a longform article designed to be read as an
 electronic text (e.g. via the web or ePub). The primary corpous is in 
 [Young-Persons-Guide-to-YUI3.md](Young-Persons-Guide-to-YUI3.md).
 
-## Markdown to website or ePub
+## Markdown to website
 
 _ypg2yui3_ was written using in Markdown and uses [Markdown-Weave](http://github.com/rsdoiel/mweave)
 to generate the code examples and HTML exercises pages from the primary text. This is
 done through a _build.js_ NodeJS' package manager _npm_. To generate browser friendly version run---
 
 ```Shell
+    npm install
     npm run-script build.js
 ```
 
 This will render content to an _htdocs_ folder which you can use with your web server.
 
+To run as a localhost web server---
 
+```Shell
+    npm start
+```
 
+[YUI3]: http://yuilibrary.com "YUI3 is a JavaScript framework"
