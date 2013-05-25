@@ -114,7 +114,7 @@ Finally I make the assumption you have an active connection to the internet.
 ### The minimum to pull _YUI3_ into the webpage
 
 _YUI_ needs to be available to the webpage to be useful. Fortunately this is [easy][]. 
-You use a _script_ tag to include it from Yahoo's CDN. Let us build a simple webpage 
+You use a _script_ element to include it from Yahoo's CDN. Let us build a simple webpage 
 using _YUI3_ to change the pages' _title_ to "Hello World" and the first _h1_ to "Yippee! It worked.".
 
 [easy]: http://yuilibrary.com/yui/quick-start/ "YUI Quick Start at yuilibrary.com"
@@ -140,8 +140,8 @@ Now include _YUI3_ from Yahoo's CDN with the following script element.
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
 ```
 
-Now we want to change the contents of the _title_ and _h1_ tags to show that this worked.
-We add another _script_ block for that.
+Now we want to change the contents of the _title_ and _h1_ element to show that this worked.
+We add another _script_ element for that.
 
 [gitting-started.html](getting-started.html)
 ```HTML
@@ -163,7 +163,7 @@ Finally close up the rest of your document normally.
 
 Save this as the file _getting-started.html_. Point your web browser at the page
 and take a look (e.g. http://localhost/getting-started.html assuming
-you're running your local web server on port 80 and this document is in the 
+you are running your local web server on port 80 and this document is in the 
 root web folder.)
 
 You should now see your first _YUI3_ enabled web page.
@@ -203,7 +203,7 @@ an element via an _id_ or _class_ attribute. You may also use CSS psuedo classes
 relationships to target a specific element in the page (e.g. the _li_ contained in a _ul_ list). 
 There is a cost to caculating where in the _DOM_ you're going to work on. Like in _jQuery_ the
 best practice in _YUI3_ is to save the reference if you need it more than once. Here's an example 
-_script_ block for improving our first _getting-started.html_ example where we're saving the 
+_script_ element for improving our first _getting-started.html_ example where we're saving the 
 DOM selector results.
 
 
@@ -222,7 +222,7 @@ DOM selector results.
 _YUI3_ provides two function that take a selector.  The first is _Y.one()_. It will give you the 
 first element in the [DOM][4] matching that selector. In our example above that was _title_ and _h1_.  If
 you had more than one _h1_ it would only give the first _h1_ it found. Usually this is what you want.
-Sometimes you want all the elements that match a selector (e.g. all the anchor tags in a page). 
+Sometimes you want all the elements that match a selector (e.g. all the anchor elements in a page). 
 To get that you use _Y.all()_.  That returns a list of elements. It is easiest to explain
 by showing.  Let us create a short element with a list of links to YUI3 resources. Next
 we'll update part of the page to indicate the links we found.
@@ -286,7 +286,7 @@ _DOM_ but you only need a few to get useful work done. This is done in two steps
 
 ```JavaScript
     YUI().use("node", function (Y) {
-        // Step 1, get a handle to the node you want to work with in this case an anchor tag
+        // Step 1, get a handle to the node you want to work with in this case an anchor element
         var anchor = Y.one("a"),
             // Now get the value of the href attribute.
             href = anchor.get("href"),
@@ -328,7 +328,7 @@ Here is a seed file you can use to start your exercises from.
             <header>Header info goes here</header>
             <section>Main content goes here</section>
             <footer>Footer things go here</footer>
-            <!-- get YUI3 on the page, and a script block for your code -->
+            <!-- get YUI3 on the page, and a script element for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", function (Y) {
@@ -719,7 +719,7 @@ for a truely pregressively enhanced experience.
                     {name: "Trina Doe", phonenumber: "+1-222-333-6789"}
                 ];
             </script>
-            <!-- get YUI3 on the page, and a script block for your code -->
+            <!-- get YUI3 on the page, and a script element for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", "handlebars", function (Y) {
@@ -812,7 +812,7 @@ Here is what our HTML with in-line JavaScript would look like.
                 </ul>
             </script>
             <!-- Define some data to put in the template -->
-            <!-- get YUI3 on the page, and a script block for your code -->
+            <!-- get YUI3 on the page, and a script element for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             // Notice we have added "io-base" to our list of modules in our "use" function.
