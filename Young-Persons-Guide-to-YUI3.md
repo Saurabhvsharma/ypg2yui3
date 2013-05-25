@@ -656,7 +656,7 @@ example of a template--
     <div><span id="name">{{name}}</span> <span id="phonenumber">{{phonenumber}}</span></div>
 ```
 
-Here's an example of a JSON object that could be used to populate the template--
+Here is an example of a JSON object that could be used to populate the template--
 
 ```JavaScript
     {"name": "John Doe", "phonenumber": "+1-222-333-4444"}
@@ -704,21 +704,21 @@ for a truely pregressively enhanced experience.
             <section>Main content goes here</section>
             <footer></footer>
             <!-- Define a template to render our UL list with -->
-            <template id="list-template" type="text/x-handlebars-template">
+            <script id="list-template" type="text/x-handlebars-template">
                 <ul>
                 {{#data}}
                     <li><span class="name">{{name}}</span> <span class="phonenumber">{{phonenumber}}</span></li>
                 {{/data}}
                 </ul>
-            </template>
+            </script>
             <!-- Define some data to put in the template -->
-            <template type="text/javascript" rel="javascript">
+            <script type="text/javascript" rel="javascript">
                 var data = [
                     {name: "Jane Doe", phonenumber: "+1-222-333-4567"},
                     {name: "John Doe", phonenumber: "+1-222-333-5678"},
                     {name: "Trina Doe", phonenumber: "+1-222-333-6789"}
                 ];
-            </template>
+            </script>
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
@@ -804,13 +804,13 @@ Here is what our HTML with in-line JavaScript would look like.
             <section>Phone list content goes here</section>
             <footer></footer>
             <!-- Define a template to render our UL list with -->
-            <template id="list-template" type="text/x-handlebars-template">
+            <script id="list-template" type="text/x-handlebars-template">
                 <ul>
                 {{#data}}
                     <li><span class="name">{{name}}</span> <span class="phonenumber">{{phonenumber}}</span></li>
                 {{/data}}
                 </ul>
-            </template>
+            </script>
             <!-- Define some data to put in the template -->
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>

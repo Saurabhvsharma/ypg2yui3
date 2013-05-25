@@ -1,32 +1,33 @@
 <!DOCTYPE>
 <html lang="en">
     <head>
-        <title>README.md</title>
+        <title>Young-Persons-Guide-to-YUI3.md</title>
         <link href="css/styles.css" rel="stylesheet" media="all">
     </head>
     <body>
-        <header><h1>README.md</h1></header>
+        <header><h1>Young-Persons-Guide-to-YUI3.md</h1></header>
         <section>
         <h1>ypg2yui3</h1>
 <h1>Young Person&#39;s Guide to YUI3</h1>
-<p>by R. S. Doiel, <a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#114;&#115;&#100;&#111;&#105;&#101;&#x6c;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#114;&#115;&#100;&#111;&#105;&#101;&#x6c;&#64;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>
-Updated: 2013-05-11</p>
+<p>by R. S. Doiel, <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x72;&#115;&#100;&#111;&#x69;&#x65;&#x6c;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#x72;&#115;&#100;&#111;&#x69;&#x65;&#x6c;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a>
+Updated: 2013-05-22</p>
 <p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 was at version 3.10.0 at the time this article was written">YUI3</a>. It does make a few assumptions-</p>
 <ul>
 <li>You have a basic knowledge of JavaScript, HTML, CSS</li>
 <li>A basic idea of how the web works</li>
+<li>For those who might be familiar with jQuery I&#39;ll point out the similarities
+to speed you along.</li>
 </ul>
-<p>For those who might be familiar with jQuery I&#39;ll point out the similarities
-to speed you along.</p>
-<p>For a much more complete look at YUI3 I recommend <a href="http://www.goer.org/">Evan Goer</a>&#39;s
+<p>For a much more complete look at <em>YUI3</em> I recommend <a href="http://www.goer.org/">Evan Goer</a>&#39;s
 <a href="http://shop.oreilly.com/product/0636920013303.do">YUI3 Cookbook</a>. It has been the goto
-text for bootstrapping my understanding of YUI3. It is also a handy set of recipes
-for YUI3&#39;s practical application.  Additionally the <a href="http://yuilibrary.com">YUILibrary</a>
-website has the canonical documentation and you can read the source for YUI3 at
-<a href="https://github.com/yui/yui3">Github</a> under yui/yui3.</p>
-<p>A note about using Google Search for learning YUI3. Right now, May 2013, the Google&#39;s search
-algorhythm still ranks legacy YUI2 documentation higher than YUI3.  This can easily lead
-to confusion. I&#39;ve found seaching Stackexchange and Google Groups more helpful. Additionally
+text for bootstrapping my understanding of <em>YUI3</em>. It is also a handy set of recipes
+for <em>YUI3</em>&#39;s practical application.  Additionally the <a href="http://yuilibrary.com">YUILibrary</a>
+website has the canonical documentation and you can read the source for <em>YUI3</em> at
+<a href="https://github.com/yui/yui3">Github</a> under <em>yui/yui3</em>.</p>
+<p>A note about using Google Search for learning <em>YUI3</em>. Right now, May 2013, the Google&#39;s search
+algorhythm still ranks legacy <em>YUI2</em> documentation higher than <em>YUI3</em>.  This can easily lead
+to confusion. I&#39;ve found seaching <a href="http://stackoverflow.com/questions/tagged/yui3">Stackexchange</a>
+and <a href="https://groups.google.com/forum/#!forum/yui-contrib">Google Groups</a> more helpful. Additionally
 there is an active IRC community on irc.freeenode.net under #yui.</p>
 <h1>Contents</h1>
 <ul>
@@ -39,10 +40,8 @@ there is an active IRC community on irc.freeenode.net under #yui.</p>
 <li><a href="#templates">Templates</a> -- Building out a page with <strong>Y.Handlebars</strong></li>
 <li><a href="#persistence">Persistence</a> -- Saving things for latter with <strong>Y.StorageLite</strong></li>
 <li><a href="#remote">Remote</a> -- Bring content into the page with <strong>Y.io</strong></li>
-<li><a href="#api">API</a> -- Using http GET, POST, PUT and DELETE</li>
-<li><a href="#spa">SPA</a> -- Building a simple Single Page Application</li>
+<li><a href="#apps">Apps</a> -- Building a simple Single Page Application</li>
 <li><a href="#reminders">Reminders</a> -- Should you use YUI for that?</li>
-<li><a href="#next">Next</a> -- Finding helpful YUI3 Modules, documentation and examples</li>
 </ul>
 <h2>Preface</h2>
 <h3>What you&#39;ll need before you begin</h3>
@@ -101,10 +100,10 @@ as easily as typing <em>httpster</em>. </p>
 <li><a href="https://github.com/SimbCo/httpster">httpster</a>, follow the instructions in the &quot;README.md&quot; to install</li>
 </ul>
 <h2>Starting</h2>
-<h3>The minimum to pull YUI3 into the webpage</h3>
+<h3>The minimum to pull <em>YUI3</em> into the webpage</h3>
 <p><em>YUI</em> needs to be available to the webpage to be useful. Fortunately this is <a href="http://yuilibrary.com/yui/quick-start/" title="YUI Quick Start at yuilibrary.com">easy</a>. 
 You use a <em>script</em> tag to include it from Yahoo&#39;s CDN. Let us build a simple webpage 
-using YUI3 to change the pages&#39; <em>title</em> to &quot;Hello World&quot; and the first <em>h1</em> to &quot;Yippee! It worked.&quot;.</p>
+using <em>YUI3</em> to change the pages&#39; <em>title</em> to &quot;Hello World&quot; and the first <em>h1</em> to &quot;Yippee! It worked.&quot;.</p>
 <p>Build the first part of your HTML document as you normally would.</p>
 <p><a href="getting-started.html">getting-started.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
@@ -115,11 +114,11 @@ using YUI3 to change the pages&#39; <em>title</em> to &quot;Hello World&quot; an
         &lt;body&gt;
             &lt;h1&gt;Getting Started&lt;/h1&gt;
             &lt;p&gt;When YUI3 is loaded the title and h1 will be updated.&lt;/p&gt;</code></pre>
-<p>Now include YUI3 from Yahoo&#39;s CDN with the following script element.</p>
+<p>Now include <em>YUI3</em> from Yahoo&#39;s CDN with the following script element.</p>
 <p><a href="getting-started.html">getting-started.html</a></p>
 <pre><code class="language-HTML">            &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;</code></pre>
 <p>Now we want to change the contents of the <em>title</em> and <em>h1</em> tags to show that this worked.
-We add another script block for that.</p>
+We add another <em>script</em> block for that.</p>
 <p><a href="getting-started.html">gitting-started.html</a></p>
 <pre><code class="language-HTML">            &lt;script&gt;
                 YUI().use(&quot;node-base&quot;, function (Y) {
@@ -171,10 +170,10 @@ DOM selector results.</p>
                     h1.setHTML(&quot;Yippee! I can be more efficient.&quot;);
                 });
             &lt;/script&gt;</code></pre>
-<p>YUI3 provides two function that take a selector.  The first is <em>Y.one()</em>. It will give you the 
+<p><em>YUI3</em> provides two function that take a selector.  The first is <em>Y.one()</em>. It will give you the 
 first element in the <a href="http://en.wikipedia.org/wiki/Document_Object_Model" title="The Object which the browser uses to allow access to parts of a webpage.">DOM</a> matching that selector. In our example above that was <em>title</em> and <em>h1</em>.  If
 you had more than one <em>h1</em> it would only give the first <em>h1</em> it found. Usually this is what you want.
-Sometimes you want all the elements that match`a selector (e.g. all the anchor tags in a page). 
+Sometimes you want all the elements that match a selector (e.g. all the anchor tags in a page). 
 To get that you use <em>Y.all()</em>.  That returns a list of elements. It is easiest to explain
 by showing.  Let us create a short element with a list of links to YUI3 resources. Next
 we&#39;ll update part of the page to indicate the links we found.</p>
@@ -281,7 +280,7 @@ that will help you expand beyond the specifics discussed previously.</p>
 </ul>
 </li>
 </ul>
-<p>Using YUI3 update content in the webpage every five seconds displaying the current time manipulate
+<p>Using <em>YUI3</em> update content in the webpage every five seconds displaying the current time manipulate
 the CSS classes attach to the element showing the time.</p>
 <h5>Steps</h5>
 <p>Copy <em>seed-file.html</em> to <em>digital-clock-1.html</em>. Do the following things</p>
@@ -365,7 +364,7 @@ happens.</p>
 steps you normally take to get started.</p>
 <ol>
 <li>Load <em>YUI3</em> in the page</li>
-<li>In your Script blog (or JavaScript file using <em>YUI3</em>) include the <em>event</em> module.</li>
+<li>In your <em>script</em> element (or JavaScript file pointed at the <em>script</em> element) include the <em>event</em> module.</li>
 <li>In your <em>Y</em> function select the object you want to listen to (e.g. a button) then use <em>on()</em> to add behavior.</li>
 </ol>
 <p>That is the basic approach. In this example let us create a simple webpage with a button in the middle and
@@ -397,8 +396,8 @@ confunctionality that is only need at certain times (e.g. when someone is logged
 is using an old version of a browser) modules help you do that. Modules also support
 versioning and allow for multiple instancies with different versions.  You can even
 include other libraries (e.g. jQuery) via <em>YUI</em>&#39;s module and loader system.</p>
-<p>What is a module? A block of JavaScript wrapped in <em>YUI().add()</em>. That is all it is. It
-can be more than that (e.g. you can add version info, dependency information) but at its
+<p>What is a module? JavaScript wrapped in <em>YUI().add()</em>. That is all it is. It
+can be more than that (e.g. you can add version info, namespacing, dependency information) but at its
 simplest form it is what you attach to <em>Y</em> via <em>add()</em>.</p>
 <pre><code class="language-JavaScript">    // Here we define a module called Hello World
     YUI.add(&quot;hello-world&quot;, function (Y) {
@@ -532,7 +531,7 @@ you provide the template generate function with an object that contains attribut
 curly bracket variable names then the template engine replaces the content.  Here&#39;s a quick
 example of a template--</p>
 <pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/div&gt;</code></pre>
-<p>Here&#39;s an example of a JSON object that could be used to populate the template--</p>
+<p>Here is an example of a JSON object that could be used to populate the template--</p>
 <pre><code class="language-JavaScript">    {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4444&quot;}</code></pre>
 <p>If you applied that object to that template you&#39;d get something like</p>
 <pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;John Doe&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;+1-222-333-4444&lt;/span&gt;&lt;/div&gt;</code></pre>
@@ -718,10 +717,12 @@ or directly in the client browser. The setup I&#39;ve shown here is based on <em
 <ul>
 <li>One implementation of our Digital Clock with Alarms pull is <a href="digital-clock-4.html">digital-clock-4.html</a></li>
 </ul>
-<h2>API</h2>
-<h3>Using http GET, POST, PUT and DELETE</h3>
-<h2>SPA</h2>
-<h3>Building a simple Single Page Application</h3>
+<h2>Apps</h2>
+<h3>Building a simple Web Application</h3>
+<p>Now that we have covered the basics its time to turn our digital clock prototypes into a Single-page Application. Mostly
+it is a matter of polish but also we need to have things like <em>manifest</em> files, and <em>package</em> files for both <a href="http://developer.chrome.com/extensions/apps.html">Chrome</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Apps/Packaged_apps">Firefox</a>.</p>
+<p>Before we work on our digital clock though lets explore how this site works both to generate an ePub as well as packages for 
+<em>Chrome</em> and <em>Firefox</em>.</p>
 <h2>Reminders</h2>
 <h3>Should you use YUI for that?</h3>
 <p>While <em>YUI3</em> is a very good library it is easy to get carried away. Here&#39;s some heuristic

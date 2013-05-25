@@ -11,7 +11,7 @@ function clean() {
 function buildAll() {
     // htdocs/index.html: Young-Persons-Guide-to-YUI3.md
     mkdir("-p", "htdocs/css");
-    cp("-v", "templates/css/*", "htdocs/css/");
+    cp("-f", "templates/css/*", "htdocs/css/");
     
     if (exec("mweave Young-Persons-Guide-to-YUI3.md -t templates/page.html -d htdocs -o index.html").code !== 0) {
       echo("Problem building htdocs/index.html");
@@ -53,7 +53,7 @@ function buildAll() {
     }   
 }
 
-if (process.argv[3].toLowerCase() === "clean") {
+if (process.argv.length > 2 && process.argv[3].toLowerCase() === "clean") {
     clean();
 } else {
     buildAll();
