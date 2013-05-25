@@ -162,9 +162,7 @@ Finally close up the rest of your document normally.
 ```
 
 Save this as the file _getting-started.html_. Point your web browser at the page
-and take a look (e.g. http://localhost/getting-started.html assuming
-you are running your local web server on port 80 and this document is in the 
-root web folder.)
+and take a look.
 
 You should now see your first _YUI3_ enabled web page.
 
@@ -200,8 +198,8 @@ you need a single element or a list of elements.
 
 _YUI3_ uses [CSS][3] selectors to access parts of the webpage. This typically is by indentifing 
 an element via an _id_ or _class_ attribute. You may also use CSS psuedo classes and element 
-relationships to target a specific element in the page (e.g. the _li_ contained in a _ul_ list). 
-There is a cost to caculating where in the _DOM_ you're going to work on. Like in _jQuery_ the
+relationships to target a specific element in the page (e.g. the second _li_ contained in a _ul_ list). 
+There is a cost to caculating where in the _DOM_ your element is so like in _jQuery_ the
 best practice in _YUI3_ is to save the reference if you need it more than once. Here's an example 
 _script_ element for improving our first _getting-started.html_ example where we're saving the 
 DOM selector results.
