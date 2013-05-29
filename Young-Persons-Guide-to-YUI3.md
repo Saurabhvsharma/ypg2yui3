@@ -72,14 +72,15 @@ It makes it much easier to read code quickly. Another is an integrated linting t
 [jslint](http://jslint.com) or [jshint](http://jshint.com)). I find both of these features to
 be helpful in spotting the sillier things I type.
 
-If you don't have an editor you like may I suggest [Adobe Brackets][1] or [Scripted Editor][2]. They
+If you don't have an editor you like may I suggest [Adobe Brackets][1] or [Chrome's Text-app][2]. They
 are both built from the same building blocks we use on the web -- HTML, CSS, JavaScript. That
 makes it easy to extend and improve to meet your own needs. They also come out of the box
 with syntax highlighting and jslint/jshint.
 
 [1]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
-[2]: https://github.com/scripted-editor/scripted "Like Brackets is is build from JavaScript, CSS and HTML and is also open source."
+[2]: https://github.com/GoogleChrome/text-app "A text editor without jslint also built from JavaScript, CSS and HTML.  Runs as a Chrome web app."
 [node]: http://nodejs.org "A JavaScript environment for building network, file system and other services"
+
 
 ### A word about Node
 
