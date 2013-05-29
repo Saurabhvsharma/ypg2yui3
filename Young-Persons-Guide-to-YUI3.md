@@ -4,7 +4,7 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-05-25
+Updated: 2013-05-28
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
@@ -58,9 +58,9 @@ Specific examples include--
 * Web Browsers:
     * Firefox, Chrome, Safari, IE, or Opera (its good to test on more than one browser)
 * Text Editors:
-    * Adobe Brackets, Coda, Text Mate, Sublime Editor, ShiftEdit, vi, Emacs
+    * Adobe Brackets, Chrome's Text-App, Coda, Text Mate, Sublime Editor
 * Web Servers:
-    * httpster (a [Node][] based http server nice for development use), NginX, Cherokee and the venerable Apache and IIS
+    * httpster (a [Node][] based http server nice for development use), NGinX, Cherokee and the venerable Apache and IIS
 
 
 ### A word about text editors
@@ -199,10 +199,10 @@ you need a single element or a list of elements.
 _YUI3_ uses [CSS][3] selectors to access parts of the webpage. This typically is by indentifing 
 an element via an _id_ or _class_ attribute. You may also use CSS psuedo classes and element 
 relationships to target a specific element in the page (e.g. the second _li_ contained in a _ul_ list). 
-There is a cost to caculating where in the _DOM_ your element is so like in _jQuery_ the
-best practice in _YUI3_ is to save the reference if you need it more than once. Here's an example 
-_script_ element for improving our first _getting-started.html_ example where we're saving the 
-DOM selector results.
+There is a cost to caculating where in the _DOM_ your element is so like _jQuery_ the
+best practice in _YUI3_ is to save the reference if you need it more than once. This can be done by 
+assigning the reference to a variable. Here's an example _script_ element showing the assignment
+and use of the saved elements.
 
 
 ```HTML
@@ -920,3 +920,4 @@ in deciding when to use _YUI3_ (or really any JavaScript at all)
 - If it is behavior use JavaScript if you can not achieve it in HTML and CSS
 - If you can do it in simply in plain JavaScript then do so. 
 - If it is more complicated or can benefit from modularization consider _YUI3_
+
