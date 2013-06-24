@@ -2,13 +2,11 @@
   "name": "ypg2yui3",
   "version": "0.0.1",
   "description": "A Young Person's Guide to YUI3",
-  "main": "index.js",
   "scripts": {
       "build": "node build.js",
-      "start": "node index.js",
-      "test": "node test_index.js"
+      "start": "httpstere -d htdocs"
   },
-  "dependencies": {
+  "devDependencies": {
       "yui": "3.10.x",
       "marked": "0.2.x",
       "express": "3.x",
