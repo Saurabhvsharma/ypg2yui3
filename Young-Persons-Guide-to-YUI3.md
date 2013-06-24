@@ -38,11 +38,10 @@ there is an active IRC community on irc.freeenode.net under #yui.
 - [Selectors](#selectors) -- Getting Access to parts of a webpage
 - [DOM](#dom) -- interacting with innerHTML and attributes
 - [Action](#action) -- Mouse clicks, keyboard commands and touch
-- [Modules](#modules) -- Moving beyond **node**
+- [Modules](#modules) -- Moving beyond YUI's **node**
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
 - [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
-- [Apps](#apps) -- Building a simple Single Page Application
 - [Reminders](#reminders) -- Should you use YUI for that?
 
 
@@ -56,9 +55,9 @@ Specific examples include--
 * Computers:
     * a Mac, a Windows PC, a Linux Virtual Marchine or even a Raspberry Pi
 * Web Browsers:
-    * Firefox, Chrome, Safari, IE, or Opera (its good to test on more than one browser)
+    * Firefox, Chrome, Safari, IE, or Opera (best practice is test on multiple browsers)
 * Text Editors:
-    * Adobe Brackets, Chrome's Text-App, Coda, Text Mate, Sublime Editor
+    * Adobe Brackets, Chrome's Text-App, Coda, Text Mate, Sublime Editor, vi, nano, emacs
 * Web Servers:
     * httpster (a [Node][] based http server nice for development use), NGinX, Cherokee and the venerable Apache and IIS
 
@@ -75,7 +74,7 @@ be helpful in spotting the sillier things I type.
 If you don't have an editor you like may I suggest [Adobe Brackets][1] or [Chrome's Text-app][2]. They
 are both built from the same building blocks we use on the web -- HTML, CSS, JavaScript. That
 makes it easy to extend and improve to meet your own needs. They also come out of the box
-with syntax highlighting and jslint/jshint.
+with syntax highlighting.
 
 [1]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
 [2]: https://github.com/GoogleChrome/text-app "A text editor without jslint also built from JavaScript, CSS and HTML.  Runs as a Chrome web app."
@@ -94,8 +93,8 @@ move beyond the browser--
 4. Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
 
 I have found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
-to be very help for front-end development. It allows to easily serve content from your current working folder
-as easily as typing _httpster_. 
+to be very help for front-end development. It makes serving content from your current working folder
+as easily as typing _httpster_.
 
 Finally I make the assumption you have an active connection to the internet.
 
@@ -183,11 +182,11 @@ If you have used [jQuery](http://jquery.com) before I think you'll notice a simi
 ```
 
 The line with document ready includes a wrapping function providing a namespace for your code.
-_YUI_ also does this though technically it loads a module called _node_ to provide the features
-similar to _jQuery_'s _$_ object. In _YUI_ those functions are used from the parameter passed
-in named _Y_.  Part of making the transition from _jQuery_ to _YUI3_ is understanding where
-and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something in YUI3, if
-you used a _$( ... )_ then look at using either a _Y.one()_ or _Y.all()_ depending on whether
+_YUI_ also does this though technically my example loads a module called _node_ to provide the
+features similar to _jQuery_'s _$_ object. In _YUI_ those functions are used from the parameter
+passed in named _Y_.  Part of making the transition from _jQuery_ to _YUI3_ is understanding
+where and how they are similar. If you used a _$_ in jQuery look for _Y_ dot something in YUI3,
+if you used a _$( ... )_ then look at using either a _Y.one()_ or _Y.all()_ depending on whether
 you need a single element or a list of elements.
 
 
@@ -477,13 +476,13 @@ loaders _YUI_'s approach works both in the browser and server side in _Node_.
 
 Why modules? It allows for effective code re-use.  It allows you to tailor what code is
 delivered to the browser and when it should be delivered to the browser.  If you have
-confunctionality that is only need at certain times (e.g. when someone is logged in or
+functionality that is only needed at certain times (e.g. when someone is logged in or
 is using an old version of a browser) modules help you do that. Modules also support
 versioning and allow for multiple instancies with different versions.  You can even
-include other libraries (e.g. jQuery) via _YUI_'s module and loader system.
+include other non-YUI libraries (e.g. jQuery) via _YUI_'s module and loader system.
 
 
-What is a module? JavaScript wrapped in _YUI().add()_. That is all it is. It
+What is a YUI module? It is JavaScript wrapped in _YUI().add()_. That is all it is. It
 can be more than that (e.g. you can add version info, namespacing, dependency information) but at its
 simplest form it is what you attach to _Y_ via _add()_.
 
@@ -510,8 +509,6 @@ We can also put our module in a separate file (e.g. _hello-world.js_).
         Y.namespace("hello-world");
         Y.helloWorld = "Hello World!"; 
     });
-    
-    
 ```
 
 We can re-use that module by including it in a _script_ element before our _use()_ script element.
@@ -577,23 +574,25 @@ module with a little bit of [configuration][].
 
 Take away points
 
-* Modules helps in code re-use
-* Modules can be references locally via a _script_ element
-* Modules can be dynamically (and asynchronously loaded)
+* Modules help encourage code re-use
+* Modules can be referenced locally via a _script_ element
+* Modules can be dynamically (synchronously or asynchronously) loaded
 * Modules can be local to your web server and that location can be defined through configuration
 * Modules can be also submitted to _YUI_'s gallery and be hosted in Yahoo's CDN
 
-Like events, working with modues is easier shown.
+Like DOM events working with modues is easier shown.
 
 #### A quick aside on YUI Gallery
 
-_YUI_ supports a whole [gallery] of user contributed modules. Some specialized and more general
-purpose. The good thing is that only load them if you need them and infact if you want to load
-only a specific version you can do that too. Before something becomes part of _YUI3 core_ it
-is first additioned as a gallery module.  Some features that are in _core_ but will migrate
-out to the _gallery_ if it is determined they are not frequently needed. Being in the gallery
-is not a statement on the quality or importance of the code. Being in the gallery means your
-code could be included on Yahoo's CDN which simplifies using it for others. 
+_YUI_ supports a whole [gallery][] of user contributed modules. Some specialized and some general
+purpose. The good thing is that you only load them if you need them.  You can specify
+a specific version of a module if you like. Before something becomes part of _YUI3 core_ it
+is first additioned as a gallery module.  If it is considered essential then it may become part
+of the core distribution of YUI.  Additionally YUI has been going on a diet of late. Features that
+have less utility have migrated out of core back into the gallery.  This allows YUI to trim the size
+of its core while continuing to support the functionality it had previously in core. Being in the gallery
+versus being in core is not a statement on the quality or importance of the code. Being in the gallery
+means your code could be included on Yahoo's CDN which simplifies using it for others. 
 
 [gallery]: http://yuilibrary.com/gallery/ "Gallery modules are linked from yuilibrary, many are available on Yahoo's CDN, but the source is often on github.com"
 
@@ -610,22 +609,24 @@ code could be included on Yahoo's CDN which simplifies using it for others.
 
 Let us turn our "digital clock" into a module. The idea is to create 
 an Object attached to your _Y_ called _DigitalClock_ you could then add
-that to a _DOM_ element.  An optional callback function to supported
-extending the module with a custom render function (e.g. an analog clock
-using Canvas).
+that to a _DOM_ element.  It should also support an optional callback
+function to supported extending the module with a custom render function.
+This will allow your flexibility to extend the digital clock later
+(e.g. displaying as an analog clock using Canvas).
 
 ##### Steps
 
 Create a new file called _digital-clock-2.js_. We will put our module code there.
 Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
-1. In _digital-clock-2.html's _script_ in-line element add configuration to point our our module.
+1. In _digital-clock-2.html's _script_ in-line element add configuration to point to our module.
 2. In _digital-clock-2.html's _script_ in-line element update the _use()_ function to include our module.
-3. Open our empty digital-clock-2.js file and create our module
-    a. create a namespace
-    b. create a _render()_ method that returns HTML markup as a string of our clock's current time
+3. Open our empty _digital-clock-2.js_ file and 
+    a. create our module
+    b. create a namespace
+    c. create a _render()_ method that returns HTML markup as a string of our clock's current time
         - this should expect a _Date_ object as a parameter to be rendered.
-    c. create a _run()_ method that uses setInterval to update our clock every second. 
+    d. create a _run()_ method that uses setInterval to update our clock every second. 
         - first paramter is a CSS selector of an element which will hold our clock
         - An optional second parameter should allow for a custom render method
         - If a render method is not provided use our default _render()_ we implemented.
@@ -634,7 +635,7 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
 #### Notes
 
-* We are using a external file for some of our JavaScript this time (i.e. our module)
+* We are using an external file for some of our JavaScript this time (i.e. our module)
 * One possible solition is [digital-clock-2.html](digital-clock-2.html) and [digital-clock-2.js](digital-clock-2.js) holding our module code.
 
 
@@ -642,11 +643,11 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
 
 ### Building out a page with **Y.Handlebars**
 
-Templates are a convient solution to generating HTML from JavaScript functions. Templates on JavaScript
+Templates are a convient solution to generating HTML from JavaScript functions. Templates in JavaScript
 can often be rendered server side as well as in the browser. This is true of _Handlbars_ templates.  _Handlebars_
 is an extention to a popular template notation called _Mustache_.  The basic idea is your surround the 
-parts of the markup you want to replace with double curly brackets surrounding a variable name.  When
-you provide the template generate function with an object that contains attributes that matches those
+parts of the markup you want to replace with double curly brackets surrounding matching variable name.  When
+you provide the template function with an object that contains attributes that match those
 curly bracket variable names then the template engine replaces the content.  Here's a quick
 example of a template--
 
@@ -655,7 +656,7 @@ example of a template--
     <div><span id="name">{{name}}</span> <span id="phonenumber">{{phonenumber}}</span></div>
 ```
 
-Here is an example of a JSON object that could be used to populate the template--
+Here is a JSON object that could be used to populate the template--
 
 ```JavaScript
     {"name": "John Doe", "phonenumber": "+1-222-333-4444"}
@@ -676,20 +677,20 @@ JavaScript--
         record.phonenumber + '</span></div>;    
 ```
 
-It is not too bad but when you get lots of fields (e.g. a person's profile, an event listing) you
+It is not too bad but when you get lots of fields (e.g. a person's profile, a calendar event listing) you
 get lots of concatenation operations. That isn't terribly effecient for JavaScript and if you miss a
-closing quotation can be tough to debug.
+closing quotation can be tough to debug. Templates provide a clean effective way to avoid that.
 
 #### Embedding your handlebars template
 
-The easiest place to embed your template is in the HTML file itself.  A practice of using _script_ elements
-has been evolving as a way of designating the template but getting the templates with the page. Building
-on our previous example here is a simple webpage that displays our that displays a list of names and
+The easiest place to embed your template is in the HTML file that needs them.  A practice of using
+a _script_ element has been evolving as a way of designating the template within the page. Building
+on our previous example here is a simple webpage that displays a list of names and
 phone numbers embedded in a _ul_ element.  We load _YUI_ normally but include _handlebars_ as a module.
-We fetch the templates using _Y.one()_ by id. We compile them and then apply them to our target
-element.  While our example as one template in principle you can do this as many times as you need
-for the page's content.  With slight modification in approach you could pre-render this server side
-for a truely pregressively enhanced experience.
+We fetch the templates using _Y.one()_ by CSS id. We compile the template and then apply our data
+object the HTML element we want to update.  While our example has one template in principle you can
+do this as many times as you needed for the page's content.  With slight modification in approach
+you could pre-render this server side for a pregressively enhanced experience.
 
 [handlebars-demo-1.html](handlebars-demo-1.html)
 ```HTML
@@ -773,9 +774,9 @@ as well as used to push data to a server (e.g. a forms' POST, PUT, GET or DELETE
 phrase "social web app". I.e. the social services are usually someplace else on the network (e.g. Twitter, Facebook, G+).
 Since this tutorial in focused on introducing the browser side resources of _YUI_ I am going to show
 you how you might retrieve a remote [JSON][] file to populate our previous example of phone number list.  In principle
-you use the same techniques to talk to an API.  The list of names and phone numbers is stored in a file called
-_phonelist.json_ on our web server. Using _Y.io_ I will demonstrate getting the file and then working with the 
-resulting data.  Next the data will be rendered like our earlier template example.
+you use the same techniques to talk to an API.  In this example a list of names and phone numbers is stored in a file called
+_phonelist.json_ on our web server. Using _Y.io_ we get the file and convert to an JavaScript object.
+Next the object is used along with a template like our earlier example.
 
 
 Here is our phone list data. For the purpose of this tutorial we can think of it as an web service _API_ call.
@@ -858,9 +859,9 @@ Notice we still use our
 ```
 
 We only wait to call it until we have data base in the _onSuccess()_ callback. The first parameter
-_Y.io_ expects is a URL as a string.  This could be a relative path like we use or a full URL to an
+_Y.io_ expects is a URL as a string.  This could be a relative path  or a full URL to an
 API.  There are additional optional parameters in the _Y.io_ function call.  The second one is
-for a configuration object. Typically we define our success and failure callbacks here.  If were
+for a configuration object. Typically we define our success and failure callbacks here.  If we were
 interacting with an API, say "POST-ing" a form's content, we would provide additional configuration.
 
 There are additional events emmited by _Y.io_ which can be listened for.  To see a complete list
@@ -872,14 +873,14 @@ for specific implementation details.
 
 ##### An aside about IO
 
-_IO_'s _Y.io_ is a very configurable and flexible object.  I have shown only an idiomatic use to keep things simple.
-If all you were doing in your site is fetch _JSON_ objects there is a _getJSON()_ function for which really simplifies
-things. I have chosen to show you this idomatic implementation so we can interative build on it adding
-API interaction and culminating in our [SPA][].
+_IO_'s _Y.io_ is a very configurable and flexible object.  I have shown only one idiomatic use to keep things simple.
+If all you were doing in your page was fetching _JSON_ objects then you could use _Y.io_'s  _getJSON()_ function.
+This makes it even simplier. I have chosen to show you this idomatic implementation because you can extend it to
+do things like submitting POSTs to a API allowing you to do a complete [SPA][].
 
 _IO_'s (i.e. _io-base_ in our use module list) is one of my favorite modules. It works both in the browser and in _Node_.
 That gives us a common way to setup remote API access that might be processed in a middle layer running on the server
-or directly in the client browser. The setup I've shown here is based on _io-base_. 
+or directly in the client web browser.
 
 [API]: http://wikipedia.org/wiki/API "Application Programming Interface - For our purposes today a way to get data from and push data to a web service"
 [JSON]: http://json.org "JavaScript-Object-Notation, a text format for easy data exchange"
@@ -895,18 +896,6 @@ or directly in the client browser. The setup I've shown here is based on _io-bas
 ##### Notes
 
 * One implementation of our Digital Clock with Alarms pull is [digital-clock-4.html](digital-clock-4.html)
-
-
-## Apps
-
-### Building a simple Web Application
-
-Now that we have covered the basics its time to turn our digital clock prototypes into a Single-page Application. Mostly
-it is a matter of polish but also we need to have things like *manifest* files, and *package* files for both [Chrome](http://developer.chrome.com/extensions/apps.html) and [Firefox](https://developer.mozilla.org/en-US/docs/Web/Apps/Packaged_apps).
-
-Before we work on our digital clock though lets explore how this site works both to generate an ePub as well as packages for 
-_Chrome_ and _Firefox_.
-
 
 
 ## Reminders
