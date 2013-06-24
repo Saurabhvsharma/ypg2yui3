@@ -4,7 +4,7 @@ ypg2yui3
 # Young Person's Guide to YUI3
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-05-28
+Updated: 2013-06-24
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
@@ -910,4 +910,3 @@ in deciding when to use _YUI3_ (or really any JavaScript at all)
 - If it is behavior use JavaScript if you can not achieve it in HTML and CSS
 - If you can do it in simply in plain JavaScript then do so. 
 - If it is more complicated or can benefit from modularization consider _YUI3_
-
