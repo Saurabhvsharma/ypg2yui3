@@ -1,16 +1,16 @@
 
 ## Digital Clock with Alarms
 
+Copy _digital-clock-3.js_ to _digital-clock-4.js_. We will continue our improvements there.
+Copy _digital-clock-3.html_ to _digital-clock-4.html. Do the following things.
+
 ### Steps
 
-Copy _digital-clock-3.js_ to _digital-clock-4.js_. We will continue our improvements there.
-Copy _digital-clock-3.html_ to _digital-clock-4.html. Do the following things
-
-1. In _digital-clock-4.html_ add to _script_ blocks for our templates
-    a. One should have an _id_ attribute containing _digital-view_ and the other _analog-view_.
+1. In _digital-clock-4.html_ add two _script_ blocks for our templates
+    a. One should have an _id_ attribute containing _digital-view_ and the other _alarm-view_.
     b. Both _script_ blocks should have a _type_ attribute with _text/x-handlebars-template_.
-2. In _digital-clock-4.html's _script_ in-line element add configuration to point our our module (i.e. digital-clock-4.js).
-3. In _digital-clock-4.html's _script_ in-line element update the _use()_ function to include our module.
+2. In _digital-clock-4.html_'s _script_ in-line element add configuration to point our our module (i.e. digital-clock-4.js).
+3. In _digital-clock-4.html_'s _script_ in-line element update the _use()_ function to include our module.
 4. Open _digital-clock-4.js_ file and modify our module to expect a template for layout
     a. Update our _render()_ method to accept a compiled _Handlebars_ template.
     b. Update our _run()_ method to include source for the _Handlebars_ template
@@ -18,7 +18,7 @@ Copy _digital-clock-3.html_ to _digital-clock-4.html. Do the following things
         - second parameter should be the number of milliseconds between updates
         - third parameter is either a _selector_, template source code, or compiled template
     c. Update the requires statement to include _handlebars_.
-5. Go back to our _digital-clock-3.html_ file.
+5. Go back to our _digital-clock-4.html_ file.
 6. Inside the _Y_ on our in-line _script_ element use _Y.DigitalClock()_ to create our _clock_ object and _run()_ to run it.
 
 
@@ -30,16 +30,15 @@ Each alarm has a label we can display at the appropriate time.
 
 [alarms.json](alarms.json)
 ```JavaScript
-    {
-        "Monday": [{"time": "6:00 am", "label": "Wake up! It is a work day."}],
-        "Tuesday": [{"time": "6:00 am", "label": "Wake up!"}],
-        "Wednesday": [{"time": "6:00 am", "label": "Wake up!"}],
-        "Thursday": [{"time": "6:00 am", "label": "Wake up!"}],
-        "Friday": [{"time": "6:00 am", "label": "Wake up!"}],
-        "Saturday": [{"time": "8:30 am", "label": "Saturday, I can sleep in!"}],
-        "Sunday": [{"time": "8:30 am", "label": "Sunday, I can sleep in!"}],
-
-    }
+    [
+        {"day": "Monday", "time": "6:00 am", "label": "Wake up! It is a work day."},
+        {"day": "Tuesday", "time": "6:00 am", "label": "Wake up!"},
+        {"day": "Wednesday", "time": "6:00 am", "label": "Wake up!"},
+        {"day": "Thursday", "time": "6:00 am", "label": "Wake up!"},
+        {"day": "Friday", "time": "6:00 am", "label": "Wake up!"},
+        {"day": "Saturday", "time": "8:30 am", "label": "Saturday, I can sleep in!"},
+        {"day": "Sunday", "time": "8:30 am", "label": "Sunday, I can sleep in!"}
+    ]
 ```
 
 Here is the markup for our main HTML page. Note the use of a configuration in _YUI()_.
@@ -54,11 +53,19 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
         </head>
         <body>
             <header>Digital Clock 4</header>
-            <section id="clock">Main content goes here</section>
+            <section id="clock">Clock display goes here</section>
+            <section id="alarm">Alarm list goes here</section>
             <footer>The section above should display the date and time. It should change every second.</footer>
             <!-- Here are our handlebars templates -->
-            <script id="digital-view" type="text/x-handlebars-template">
+            <script id="digital-view" type="application/x-handlebars-template">
                 {{time}}
+            </script>
+            <script id="alarm-view" type="application/x-handlebars-template">
+                <ul>
+                {{#alarms}}
+                    <li id="alarm_{{@index}}"><span class="day-of-week">{{day}}</span><span class="time">{{time}}</span> <span class="label">{{label}}</span></li>
+                {{/alarms}}
+                </ul>
             </script>
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
@@ -104,9 +111,9 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
                     },
                     arguments: {
                         clock: clock,
-                        selector: "#digital-view",
+                        selectors: {clock: "#clock", alarm: "#alarm"},
                         interval: 1000,
-                        template_selector: "#digital-view-template"
+                        template_selectors: {clock: "#digital-view", alarm: "alarm-view"}
                     }
                 });
             });
@@ -117,8 +124,7 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
 
 That is the easy part. Now let us update our module. After we define
 our modules core we then include a version number (e.g. 0.0.4) and
-a configuration options object including the required list of modules
-we need to run.
+a configuration object including the required list of modules we need to run.
 
 [digital-clock-4.js](digital-clock-4.js)
 ```JavaScript
@@ -127,6 +133,15 @@ we need to run.
         // Create our namespace
         Y.namespace("DigitalClock");
 
+        // This is a private function so doesn't need to be added to
+        // the Y.DigitalClock instance.
+        function checkForAlarm(alarms, previous_time, current_time) {
+            alarms.forEach(function (alarm, i) {
+                //FIXME: taverse our alarms list and see if any need to trigger notification.
+                // Using i calc the CSS id in the UL list to add class of "active"
+            });
+        }
+        
         // Setup a constructor with reasonable defaults
         function DigitalClock () {};
         DigitalClock.prototype.interval = 1000;
@@ -136,7 +151,7 @@ we need to run.
             this.element.set("text", now.toString());
         };
         DigitalClock.prototype.run = function (selector, interval, template, alarms) {
-            var self = this;
+            var self = this, previous_time = new Date(), current_time;
 
             this.element = Y.one(selector);
             if (typeof template === "function") {
@@ -147,7 +162,10 @@ we need to run.
             // if they have passed and pop the alarm off the list if
             // it has.
             this.int_id = setInterval(function () {
-                self.render(new Date());                
+                current_time = new Date();
+                self.render(current_time);
+                previous_time = current_time;
+                checkforAlarm(alarms, previous_time, current_time);
             }, interval);
             return this.int_id;
         };
@@ -165,5 +183,3 @@ we need to run.
     // Configuration with list of modules we 'require' 
     {requires: ["node", "handlebars"]});
 ```
-
-
