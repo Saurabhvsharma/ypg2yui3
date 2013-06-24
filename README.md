@@ -29,7 +29,8 @@ done through a _build.js_ NodeJS' package manager _npm_. To generate browser fri
 
 This will render content to an _htdocs_ folder which you can use with your web server.
 
-(e.g. using _httpster_ as your web server, this will serve your content at http://localhost:3333)
+(e.g. using [httpster](https://github.com/SimbCo/httpster)
+as your web server, this will serve your content at http://localhost:3333)
 
 ```shell
     httpster -d htdocs
