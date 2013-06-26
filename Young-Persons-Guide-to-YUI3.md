@@ -1,10 +1,8 @@
-ypg2yui3
-========
 
-# Young Person's Guide to YUI3
+# Young Person's Guide to YUI3 (draft 0)
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-06-24
+Updated: 2013-06-26
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
