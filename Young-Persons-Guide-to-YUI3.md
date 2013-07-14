@@ -384,7 +384,7 @@ Copy _seed-file.html_ to _clock-1.html_. Do the following things
 
 ##### Notes
 
-* In this tutorial I have opted for [in-line][5] code for convienence
+* In these tutorials I have opted for [in-line][5] code for convienence and simplicity
 * One approach to the solution is [clock-1.html](clock-1.html). Review it and compare with your own code.
 
 
@@ -413,7 +413,6 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
 ##### Notes
 
-* We are using in-line code for simplicity of instruction
 * One approach to the solution is [where-am-i.html](where-am-i.html)
 
 
@@ -477,7 +476,8 @@ Copy _seed-file.html_ to _what-happened.html_. Do the following things
 
 ##### Notes
 
-* It is important to remember that event listeners do have an overhead, if you don't need it anymore then remove the listener.
+* It is important to remember that event listeners do have an overhead
+	* if you don't need it anymore then remove the listener.
 * One approach to the solution is [what-happened.html](what-happened.html)
 
 
@@ -931,13 +931,13 @@ server or directly in the client web browser.
 
 ##### Notes
 
-* One implementation of our Digital Clock with Alarms pull is [clock-4.html](clock-4.html)
+* One implementation of our Clock with Alarms pull is [clock-4.html](clock-4.html)
 
 ## Persistence
 
 ### Saving things for latter with Y.StorageLite
 
-FIXME: Let's save our alarms in the browser using the Y.StorageLite module
+FIXME: Let's save our alarms in the browser using the Y.StorageLite module. We should also be able to recall and edit them
 
 ## Reminders
 
@@ -949,7 +949,7 @@ heuristic in deciding when to use _YUI3_ (or really any JavaScript at all)
 - If it is structure then use HTML
 - If it is visual look and feel or layout trying solving with CSS
 - If it is behavior use JavaScript if you can not achieve it in HTML and CSS
-- If you can do solve it simply in plain JavaScript then do so. 
+- If you can solve it simply in plain JavaScript then do so. 
 - If it is more complicated or can benefit from modularization consider _YUI3_
 
 
