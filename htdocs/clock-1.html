@@ -8,7 +8,7 @@
     <body>
         <header><h1>clock-1.md</h1></header>
         <section>
-        <h2>Exercise  Clock</h2>
+        <h2>Clock No. 1</h2>
 <ul>
 <li>Programming goal<ul>
 <li>build a simple clock in the webpage</li>
@@ -61,7 +61,7 @@ both as a review of what you discovered and as a comparison.</p>
         &lt;body&gt;
             &lt;header&gt;Clock&lt;/header&gt;
             &lt;section id=&quot;clock&quot; class=&quot;blue&quot;&gt;Main content goes here&lt;/section&gt;
-            &lt;footer&gt;The section above should display the date and time. It should change every five seconds.&lt;/footer&gt;
+            &lt;footer&gt;The section above should display the date and time. It should change every second.&lt;/footer&gt;
             &lt;!-- get YUI3 on the page, and a script block for your code --&gt;
             &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
             &lt;script&gt;
@@ -83,7 +83,7 @@ both as a review of what you discovered and as a comparison.</p>
                         clock.replaceClass(&quot;red&quot;, &quot;blue&quot;);
                     }
                     clock.set(&quot;text&quot;, new Date());
-                }, 5000);
+                }, 1000);
             });
             &lt;/script&gt;
         &lt;/body&gt;

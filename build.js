@@ -46,11 +46,6 @@ function buildAll() {
     if (exec("mweave clock-4.md -d htdocs -o clock-4.html -t templates/page.html").code !== 0) {
         echo("Problem building clock-4.md");
     }
-        
-    //htdocs/clock.html: clock.md
-    if (exec("mweave clock.md -d htdocs -o clock.html -t templates/page.html").code !== 0) {
-        echo("Problem building clock.md");
-    }   
 }
 
 if (process.argv.length > 2 && process.argv[3].toLowerCase() === "clean") {
