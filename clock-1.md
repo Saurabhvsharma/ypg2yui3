@@ -1,5 +1,5 @@
 
-## Exercise  Clock
+## Clock No. 1
 
 - Programming goal
     + build a simple clock in the webpage
@@ -55,7 +55,7 @@ both as a review of what you discovered and as a comparison.
         <body>
             <header>Clock</header>
             <section id="clock" class="blue">Main content goes here</section>
-            <footer>The section above should display the date and time. It should change every five seconds.</footer>
+            <footer>The section above should display the date and time. It should change every second.</footer>
             <!-- get YUI3 on the page, and a script block for your code -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
@@ -77,7 +77,7 @@ both as a review of what you discovered and as a comparison.
                         clock.replaceClass("red", "blue");
                     }
                     clock.set("text", new Date());
-                }, 5000);
+                }, 1000);
             });
             </script>
         </body>

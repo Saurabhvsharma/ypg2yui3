@@ -1,5 +1,5 @@
 
-## What Time is it?
+## Clock No. 2
 
 - Programming Goal
     + Create a simple _YUI_ module out of our clock

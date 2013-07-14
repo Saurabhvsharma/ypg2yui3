@@ -1,5 +1,5 @@
 
-## Exercise Where Am I?
+## Where Am I?
 
 - Programming goal
     + compare the page name _where-am-i.html_ with the _href_ in a _ul_ list of anchors elements

@@ -1,5 +1,5 @@
 
-#### What happened?
+## What happened?
 
 This is another example of showing making more sense than telling but let me quickly outline the
 steps you normally take to get started.
@@ -12,7 +12,7 @@ That is the basic approach. In this example let us create a simple webpage with 
 a status line in the footer.  When we pick up an event listened for then update the status line (e.g. mouse
 key pressed if a your clicks on the button). This is example let us listen for mouse clicks and the flick touch guesture.
 
-#### Steps
+### Steps
 
 Copy _seed-file.html_ to _what-happened.html_. Do the following things
 

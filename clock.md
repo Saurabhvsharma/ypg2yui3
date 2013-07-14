@@ -1,7 +1,8 @@
-## Exercise  Clock SPA
+
+## Clock No 5.
 
 - Programming goal
-    + build a simple single page webapp using _YUI3_ digital clock in the webpage
+    + build a simple single page webapp using _YUI3_ clock in the webpage
         - support both a analog and digital display (hint: leverage CSS)
         - support alarms save as a JSON file (e.g. a public Dropbox URL)
         - alarms should pop up an alert or notification if that is supported
@@ -10,8 +11,8 @@
 
 ### Steps
 
-Copy _seed-file.html_ to _clock.html_.  Copy _clock-2.js_ to
-_clock.js_ (i.e. this will be our final version of a YUI module called
+Copy _clock-4.html_ to _clock-5.html_.  Copy _clock-2.js_ to
+_clock-5.js_ (i.e. this will be our final version of a YUI module called
 digital clock). Do the following things--
 
 1. Add four handlebar templates as _script_ elements.
