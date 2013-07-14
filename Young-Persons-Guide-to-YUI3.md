@@ -40,8 +40,8 @@ _YUI3_. This can easily lead to confusion.  I recommend several alternatives
 - [Actions](#actions) -- Mouse clicks, keyboard commands and touch
 - [Modules](#modules) -- Beyond YUI's **node** and **event**
 - [Templates](#templates) -- Building out a page with **Y.Handlebars**
-- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Remote](#remote) -- Bring content into the page with **Y.io**
+- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
 - [Reminders](#reminders) -- Should you use YUI for that?
 
 
@@ -786,13 +786,6 @@ them in via an [xdr][] call.
 
 * One implementation is [clock-3.html](clock-3.html)
 
-
-## Persistence
-
-### Saving things for latter with Y.StorageLite
-
-FIXME: Let's save our alarms in the browser using the Y.StorageLite module
-
 ## Remote
 
 ### Bring content into the page with **Y.io** from **io-base**
@@ -940,6 +933,11 @@ server or directly in the client web browser.
 
 * One implementation of our Digital Clock with Alarms pull is [clock-4.html](clock-4.html)
 
+## Persistence
+
+### Saving things for latter with Y.StorageLite
+
+FIXME: Let's save our alarms in the browser using the Y.StorageLite module
 
 ## Reminders
 
@@ -953,3 +951,5 @@ heuristic in deciding when to use _YUI3_ (or really any JavaScript at all)
 - If it is behavior use JavaScript if you can not achieve it in HTML and CSS
 - If you can do solve it simply in plain JavaScript then do so. 
 - If it is more complicated or can benefit from modularization consider _YUI3_
+
+
