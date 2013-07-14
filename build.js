@@ -27,29 +27,29 @@ function buildAll() {
         echo("Problem building what-happened.md");
     }
     
-    // htdocs/digital-clock-1.html: digital-clock-1.md
-    if (exec("mweave digital-clock-1.md -d htdocs -o digital-clock-1.html -t templates/page.html").code !== 0) {
+    // htdocs/clock-1.html: clock-1.md
+    if (exec("mweave clock-1.md -d htdocs -o clock-1.html -t templates/page.html").code !== 0) {
         echo("Problem building digit-clock-1.md");
     }
     
-    //htdocs/digital-clock-2.html: digital-clock-2.md
-    if (exec("mweave digital-clock-2.md -d htdocs -o digital-clock-2.html -t templates/page.html").code !== 0) {
-        echo("Problem building digital-clock-2.md");
+    //htdocs/clock-2.html: clock-2.md
+    if (exec("mweave clock-2.md -d htdocs -o clock-2.html -t templates/page.html").code !== 0) {
+        echo("Problem building clock-2.md");
     }
     
-    //htdocs/digital-clock-3.html: digital-clock-3.md
-    if (exec("mweave digital-clock-3.md -d htdocs -o digital-clock-3.html -t templates/page.html").code !== 0) {
-        echo("Problem building digital-clock-3.md");
+    //htdocs/clock-3.html: clock-3.md
+    if (exec("mweave clock-3.md -d htdocs -o clock-3.html -t templates/page.html").code !== 0) {
+        echo("Problem building clock-3.md");
     }
     
-    //htdocs/digital-clock-4.html: digital-clock-4.md
-    if (exec("mweave digital-clock-4.md -d htdocs -o digital-clock-4.html -t templates/page.html").code !== 0) {
-        echo("Problem building digital-clock-4.md");
+    //htdocs/clock-4.html: clock-4.md
+    if (exec("mweave clock-4.md -d htdocs -o clock-4.html -t templates/page.html").code !== 0) {
+        echo("Problem building clock-4.md");
     }
         
-    //htdocs/digital-clock.html: digital-clock.md
-    if (exec("mweave digital-clock.md -d htdocs -o digital-clock.html -t templates/page.html").code !== 0) {
-        echo("Problem building digital-clock.md");
+    //htdocs/clock.html: clock.md
+    if (exec("mweave clock.md -d htdocs -o clock.html -t templates/page.html").code !== 0) {
+        echo("Problem building clock.md");
     }   
 }
 

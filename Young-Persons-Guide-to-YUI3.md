@@ -36,15 +36,12 @@ _YUI3_. This can easily lead to confusion.  I recommend several alternatives
 
 - [Preface](#preface) -- What you'll need before you begin
 - [Starting](#starting) -- The minimum to pull YUI3 into the webpage
-- [Selectors](#selectors) -- Getting Access to parts of a webpage
-- [DOM](#dom) -- interacting with innerHTML and attributes
-- [Exploration](#Exploration) -- 
-	- [Query](#query) -- access and update elements in the page
-	- [Action](#action) -- Mouse clicks, keyboard commands and touch
-	- [Modules](#modules) -- Moving beyond YUI's **node**
-	- [Templates](#templates) -- Building out a page with **Y.Handlebars**
-	- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
-	- [Remote](#remote) -- Bring content into the page with **Y.io**
+- [Selectors](#selectors) -- Accessing parts of a webpage
+- [Actions](#actions) -- Mouse clicks, keyboard commands and touch
+- [Modules](#modules) -- Beyond YUI's **node** and **event**
+- [Templates](#templates) -- Building out a page with **Y.Handlebars**
+- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
+- [Remote](#remote) -- Bring content into the page with **Y.io**
 - [Reminders](#reminders) -- Should you use YUI for that?
 
 
@@ -194,10 +191,9 @@ they are similar. If you used a _$_ in jQuery look for _Y_ dot something in
 YUI3, if you used a _$( ... )_ then look at using either a _Y.one()_ or
 _Y.all()_ depending on whether you need a single element or a list of elements.
 
-
 ## Selectors
 
-### Getting access to parts of a webpage
+### Accessing parts of a webpage
 
         CSS selectors work the way you expect but save those references to be efficient!
 
@@ -283,9 +279,7 @@ indicating the links found.
 [4]: http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
 
 
-## DOM
-
-### interacting with innerHTML and attributes
+### innerHTML and attributes
 
 JavaScript in the browser is useful for orchestrating behaviors. To do this
 we need to get the values inside HTML elements as well as their
@@ -358,9 +352,9 @@ Here is a seed file you can use to start your exercises from.
     </html>
 ```
 
-## Query
+### Exercises
 
-### Clock No. 1
+#### Clock No. 1
 
 - Programming goal
     + build a minimal clock webpage
@@ -373,9 +367,9 @@ Using _YUI3_ update content in the webpage every few seconds displaying the
 current time manipulate the CSS classes attach to the element showing the time.
 
 
-#### Steps
+##### Steps
 
-Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
+Copy _seed-file.html_ to _clock-1.html_. Do the following things
 
 - Add an _id_ attribute of "clock" to _section_.
 - Add a _style_ element in the _head_ of the document setting font size of section to "2em"
@@ -388,13 +382,13 @@ Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
 - Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
 
-#### Notes
+##### Notes
 
 * In this tutorial I have opted for [in-line][5] code for convienence
-* One approach to the solution is [digital-clock-1.html](digital-clock-1.html). Review it and compare with your own code.
+* One approach to the solution is [clock-1.html](clock-1.html). Review it and compare with your own code.
 
 
-### Navigation list
+#### Navigation list
 
 - Programming goal
     + compare the page name of _where-am-i.html_ with the _href_ in a _ul_ list of anchors elements
@@ -405,7 +399,7 @@ Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
     + Replace elements as well as its innerHTML
 
 
-#### Steps
+##### Steps
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
@@ -417,7 +411,7 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 - For each _li_ get the containing anchor, check if the _href_ points at _where-am-i.html_
     - update the _li_ if it matches
 
-#### Notes
+##### Notes
 
 * We are using in-line code for simplicity of instruction
 * One approach to the solution is [where-am-i.html](where-am-i.html)
@@ -426,7 +420,7 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 [5]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not necessarily a 'best practice' particularlly in more complicated websites and applications."
 
 
-## Action
+## Actions
 
 _YUI3_ provides a robust event system which includes listening for mouse, key
 and touch events. Unlike other JavaScript frameworks _YUI3_ approaches the
@@ -449,7 +443,9 @@ _jQuery_. You can choose to handle the event, alter the propogation and stop
 listening to it. The key is to get a handle to the object and then use the
 _on()_ method to setup a callback to use when the event happens.
 
-### What happened?
+### Exercises
+
+#### What happened?
 
 - Programming goal
     - Display a button and monitor for click and flick events
@@ -470,7 +466,7 @@ event listened for then update the status line (e.g. mouse key pressed if a
 your clicks on the button). This is example let's listen for clicks and flick
 guesture.
 
-#### Steps
+##### Steps
 
 Copy _seed-file.html_ to _what-happened.html_. Do the following things
 
@@ -479,7 +475,7 @@ Copy _seed-file.html_ to _what-happened.html_. Do the following things
 3. Select our button using _Y.one()_
 4. Add listeners via _on()_ method for click and flick
 
-#### Notes
+##### Notes
 
 * It is important to remember that event listeners do have an overhead, if you don't need it anymore then remove the listener.
 * One approach to the solution is [what-happened.html](what-happened.html)
@@ -608,7 +604,7 @@ Take away points
 
 Like DOM events working with modues is easier shown.
 
-#### A quick aside on YUI Gallery
+### A quick aside on YUI Gallery
 
 _YUI_ supports a whole [gallery][] of user contributed modules. Some specialized
 and some general purpose. The good thing is that you only load them if you
@@ -625,30 +621,32 @@ it for others.
 
 [gallery]: http://yuilibrary.com/gallery/ "Gallery modules are linked from yuilibrary, many are available on Yahoo's CDN, but the source is often on github.com"
 
-### What Time is it?
+### Exercises
+
+#### What Time is it?
 
 - Programming Goal
-    + Create a simple _YUI_ module out of our digital clock
+    + Create a simple _YUI_ module out of our clock
 - Learning Objectives
     + Increase understanding on how to load modules
     + Illustrate the a simple case of creating a module
     + Explore loading a module based on configuration
 
-Let us turn our "digital clock" into a module. The idea is to create 
+Let us turn our "clock" into a module. The idea is to create 
 an Object attached to your _Y_ called _DigitalClock_ you could then add
 that to a _DOM_ element.  It should also support an optional callback
 function to supported extending the module with a custom render function.
-This will allow your flexibility to extend the digital clock later
+This will allow your flexibility to extend the clock later
 (e.g. displaying as an analog clock using Canvas).
 
-#### Steps
+##### Steps
 
-Create a new file called _digital-clock-2.js_. We will put our module code there.
-Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
+Create a new file called _clock-2.js_. We will put our module code there.
+Copy _seed-file.html_ to _clock-2.html_. Do the following things
 
-1. In _digital-clock-2.html's _script_ in-line element add configuration to point to our module.
-2. In _digital-clock-2.html's _script_ in-line element update the _use()_ function to include our module.
-3. Open our empty _digital-clock-2.js_ file and 
+1. In _clock-2.html's _script_ in-line element add configuration to point to our module.
+2. In _clock-2.html's _script_ in-line element update the _use()_ function to include our module.
+3. Open our empty _clock-2.js_ file and 
     a. create our module
     b. create a namespace
     c. create a _render()_ method that returns HTML markup as a string of our clock's current time
@@ -657,18 +655,18 @@ Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
         - first paramter is a CSS selector of an element which will hold our clock
         - An optional second parameter should allow for a custom render method
         - If a render method is not provided use our default _render()_ we implemented.
-4. Go back to our _digital-clock-2.html_ file.
+4. Go back to our _clock-2.html_ file.
 5. Inside the _Y_ on our in-line _script_ element use _Y.DigitalClock.render()_ to run our clock.
 
-#### Notes
+##### Notes
 
 * We are using an external file for some of our JavaScript this time (i.e. our module)
-* One possible solition is [digital-clock-2.html](digital-clock-2.html) and [digital-clock-2.js](digital-clock-2.js) holding our module code.
+* One possible solition is [clock-2.html](clock-2.html) and [clock-2.js](clock-2.js) holding our module code.
 
 
 ## Templates
 
-### Building out a page with **Y.Handlebars**
+### Building a page with **Y.Handlebars**
 
 Templates are a convient solution to generating HTML from JavaScript functions.
 Templates in JavaScript can often be rendered server side as well as in the
@@ -773,6 +771,8 @@ them in via an [xdr][] call.
 
 [xdr]: http://docs.webplatform.org/wiki/apis/xhr "xdr - Cross Domain Request, also referred to as Ajax."
 
+### Exercises
+
 #### Clock with Template
 
 - Programming Goal
@@ -780,11 +780,11 @@ them in via an [xdr][] call.
 - Learning Objective
     + Become with familiar with the basics of _Handlebars_ as implemented in _YUI_
 
-#### Steps
+##### Steps
 
-#### Notes
+##### Notes
 
-* One implementation is [digital-clock-3.html](digital-clock-3.html)
+* One implementation is [clock-3.html](clock-3.html)
 
 
 ## Persistence
@@ -794,8 +794,6 @@ them in via an [xdr][] call.
 FIXME: Let's save our alarms in the browser using the Y.StorageLite module
 
 ## Remote
-
-FIXME: Some times you want data from someplace else...
 
 ### Bring content into the page with **Y.io** from **io-base**
 
@@ -913,7 +911,7 @@ Object specific docs extracted from the source code at
 for specific implementation details.
 
 
-##### An aside about IO
+### An aside about IO
 
 _IO_'s _Y.io_ is a very configurable and flexible object.  I have shown only one
 idiomatic use to keep things simple. If all you were doing in your page was
@@ -932,13 +930,15 @@ server or directly in the client web browser.
 [SPA]: http://en.wikipedia.org/wiki/Single_page_application "Single-Page Application"
 
 
-### Clock with alarms
+### Exercises
 
-#### Steps
+#### Clock with alarms
 
-#### Notes
+##### Steps
 
-* One implementation of our Digital Clock with Alarms pull is [digital-clock-4.html](digital-clock-4.html)
+##### Notes
+
+* One implementation of our Digital Clock with Alarms pull is [clock-4.html](clock-4.html)
 
 
 ## Reminders

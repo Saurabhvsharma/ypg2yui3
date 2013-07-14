@@ -1,8 +1,8 @@
 
-## Exercise Digital Clock
+## Exercise  Clock
 
 - Programming goal
-    + build a simple digital clock in the webpage
+    + build a simple clock in the webpage
 - Learning objective 
     + Explore the _node_ module of _YUI_
     + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
@@ -15,7 +15,7 @@ the CSS classes attach to the element showing the time.
 
 ### Steps
 
-Copy _seed-file.html_ to _digital-clock.html_. Do the following things
+Copy _seed-file.html_ to _clock.html_. Do the following things
 
 - Add an _id_ attribute of "clock" to _section_.
 - Add a _style_ element in the _head_ of the document setting font size of section to "2em"
@@ -30,15 +30,15 @@ Copy _seed-file.html_ to _digital-clock.html_. Do the following things
 
 ### Solution
 
-Here is one approach to the digital clock problem.  Ideally you have built yours first before reading this but this is provided
+Here is one approach to the clock problem.  Ideally you have built yours first before reading this but this is provided
 both as a review of what you discovered and as a comparison.
 
-[solution-digital-clock.html](solution-digital-clock.html)
+[solution-clock.html](solution-clock.html)
 ```JavaScript
     <!DOCTYPE html>
     <html>
         <head>
-            <title>Digital Clock</title>
+            <title>Clock</title>
             <style>
             font-size: 2em;
             .red {
@@ -53,7 +53,7 @@ both as a review of what you discovered and as a comparison.
             </style>
         </head>
         <body>
-            <header>Digital Clock</header>
+            <header>Clock</header>
             <section id="clock" class="blue">Main content goes here</section>
             <footer>The section above should display the date and time. It should change every five seconds.</footer>
             <!-- get YUI3 on the page, and a script block for your code -->
