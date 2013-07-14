@@ -2,17 +2,16 @@
 # Young Person's Guide to YUI3 (draft 0)
 
 by R. S. Doiel, <rsdoiel@gmail.com>
-Updated: 2013-06-26
+Updated: 2013-07-14
 
 
 This is a gentle introduction to [YUI3][]. It does make a few assumptions-
 
 * You have a basic knowledge of JavaScript, HTML, CSS
 * A basic idea of how the web works
-* For those who might be familiar with jQuery I'll point out the similarities
-to speed you along.
+* You have an active connection to the internet
 
-For a much more complete look at _YUI3_ I recommend [Evan Goer](http://www.goer.org/)'s
+For a deeper dive into _YUI3_ I recommend [Evan Goer](http://www.goer.org/)'s
 [YUI3 Cookbook](http://shop.oreilly.com/product/0636920013303.do). It has been
 the goto text for bootstrapping my understanding of _YUI3_. It is also a handy
 set of recipes for _YUI3_'s practical application.  Additionally the
@@ -20,14 +19,14 @@ set of recipes for _YUI3_'s practical application.  Additionally the
 you can read the source for _YUI3_ at [Github](https://github.com/yui/yui3)
 under _yui/yui3_.
 
-A note about using Google Search for learning _YUI3_. Right now, June 2013, the
+A note about using Google Search for learning _YUI3_. Right now, July 2013, the
 Google's search algorhythm still ranks legacy _YUI2_ documentation higher than
 _YUI3_. This can easily lead to confusion.  I recommend several alternatives
 
-1. [DuckDuckGo](http://duckduckgo.com), use yui3 as one of your search terms
-2. [Stackexchange](http://stackoverflow.com/questions/tagged/yui3)
-3. IRC community on irc.freeenode.net under #yui.
-4. [Google Groups](https://groups.google.com/forum/#!forum/yui-contrib)
+1. [Google Groups](https://groups.google.com/forum/#!forum/yui-contrib)
+2. IRC community on irc.freeenode.net under #yui.
+3. [Stackexchange](http://stackoverflow.com/questions/tagged/yui3)
+4. [DuckDuckGo](http://duckduckgo.com), use yui3 as one of your search terms
 
 
 [YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
@@ -39,11 +38,13 @@ _YUI3_. This can easily lead to confusion.  I recommend several alternatives
 - [Starting](#starting) -- The minimum to pull YUI3 into the webpage
 - [Selectors](#selectors) -- Getting Access to parts of a webpage
 - [DOM](#dom) -- interacting with innerHTML and attributes
-- [Action](#action) -- Mouse clicks, keyboard commands and touch
-- [Modules](#modules) -- Moving beyond YUI's **node**
-- [Templates](#templates) -- Building out a page with **Y.Handlebars**
-- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
-- [Remote](#remote) -- Bring content into the page with **Y.io**
+- [Exploration](#Exploration) -- 
+	- [Query](#query) -- access and update elements in the page
+	- [Action](#action) -- Mouse clicks, keyboard commands and touch
+	- [Modules](#modules) -- Moving beyond YUI's **node**
+	- [Templates](#templates) -- Building out a page with **Y.Handlebars**
+	- [Persistence](#persistence) -- Saving things for latter with **Y.StorageLite**
+	- [Remote](#remote) -- Bring content into the page with **Y.io**
 - [Reminders](#reminders) -- Should you use YUI for that?
 
 
@@ -51,7 +52,7 @@ _YUI3_. This can easily lead to confusion.  I recommend several alternatives
 
 ### What you'll need before you begin
 
-The typical web developer setup is a computer, a web browser, a text editor and a web server.
+The typical web developer setup is a computer, a web browser, a _text_ editor and a web server.
 Specific examples include--
 
 * Computers:
@@ -62,7 +63,6 @@ Specific examples include--
     * Adobe Brackets, Chrome's Text-App, Coda, Text Mate, Sublime Editor, vi, nano, emacs
 * Web Servers:
     * httpster (a [Node][] based http server nice for development use), NGinX, Cherokee and the venerable Apache and IIS
-
 
 ### A word about text editors
 
@@ -96,9 +96,8 @@ move beyond the browser--
 
 I have found the little _Node_ webserver called [httpster](https://github.com/SimbCo/httpster)
 to be very help for front-end development. It makes serving content from your current working folder
-as easily as typing _httpster_.
-
-Finally I make the assumption you have an active connection to the internet.
+as easily as typing _httpster_. It is what I used in conjunction with a web browser to test
+the content of this article.
 
 
 ### Some useful links
@@ -141,7 +140,7 @@ Now include _YUI3_ from Yahoo's CDN with the following script element.
 
 [getting-started.html](getting-started.html)
 ```HTML
-   			<script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+   			<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
 ```
 
 Now we want to change the contents of the _title_ and _h1_ element to show that
@@ -188,7 +187,7 @@ similar pattern.
 
 The line with document ready includes a wrapping function providing a namespace
 for your code. _YUI_ also does this though technically my example loads a module
-called _node_ to provide the features similar to _jQuery_'s _$_ object. In
+called _node_ to provide the features similar to _jQuery_'s _$_ function. In
 _YUI_ those functions are used from the parameter passed in named _Y_.  Part of
 making the transition from _jQuery_ to _YUI3_ is understanding where and how
 they are similar. If you used a _$_ in jQuery look for _Y_ dot something in
@@ -227,10 +226,10 @@ element showing the assignment and use of the saved elements.
 _YUI3_ provides two function that take a selector.  The first is _Y.one()_. It
 will give you the first element in the [DOM][4] matching that selector. In our
 example above that was _title_ and _h1_.  If you had more than one _h1_ it
-would only give the first _h1_ it found. Usually this is what you want. 
+would only give the first _h1_ found. Usually this is what you want. 
 Sometimes you want all the elements that match a selector (e.g. all the anchor
 elements in a page).  To get that you use _Y.all()_.  That returns a list of
-elements. It is easiest to explain by showing.  Let us create a short element
+elements. It is easiest to explain by showing.  Let us create a short document
 with a list of links to YUI3 resources. Next we'll update part of the page to
 indicate the links we found.
 
@@ -242,11 +241,13 @@ indicate the links we found.
             <title>Y.all() Example</title>
         </head>
         <body>
+	    <!-- This is our ordered list of anchored tags -->
             <ol>
                 <li><a href="http://yuilibrary.com">YUI Library</a></li>
                 <li><a href="http://github.com/yui/yui3">YUI3 on Github.com</a></li>
                 <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
             </ol>
+            <!-- This div is where we will display what we find -->
             <div id="results"></div>
             <!-- load YUI3 on the page as normal -->
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
@@ -274,6 +275,10 @@ indicate the links we found.
     </html>
 ```
 
+That's it. Take a look at this results with your browser.  You should see, very quickly I might add, a sentence
+indicating the links found.
+
+
 [3]: http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
 [4]: http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
 
@@ -283,7 +288,7 @@ indicate the links we found.
 ### interacting with innerHTML and attributes
 
 JavaScript in the browser is useful for orchestrating behaviors. To do this
-we need to beable to get the values inside HTML elements as well as their
+we need to get the values inside HTML elements as well as their
 attributes. This is easy with _YUI3_. The [node] module provides us with a
 rich set of methods for interacting with the _DOM_ but you only need a few to
 get useful work done. This is done in two steps
@@ -311,7 +316,7 @@ get useful work done. This is done in two steps
 
 _YUI3_'s _node_ module wraps the _DOM_ in a rich set of useful functions. It
 allows us to use the same methods even on very old browsers (e.g. I.E. 6,
-Android 2.x browser). There are a whole list of additional methods you may find
+Android 2.x browsers). There are a whole list of additional methods you may find
 convienent. A good place to begin your exploration is at
 [yuilibrary.com/yui/docs/node](http://yuilibrary.com/yui/docs/node). There are
 methods that make quick work of interacting with CSS classes and styles as well
@@ -323,8 +328,8 @@ isn't a CSS alternative.
 Now that you've seen a little of _YUI_ we're going to put what we've shown to
 use and expand on it through a series of exercises. In each exercise you'll be
 asked to use both what you know and also to lookup and find something on
-[yuilibrary.com](http://yuilibrary.com) that will help you expand beyond the
-specifics discussed previously.
+[yuilibrary.com](http://yuilibrary.com) website that will help you expand
+beyond the specifics discussed previously.
 
 Here is a seed file you can use to start your exercises from.
 
@@ -343,6 +348,9 @@ Here is a seed file you can use to start your exercises from.
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", function (Y) {
+                // In the YUI community this location is often
+                // referred to as the "Y function"
+
                 // Your code goes here
             });
             </script>
@@ -350,23 +358,22 @@ Here is a seed file you can use to start your exercises from.
     </html>
 ```
 
+## Query
 
-### Exercises
-
-#### Digital Clock
+### Clock No. 1
 
 - Programming goal
-    + build a simple digital clock webpage
-- Learning objective 
+    + build a minimal clock webpage
+- Learning objectives
     + Explore the _node_ module of _YUI3_
     + Use additional methods besides _Y.get()_, _Y.set()_ and _Y.setHTML()_.
 
 
-Using _YUI3_ update content in the webpage every five seconds displaying the
+Using _YUI3_ update content in the webpage every few seconds displaying the
 current time manipulate the CSS classes attach to the element showing the time.
 
 
-##### Steps
+#### Steps
 
 Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
 
@@ -381,13 +388,13 @@ Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
 - Load the webpage and watch to see if the section innerHTML changes every five seconds and also if the colors change too.
 
 
-##### Notes
+#### Notes
 
 * In this tutorial I have opted for [in-line][5] code for convienence
 * One approach to the solution is [digital-clock-1.html](digital-clock-1.html). Review it and compare with your own code.
 
 
-#### Where Am I?
+### Navigation list
 
 - Programming goal
     + compare the page name of _where-am-i.html_ with the _href_ in a _ul_ list of anchors elements
@@ -398,7 +405,7 @@ Copy _seed-file.html_ to _digital-clock-1.html_. Do the following things
     + Replace elements as well as its innerHTML
 
 
-##### Steps
+#### Steps
 
 Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 
@@ -410,13 +417,13 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 - For each _li_ get the containing anchor, check if the _href_ points at _where-am-i.html_
     - update the _li_ if it matches
 
-##### Notes
+#### Notes
 
 * We are using in-line code for simplicity of instruction
 * One approach to the solution is [where-am-i.html](where-am-i.html)
 
 
-[5]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not a 'best practice' particularlly in more complicated websites and applications."
+[5]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not necessarily a 'best practice' particularlly in more complicated websites and applications."
 
 
 ## Action
@@ -442,9 +449,7 @@ _jQuery_. You can choose to handle the event, alter the propogation and stop
 listening to it. The key is to get a handle to the object and then use the
 _on()_ method to setup a callback to use when the event happens.
 
-### Exercise
-
-#### What happened?
+### What happened?
 
 - Programming goal
     - Display a button and monitor for click and flick events
@@ -465,7 +470,7 @@ event listened for then update the status line (e.g. mouse key pressed if a
 your clicks on the button). This is example let's listen for clicks and flick
 guesture.
 
-##### Steps
+#### Steps
 
 Copy _seed-file.html_ to _what-happened.html_. Do the following things
 
@@ -480,10 +485,9 @@ Copy _seed-file.html_ to _what-happened.html_. Do the following things
 * One approach to the solution is [what-happened.html](what-happened.html)
 
 
-
 ## Modules
 
-### Moving beyond **node** and **event**
+### Beyond **node** and **event**
 
 The concept of modules is important in _YUI_. I would go so far as to say it
 defines the nature of _YUI_.  _YUI_ strength and longevity has been its
@@ -621,9 +625,7 @@ it for others.
 
 [gallery]: http://yuilibrary.com/gallery/ "Gallery modules are linked from yuilibrary, many are available on Yahoo's CDN, but the source is often on github.com"
 
-### Excercise
-
-#### What Time is it?
+### What Time is it?
 
 - Programming Goal
     + Create a simple _YUI_ module out of our digital clock
@@ -639,7 +641,7 @@ function to supported extending the module with a custom render function.
 This will allow your flexibility to extend the digital clock later
 (e.g. displaying as an analog clock using Canvas).
 
-##### Steps
+#### Steps
 
 Create a new file called _digital-clock-2.js_. We will put our module code there.
 Copy _seed-file.html_ to _digital-clock-2.html_. Do the following things
@@ -771,18 +773,16 @@ them in via an [xdr][] call.
 
 [xdr]: http://docs.webplatform.org/wiki/apis/xhr "xdr - Cross Domain Request, also referred to as Ajax."
 
-### Exercise
-
-#### Digital Clock with Template
+#### Clock with Template
 
 - Programming Goal
-    + Re-factor our Digital Clock _YUI_ module to use templates rather than a custom render method.
+    + Re-factor our Clock _YUI_ module to use templates rather than a custom render method.
 - Learning Objective
     + Become with familiar with the basics of _Handlebars_ as implemented in _YUI_
 
-##### Steps
+#### Steps
 
-##### Notes
+#### Notes
 
 * One implementation is [digital-clock-3.html](digital-clock-3.html)
 
@@ -791,10 +791,11 @@ them in via an [xdr][] call.
 
 ### Saving things for latter with Y.StorageLite
 
+FIXME: Let's save our alarms in the browser using the Y.StorageLite module
 
 ## Remote
 
-    Some times you want data from someplace else, say Dave Winer's blog Scripting News...
+FIXME: Some times you want data from someplace else...
 
 ### Bring content into the page with **Y.io** from **io-base**
 
@@ -931,13 +932,11 @@ server or directly in the client web browser.
 [SPA]: http://en.wikipedia.org/wiki/Single_page_application "Single-Page Application"
 
 
-### Exercise
+### Clock with alarms
 
-#### Digital Clock with alarms
+#### Steps
 
-##### Steps
-
-##### Notes
+#### Notes
 
 * One implementation of our Digital Clock with Alarms pull is [digital-clock-4.html](digital-clock-4.html)
 
