@@ -1,9 +1,11 @@
 /**
  * build.js - Build the web version and ePub of the longform article "Young Person's Guide to YUI3"
  */
-
+/*jslint node: true */
+/*global rm, mkdir, cp, exec, echo */
+//FIXME: Need to convert this to Gruntfile.js
+"use strict";
 require("shelljs/global");
-
 function clean() {
     rm("-fR", "htdocs/*");
 }
@@ -14,7 +16,7 @@ function buildAll() {
     cp("-f", "templates/css/*", "htdocs/css/");
     
     if (exec("mweave Young-Persons-Guide-to-YUI3.md -t templates/page.html -d htdocs -o index.html").code !== 0) {
-      echo("Problem building htdocs/index.html");
+        echo("Problem building htdocs/index.html");
     }
     
     // htdocs/where-am-i.html: where-am-i.md
