@@ -14,7 +14,7 @@ Copy <em>clock-3.html</em> to _clock-4.html. Do the following things.</p>
 <h3>Steps</h3>
 <ol>
 <li>In <em>clock-4.html</em> add two <em>script</em> blocks for our templates
- a. One should have an <em>id</em> attribute containing <em>view</em> and the other <em>alarm-view</em>.
+ a. One should have an <em>id</em> attribute containing <em>clock-view</em> and the other <em>alarm-view</em>.
  b. Both <em>script</em> blocks should have a <em>type</em> attribute with <em>text/x-handlebars-template</em>.</li>
 <li>In <em>clock-4.html</em>&#39;s <em>script</em> in-line element add configuration to point our our module (i.e. clock-4.js).</li>
 <li>In <em>clock-4.html</em>&#39;s <em>script</em> in-line element update the <em>use()</em> function to include our module.</li>
@@ -38,24 +38,24 @@ Each alarm has a label we can display at the appropriate time.</p>
         {&quot;day&quot;: &quot;Wednesday&quot;, &quot;time&quot;: &quot;6:00 am&quot;, &quot;label&quot;: &quot;Wake up!&quot;},
         {&quot;day&quot;: &quot;Thursday&quot;, &quot;time&quot;: &quot;6:00 am&quot;, &quot;label&quot;: &quot;Wake up!&quot;},
         {&quot;day&quot;: &quot;Friday&quot;, &quot;time&quot;: &quot;6:00 am&quot;, &quot;label&quot;: &quot;Wake up!&quot;},
-        {&quot;day&quot;: &quot;Saturday&quot;, &quot;time&quot;: &quot;8:30 am&quot;, &quot;label&quot;: &quot;Saturday, I can sleep in!&quot;},
-        {&quot;day&quot;: &quot;Sunday&quot;, &quot;time&quot;: &quot;8:30 am&quot;, &quot;label&quot;: &quot;Sunday, I can sleep in!&quot;}
+        {&quot;day&quot;: &quot;Saturday&quot;, &quot;time&quot;: &quot;8:30 am&quot;, &quot;label&quot;: &quot;Saturday, I can sleep in.&quot;},
+        {&quot;day&quot;: &quot;Sunday&quot;, &quot;time&quot;: &quot;8:30 am&quot;, &quot;label&quot;: &quot;Sunday, I can sleep in.&quot;}
     ]</code></pre>
 <p>Here is the markup for our main HTML page. Note the use of a configuration in <em>YUI()</em>.</p>
 <p><a href="solution-clock-4.html">solution-clock-4.html</a></p>
 <pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
-            &lt;title&gt; Clock 4&lt;/title&gt;
+            &lt;title&gt;Clock 4&lt;/title&gt;
             &lt;style&gt;&lt;/style&gt;
         &lt;/head&gt;
         &lt;body&gt;
-            &lt;header&gt; Clock 4&lt;/header&gt;
+            &lt;header&gt;Clock 4&lt;/header&gt;
             &lt;section id=&quot;clock&quot;&gt;Clock display goes here&lt;/section&gt;
             &lt;section id=&quot;alarm&quot;&gt;Alarm list goes here&lt;/section&gt;
             &lt;footer&gt;The section above should display the date and time. It should change every second.&lt;/footer&gt;
             &lt;!-- Here are our handlebars templates --&gt;
-            &lt;script id=&quot;view&quot; type=&quot;application/x-handlebars-template&quot;&gt;
+            &lt;script id=&quot;clock-view&quot; type=&quot;application/x-handlebars-template&quot;&gt;
                 {{time}}
             &lt;/script&gt;
             &lt;script id=&quot;alarm-view&quot; type=&quot;application/x-handlebars-template&quot;&gt;
@@ -111,7 +111,7 @@ Each alarm has a label we can display at the appropriate time.</p>
                         clock: clock,
                         selectors: {clock: &quot;#clock&quot;, alarm: &quot;#alarm&quot;},
                         interval: 1000,
-                        template_selectors: {clock: &quot;#view&quot;, alarm: &quot;alarm-view&quot;}
+                        template_selectors: {clock: &quot;#clock-view&quot;, alarm: &quot;#alarm-view&quot;}
                     }
                 });
             });
@@ -130,9 +130,24 @@ a configuration object including the required list of modules we need to run.</p
         // This is a private function so doesn&#39;t need to be added to
         // the Y.Clock instance.
         function checkForAlarm(alarms, previous_time, current_time) {
-            alarms.forEach(function (alarm, i) {
-                //FIXME: taverse our alarms list and see if any need to trigger notification.
-                // Using i calc the CSS id in the UL list to add class of &quot;active&quot;
+            alarms.forEach(function (alarm, i) { 
+                var weekDays = [
+                        &quot;Sunday&quot;,
+                        &quot;Monday&quot;,
+                        &quot;Tuesday&quot;,
+                        &quot;Wednesday&quot;,
+                        &quot;Thursday&quot;,
+                        &quot;Friday&quot;,
+                        &quot;Saturday&quot;
+                    ],
+            today = new Date(),
+            dayOfWeek = weekDays[today.getDay()];
+
+                if (alarm.day === dayOfWeek) {
+                   //FIXME: handle case of where we set alarm if the hour hans&#39;t passed.
+                } else {
+                   //FIXME handle case where we&#39;re not setting this alarm
+                }
             });
         }
 

@@ -1,17 +1,10 @@
 {
   "name": "ypg2yui3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Young Person's Guide to YUI3",
   "scripts": {
-      "build": "node build.js",
-      "start": "httpstere -d htdocs"
-  },
-  "devDependencies": {
-      "yui": "3.10.x",
-      "marked": "0.2.x",
-      "express": "3.x",
-      "shelljs": "0.1.x",
-      "mweave": "0.x"
+    "build": "node build.js",
+    "start": "httpster -d htdocs"
   },
   "repository": {
     "type": "git",
@@ -24,5 +17,13 @@
   "author": "R. S. Doiel, <rsdoiel@gmail.com>",
   "license": "BSD",
   "readmeFilename": "README.md",
-  "gitHead": "925f18ac3c050e7519066b7f10756d0a3a171179"
+  "gitHead": "925f18ac3c050e7519066b7f10756d0a3a171179",
+  "devDependencies": {
+    "shelljs": "~0.1.4",
+    "mweave": "0.0.2",
+    "grunt-jslint": "~1.0.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-exec": "~0.4.2"
+  }
 }

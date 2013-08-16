@@ -7,7 +7,7 @@ Copy _clock-3.html_ to _clock-4.html. Do the following things.
 ### Steps
 
 1. In _clock-4.html_ add two _script_ blocks for our templates
-    a. One should have an _id_ attribute containing _view_ and the other _alarm-view_.
+    a. One should have an _id_ attribute containing _clock-view_ and the other _alarm-view_.
     b. Both _script_ blocks should have a _type_ attribute with _text/x-handlebars-template_.
 2. In _clock-4.html_'s _script_ in-line element add configuration to point our our module (i.e. clock-4.js).
 3. In _clock-4.html_'s _script_ in-line element update the _use()_ function to include our module.
@@ -36,8 +36,8 @@ Each alarm has a label we can display at the appropriate time.
         {"day": "Wednesday", "time": "6:00 am", "label": "Wake up!"},
         {"day": "Thursday", "time": "6:00 am", "label": "Wake up!"},
         {"day": "Friday", "time": "6:00 am", "label": "Wake up!"},
-        {"day": "Saturday", "time": "8:30 am", "label": "Saturday, I can sleep in!"},
-        {"day": "Sunday", "time": "8:30 am", "label": "Sunday, I can sleep in!"}
+        {"day": "Saturday", "time": "8:30 am", "label": "Saturday, I can sleep in."},
+        {"day": "Sunday", "time": "8:30 am", "label": "Sunday, I can sleep in."}
     ]
 ```
 
@@ -48,16 +48,16 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
     <!DOCTYPE html>
     <html>
         <head>
-            <title> Clock 4</title>
+            <title>Clock 4</title>
             <style></style>
         </head>
         <body>
-            <header> Clock 4</header>
+            <header>Clock 4</header>
             <section id="clock">Clock display goes here</section>
             <section id="alarm">Alarm list goes here</section>
             <footer>The section above should display the date and time. It should change every second.</footer>
             <!-- Here are our handlebars templates -->
-            <script id="view" type="application/x-handlebars-template">
+            <script id="clock-view" type="application/x-handlebars-template">
                 {{time}}
             </script>
             <script id="alarm-view" type="application/x-handlebars-template">
@@ -113,7 +113,7 @@ Here is the markup for our main HTML page. Note the use of a configuration in _Y
                         clock: clock,
                         selectors: {clock: "#clock", alarm: "#alarm"},
                         interval: 1000,
-                        template_selectors: {clock: "#view", alarm: "alarm-view"}
+                        template_selectors: {clock: "#clock-view", alarm: "#alarm-view"}
                     }
                 });
             });
@@ -136,9 +136,24 @@ a configuration object including the required list of modules we need to run.
         // This is a private function so doesn't need to be added to
         // the Y.Clock instance.
         function checkForAlarm(alarms, previous_time, current_time) {
-            alarms.forEach(function (alarm, i) {
-                //FIXME: taverse our alarms list and see if any need to trigger notification.
-                // Using i calc the CSS id in the UL list to add class of "active"
+            alarms.forEach(function (alarm, i) { 
+                var weekDays = [
+                        "Sunday",
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                    ],
+		    today = new Date(),
+		    dayOfWeek = weekDays[today.getDay()];
+
+                if (alarm.day === dayOfWeek) {
+                   //FIXME: handle case of where we set alarm if the hour hans't passed.
+                } else {
+                   //FIXME handle case where we're not setting this alarm
+                }
             });
         }
         

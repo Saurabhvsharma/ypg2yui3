@@ -6,9 +6,24 @@ YUI.add("clock", function (Y) {
     // This is a private function so doesn't need to be added to
     // the Y.Clock instance.
     function checkForAlarm(alarms, previous_time, current_time) {
-        alarms.forEach(function (alarm, i) {
-            //FIXME: taverse our alarms list and see if any need to trigger notification.
-            // Using i calc the CSS id in the UL list to add class of "active"
+        alarms.forEach(function (alarm, i) { 
+            var weekDays = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+		    today = new Date(),
+		    dayOfWeek = weekDays[today.getDay()];
+
+            if (alarm.day === dayOfWeek) {
+               //FIXME: handle case of where we set alarm if the hour hans't passed.
+            } else {
+               //FIXME handle case where we're not setting this alarm
+            }
         });
     }
     
