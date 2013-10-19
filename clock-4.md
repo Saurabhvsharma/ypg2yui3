@@ -130,6 +130,7 @@ a configuration object including the required list of modules we need to run.
 ```JavaScript
     // Define out module using _YUI.add()_
     YUI.add("clock", function (Y) {
+        "use strict";
         // Create our namespace
         Y.namespace("Clock");
 

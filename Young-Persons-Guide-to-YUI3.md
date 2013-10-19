@@ -293,6 +293,7 @@ get useful work done. This is done in two steps
 
 ```JavaScript
     YUI().use("node", function (Y) {
+        "use strict";
         // Step 1, get a handle to the node you want to work with in this case an anchor element
         var anchor = Y.one("a"),
             // Now get the value of the href attribute.
@@ -511,9 +512,9 @@ via _add()_.
     // Here we define a module called Hello World
     YUI.add("hello-world", function (Y) {
         Y.namespace("hello-world");
-        Y.helloWorld = "Hello World!"; 
+        Y.helloWorld = "Hello World!";
     });
-    
+
     // Here we use a module called Hello World
     YUI().use("hello-world", function (Y) {
         // We can display Hello World message in the p element
@@ -527,8 +528,9 @@ We can also put our module in a separate file (e.g. _hello-world.js_).
 ```JavaScript
     // Here we define a module called Hello World
     YUI.add("hello-world", function (Y) {
+        "use strict";
         Y.namespace("hello-world");
-        Y.helloWorld = "Hello World!"; 
+        Y.helloWorld = "Hello World!";
     });
 ```
 

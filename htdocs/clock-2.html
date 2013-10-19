@@ -79,13 +79,16 @@ clock prototype) and
 a configuration options object including the required list of modules
 we need to run.</p>
 <p><a href="clock-2.js">clock-2.js</a></p>
-<pre><code class="language-JavaScript">    // Define out module using _YUI.add()_
+<pre><code class="language-JavaScript">    /*jslint browser: true, indent: 4 */
+    /*global YUI */
+    // Define out module using _YUI.add()_
     YUI.add(&quot;clock&quot;, function (Y) {
+        &quot;use strict&quot;;
         // Create our namespace
         Y.namespace(&quot;Clock&quot;);
 
         // Setup a constructor with reasonable defaults
-        function Clock () {};
+        var Clock = function () {};
         Clock.prototype.interval = 1000;
         Clock.prototype.int_id = null;
         Clock.prototype.selector = null;
@@ -96,11 +99,11 @@ we need to run.</p>
             var self = this;
 
             this.element = Y.one(selector);
-            if (typeof renderCallback !== &quot;undefined&quot;) {
-                this.render = render;
+            if (renderCallback !== undefined) {
+                this.render = renderCallback;
             }
             this.int_id = setInterval(function () {
-                self.render(new Date());                
+                self.render(new Date());
             }, interval);
             return this.int_id;
         };
@@ -112,11 +115,10 @@ we need to run.</p>
 
         // Add our new Object as Clock
         Y.Clock = Clock;
-    },
-    // Semantic Version number
-    &quot;0.0.2&quot;,
-    // Configuration with list of modules we &#39;require&#39; 
-    {requires: [&quot;node&quot;]});</code></pre>
+    }, /* Semantic Version number */
+        &quot;0.0.2&quot;,
+        // Configuration with list of modules we &#39;require&#39;
+        {requires: [&quot;node-base&quot;]});</code></pre>
 
         </section>
         

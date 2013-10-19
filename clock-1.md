@@ -34,7 +34,7 @@ Here is one approach to the clock problem.  Ideally you have built yours first b
 both as a review of what you discovered and as a comparison.
 
 [solution-clock.html](solution-clock.html)
-```JavaScript
+```HTML
     <!DOCTYPE html>
     <html>
         <head>
@@ -60,6 +60,7 @@ both as a review of what you discovered and as a comparison.
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", function (Y) {
+                "use strict";
                 // Your code goes here
                 var clock = Y.one("#clock");
 

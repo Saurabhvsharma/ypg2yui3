@@ -41,7 +41,7 @@ the CSS classes attach to the element showing the time.</p>
 <p>Here is one approach to the clock problem.  Ideally you have built yours first before reading this but this is provided
 both as a review of what you discovered and as a comparison.</p>
 <p><a href="solution-clock.html">solution-clock.html</a></p>
-<pre><code class="language-JavaScript">    &lt;!DOCTYPE html&gt;
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
     &lt;html&gt;
         &lt;head&gt;
             &lt;title&gt;Clock&lt;/title&gt;
@@ -66,6 +66,7 @@ both as a review of what you discovered and as a comparison.</p>
             &lt;script src=&quot;http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
             &lt;script&gt;
             YUI().use(&quot;node&quot;, function (Y) {
+                &quot;use strict&quot;;
                 // Your code goes here
                 var clock = Y.one(&quot;#clock&quot;);
 

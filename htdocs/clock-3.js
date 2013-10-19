@@ -1,5 +1,6 @@
 // Define out module using _YUI.add()_
 YUI.add("clock", function (Y) {
+    "use strict";
     // Create our namespace
     Y.namespace("Clock");
 
