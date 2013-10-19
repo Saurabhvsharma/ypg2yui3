@@ -52,31 +52,29 @@ a _text_ editor and a web server.  Specific examples include--
 + Computers:
     - Mac, PC, Chromebook or Raspberry Pi
 + Web Browsers:
-    - Firefox, Chrome, Safari, IE, or Opera 
+    - Firefox, Midori, Chrome, IE, Safari, or Opera 
 + Text Editors:
-    - Adobe Brackets, vi, nano, or emacs
+    - Adobe Brackets, nano, vi, or emacs
 + Web Servers:
     - httpster, Nginx or Apache
 
 ### A word about text editors
 
 Most developers have opinions about text editors. Sometimes very 
-strong opinions. I don't.  They are just a computer program and I tend 
+strong opinions. I don't. Text editors are computer program. I tend 
 to use the ones available to me. That isn't to say there aren't some 
-helpful things to look for.  One feature I really like is syntax 
+helpful things to look for. One feature I really like is syntax 
 highlighting.  It makes it much easier to read code quickly. Another is 
-an integrated linting tool (e.g. [jslint](http://jslint.com) or
-[jshint](http://jshint.com)). I find both of these features to
-be helpful in spotting the sillier things I type.
+an integrated linting tool (e.g. [jslint](http://jslint.com)). I find 
+both of these features to be helpful in spotting the sillier things 
+I type.
 
-If you don't have an editor you like may I suggest [Adobe Brackets][1]
-or [Chrome's Text-app][2]. They are both built from the same building
-blocks we use on the web -- HTML, CSS, JavaScript. That makes it easy to 
-extend and improve to meet your own needs. They also come out of the box
-with syntax highlighting.
+If you don't have an editor you like may I suggest [Adobe Brackets][1].
+They are both built from the same building blocks we use on the web -- 
+HTML, CSS, JavaScript. That makes it easy to extend and improve to meet 
+your own needs. They also come out of the box with syntax highlighting.
 
 [1]: http://brackets.io "Adobe Brackets is a text editor written in JavaScript, CSS and HTML. It is free and open source."
-[2]: https://github.com/GoogleChrome/text-app "A text editor without jslint also built from JavaScript, CSS and HTML.  Runs as a Chrome web app."
 [node]: http://nodejs.org "A JavaScript environment for building network, file system and other services"
 
 
@@ -100,13 +98,14 @@ with a web browser to test the content of this article.
 
 ### Some useful links
 
-* [YUI Library](http://yuilibrary.com), the main YUI site
-* [YUI User Guides](http://yuilibrary.com/yui/docs/guides/)
-* [YUI at Github](http://github.com/yui/yui3), source code for YUI3
-* [Firefox](http://www.mozilla.org)
-* [Adobe Brackets](http://brackets.io)
-* [NodeJS](http://nodejs.org)
-* [httpster](https://github.com/SimbCo/httpster), follow the instructions in the "README.md" to install
++ [YUI Library](http://yuilibrary.com), the main YUI site
++ [YUI User Guides](http://yuilibrary.com/yui/docs/guides/)
++ [YUI at Github](http://github.com/yui/yui3), source code for YUI3
++ [Firefox](http://www.mozilla.org)
++ [Adobe Brackets](http://brackets.io)
++ [NodeJS](http://nodejs.org)
++ [httpster](https://github.com/SimbCo/httpster)
+    + follow the instructions in the "README.md" to install
 
 
 ## Starting
@@ -138,7 +137,7 @@ Now include _YUI3_ from Yahoo's CDN with the following script element.
 
 [getting-started.html](getting-started.html)
 ```HTML
-   			<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
+   			<script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
 ```
 
 Now we want to change the contents of the _title_ and _h1_ element to show that
@@ -167,63 +166,53 @@ the page and take a look.
 
 You should now see your first _YUI3_ enabled web page.
 
-
-### A quick comparison with jQuery
-
-If you have used [jQuery](http://jquery.com) before I think you'll notice 
-a similar pattern.
-
-```HTML
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function () {
-        $("title").html("Hello World");
-        $("h1").html("Hello World");
-    });
-    </script>
-```
-
-The line with document ready includes a wrapping function providing a 
-scoped space for your code. _YUI_ also does this though technically my 
-example loads a module called _node_ to provide the features similar to 
-_jQuery_'s _$_ function. In _YUI_ those functions are used from the 
-parameter passed in named _Y_.  Part of making the transition from 
-_jQuery_ to _YUI3_ is understanding where and how they are similar. If you 
-used a _$_ in jQuery look for _Y_ dot something in YUI3, if you used a 
-_$( ... )_ then look at using either a _Y.one()_ or _Y.all()_ depending 
-on whether you need a single element or a list of elements.
-
 ## Selectors
 
 ### Accessing parts of a webpage
 
-CSS selectors allow you easily target elements in a webpage. _YUI3_ 
-like most modern browser libraries allows you to access elements in
-a webpage using [CSS][3] selectors. This typically is by indentifying an 
+[CSS][2] selectors allow you to easily target elements in a webpage.
+_YUI3_ like other browser libraries allows you to access elements in
+a webpage using CSS selectors. This typically is by indentifying an 
 element via an _id_ or _class_ attribute.  You may also use CSS psuedo 
 classes and element relationships to target a specific element in the 
-page (e.g. the second _li_ contained in a _ul_ list). There is a cost 
-to caculating where in the _DOM_ your element is. The best practice
-in _YUI3_ like other libraries is you need to access the element more 
-then once. This can be done by assigning the reference to a 
-variable. Here's an example _script_ element showing the assignment and 
-use of the saved elements.
+page (e.g. the second _li_ contained in a _ul_ list). 
 
+There is a cost to caculating where in the _DOM_ your element is. The 
+best practice in _YUI3_ like other libraries is save a reference to
+those elements you need to access more than once. This can be done by 
+assigning the reference to a variable. Here's an example _script_ 
+element showing the assignment and use of the saved elements.
 
+[getting-started-improved.js](getting-started-improved.js)
 ```HTML
-            <script>
-                YUI().use("node", function (Y) {
-                    var title = Y.one("title"),
-                        h1 = Y.one("h1");
-                    
-                    title.setHTML("Hello World - improved.");
-                    h1.setHTML("Yippee! I can be more efficient.");
-                });
-            </script>
+    YUI().use("node", function (Y) {
+        "use strict";
+        var title = Y.one("title"),
+            h1 = Y.one("h1");
+
+        title.setHTML("Hello World - improved.");
+        h1.setHTML("Yippee! I can be more efficient.");
+    });
+```
+
+Here's a modified version on our getting started page.
+
+[getting-started-improved.html](getting-started-improved.html)
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head><title>Getting Started Improved</title></head>
+        <body>
+            <h1>Getting Started Improved</h1>
+            <p>When YUI3 is loaded the title and h1 will be updated.</p>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
+            <script src="getting-started-improved.js"></script>
+        </body>
+    </html>
 ```
 
 _YUI3_ provides two functions that take a selector. The first is _Y.one()_. 
-It will give you the first element in the [DOM][4] matching that selector. 
+It will give you the first element in the [DOM][3] matching that selector. 
 In our example above that was _title_ and _h1_.  If you had more than 
 one _h1_ it would only give the first _h1_ found. Usually this is what 
 you want.  Sometimes you want all the elements matching a selector 
@@ -244,12 +233,12 @@ Next we'll update part of the page to indicate the links we found.
             <ol>
                 <li><a href="http://yuilibrary.com">YUI Library</a></li>
                 <li><a href="http://github.com/yui/yui3">YUI3 on Github.com</a></li>
-                <li><a href="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
+                <li><a href="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js">Seed File</a> for YUI3 at the CDN</li>
             </ol>
             <!-- This div is where we will display what we find -->
             <div id="results"></div>
             <!-- load YUI3 on the page as normal -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <!-- Now write our script to cound the anchor elements and update div.results -->
             <script>
                 // Load the node module and create our Y object.
@@ -279,9 +268,8 @@ That's it. Take a look at this results with your
 [browser](selecting-all.html). You should see, very quickly I might add,
 a sentence indicating the links found.
 
-
-[3]: http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
-[4]: http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
+[2]: http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
+[3]: http://en.wikipedia.org/wiki/Document_Object_Model "The Object which the browser uses to allow access to parts of a webpage."
 
 
 ### innerHTML and attributes
@@ -312,8 +300,9 @@ few to get useful work done. This is done in two steps
         // use Y.log()
         Y.log("The href is " + href);
         Y.log("The innerHTML is " + innerHTML);
-        // Step 2, use Y.set() to change the value wrapped by the anchor
-        Y.setHTML('(links to: <em>' + href + '</em>) '  + innerHTML);
+        // Step 2, use setHTML() to change the value wrapped by 
+        // the anchor
+        anchor.setHTML('(links to: <em>' + href + '</em>) '  + innerHTML);
     });
 ```
 
@@ -368,7 +357,7 @@ Here is a seed file you can use to start your exercises from.
             <section>Main content goes here</section>
             <footer>Footer things go here</footer>
             <!-- get YUI3 on the page, and a script element for your code -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", function (Y) {
                 // In the YUI community this location is often
@@ -414,7 +403,7 @@ Copy _seed-file.html_ to _clock-1.html_. Do the following things
 
 ##### Notes
 
-* In these tutorials I have opted for [in-line][5] code for convienence and simplicity
+* In these tutorials I have opted for [in-line][4] code for convienence and simplicity
 * One approach to the solution is [clock-1.html](clock-1.html). Review it and compare with your own code.
 
 
@@ -446,7 +435,7 @@ Copy _seed-file.html_ to _where-am-i.html_.  Do the following things
 * One approach to the solution is [where-am-i.html](where-am-i.html)
 
 
-[5]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not necessarily a 'best practice' particularlly in more complicated websites and applications."
+[4]: https://en.wikipedia.org/wiki/Inline_expansion "In-line is not necessarily a 'best practice' particularlly in more complicated websites and applications."
 
 
 ## Actions
@@ -576,7 +565,7 @@ _use()_ script element.
         <body>
             <p>Our message goes here</p>
             <!-- Include YUI -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <!-- Include our module -->
             <script src="hello-world.js"></script>
             <!-- Now use our module -->
@@ -603,7 +592,7 @@ _YUI_ where to find our module with a little bit of [configuration][].
         <body>
             <p>Our message goes here</p>
             <!-- Include YUI -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <!-- Include our module via configuration -->
             <script>
             // Tell YUI where to find our module, then "use" it.
@@ -786,7 +775,7 @@ server side for a pregressively enhanced experience.
                 ];
             </script>
             <!-- get YUI3 on the page, and a script element for your code -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <script>
             YUI().use("node", "handlebars", function (Y) {
                 // Your code goes here
@@ -879,7 +868,7 @@ Here is what our HTML with in-line JavaScript would look like.
             </script>
             <!-- Define some data to put in the template -->
             <!-- get YUI3 on the page, and a script element for your code -->
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
             <script>
             // Notice we have added "io-base" to our list of modules in our "use" function.
             YUI().use("node", "handlebars", "io-base", function (Y) {
