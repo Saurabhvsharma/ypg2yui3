@@ -23,10 +23,10 @@ canonical documentation and you can read the source for _YUI3_ at
 1. [Google Groups](https://groups.google.com/forum/#!forum/yui-contrib)
 2. IRC community on irc.freeenode.net under #yui.
 3. [Stackexchange](http://stackoverflow.com/questions/tagged/yui3)
-4. [DuckDuckGo](http://duckduckgo.com), use yui3 as one of your search terms
+4. Use your favorite search terms like "yui3"
 
 
-[YUI3]: http://yuilibrary.com "YUI3 was at version 3.10.0 at the time this article was written"
+[YUI3]: http://yuilibrary.com "YUI3 was at version 3.13.0 at the time this article was written"
 
 
 # Contents
@@ -89,7 +89,7 @@ presents several nice opportunities when you move beyond the browser--
 1. What you learn in the browser can be used server side
 2. The _YUI3_ tool chain is Node based
 3. [Mojito](http://developer.yahoo.com/cocktails/mojito/) is based on on _YUI3_ plus _Node_
-4. Node runs on _Mac_, _Windows_ and many _Unix_ (e.g. Intel and Arm based _Linux_)
+4. Node runs on _Mac_,under _Windows_ and many _Unix_ systems (e.g. Intel and Arm based _Linux_)
 
 I have found the little _Node_ webserver called 
 [httpster](https://github.com/SimbCo/httpster) to be very help for 
@@ -184,7 +184,7 @@ a similar pattern.
 ```
 
 The line with document ready includes a wrapping function providing a 
-namespace for your code. _YUI_ also does this though technically my 
+scoped space for your code. _YUI_ also does this though technically my 
 example loads a module called _node_ to provide the features similar to 
 _jQuery_'s _$_ function. In _YUI_ those functions are used from the 
 parameter passed in named _Y_.  Part of making the transition from 
@@ -197,16 +197,15 @@ on whether you need a single element or a list of elements.
 
 ### Accessing parts of a webpage
 
-CSS selectors work the way you expect but save those references to be 
-efficient!
-
-_YUI3_ uses [CSS][3] selectors to access parts of the webpage. This 
-typically is by indentifing an element via an _id_ or _class_ attribute. 
-You may also use CSS psuedo classes and element relationships to target a 
-specific element in the page (e.g. the second _li_ contained in a _ul_ 
-list). There is a cost to caculating where in the _DOM_ your element is so 
-like _jQuery_ the best practice in _YUI3_ is to save the reference if you 
-need it more than once. This can be done by assigning the reference to a 
+CSS selectors allow you easily target elements in a webpage. _YUI3_ 
+like most modern browser libraries allows you to access elements in
+a webpage using [CSS][3] selectors. This typically is by indentifying an 
+element via an _id_ or _class_ attribute.  You may also use CSS psuedo 
+classes and element relationships to target a specific element in the 
+page (e.g. the second _li_ contained in a _ul_ list). There is a cost 
+to caculating where in the _DOM_ your element is. The best practice
+in _YUI3_ like other libraries is you need to access the element more 
+then once. This can be done by assigning the reference to a 
 variable. Here's an example _script_ element showing the assignment and 
 use of the saved elements.
 
@@ -223,11 +222,11 @@ use of the saved elements.
             </script>
 ```
 
-_YUI3_ provides two function that take a selector. The first is _Y.one()_. 
+_YUI3_ provides two functions that take a selector. The first is _Y.one()_. 
 It will give you the first element in the [DOM][4] matching that selector. 
 In our example above that was _title_ and _h1_.  If you had more than 
 one _h1_ it would only give the first _h1_ found. Usually this is what 
-you want.  Sometimes you want all the elements that match a selector 
+you want.  Sometimes you want all the elements matching a selector 
 (e.g. all the anchor elements in a page).  To get that you use _Y.all()_.
 That returns a list of elements. It is easiest to explain by showing.  
 Let us create a short document with a list of links to YUI3 resources. 
@@ -255,6 +254,7 @@ Next we'll update part of the page to indicate the links we found.
             <script>
                 // Load the node module and create our Y object.
                 YUI().use("node", function (Y) {
+                    "use strict";
                     // Enumerate the anchor elements
                     var all_anchors = Y.all("a"),
                         // Remember the place in the page to update the results
@@ -275,8 +275,9 @@ Next we'll update part of the page to indicate the links we found.
     </html>
 ```
 
-That's it. Take a look at this results with your browser. You should see, 
-very quickly I might add, a sentence indicating the links found.
+That's it. Take a look at this results with your 
+[browser](selecting-all.html). You should see, very quickly I might add,
+a sentence indicating the links found.
 
 
 [3]: http://en.wikipedia.org/wiki/CSS "Cascading Style Sheets, they way to control how a webpage looks."
@@ -295,20 +296,43 @@ few to get useful work done. This is done in two steps
 2. use _Y.get()_, _Y.set()_, and _Y.setHTML()_ to interact with that element. 
 
 
+[steps-one-two.js](steps-one-two.js)
 ```JavaScript
     YUI().use("node", function (Y) {
         "use strict";
-        // Step 1, get a handle to the node you want to work with in this case an anchor element
+        // Step 1, get a handle to the node you want to work with in 
+        // this case an anchor element
         var anchor = Y.one("a"),
             // Now get the value of the href attribute.
             href = anchor.get("href"),
             // Get the innerHTML of the anchor
             innerHTML = anchor.get("innerHTML");
 
-         // Too see the results in the JavaScript console of the browser use Y.log()
-         Y.log("The href is " + href);
-         Y.log("The innerHTML is " + innerHTML);
+        // Too see the results in the JavaScript console of the browser 
+        // use Y.log()
+        Y.log("The href is " + href);
+        Y.log("The innerHTML is " + innerHTML);
+        // Step 2, use Y.set() to change the value wrapped by the anchor
+        Y.setHTML('(links to: <em>' + href + '</em>) '  + innerHTML);
     });
+```
+
+Here's is an HTML page where that [interaction](steps-one-two.html)
+can take place.
+
+[steps-one-two.html](steps-one-two.html)
+```HTML
+    <!DOCTYPE html>
+    <html>
+        <head><title>Steps One, Two</title>
+        <body>
+            <h1>Steps One, Two</h1>
+            <p><a href="steps-one-two.html">An example anchor tag.</a></p>
+            <script src="http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js"></script>
+
+            <script src="steps-one-two.js"></script>
+        </body>
+    </html>
 ```
 
 [node]: http://yuilibrary.com/yui/docs/node/ "The YUI3 Node module provides access to DOM elements."
