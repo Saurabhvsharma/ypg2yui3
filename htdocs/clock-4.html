@@ -3,6 +3,7 @@
     <head>
         <title>clock-4.md</title>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
         <link href="css/styles.css" rel="stylesheet" media="all">
     </head>
     <body>
@@ -122,7 +123,9 @@ Each alarm has a label we can display at the appropriate time.</p>
 our modules core we then include a version number (e.g. 0.0.4) and
 a configuration object including the required list of modules we need to run.</p>
 <p><a href="clock-4.js">clock-4.js</a></p>
-<pre><code class="language-JavaScript">    // Define out module using _YUI.add()_
+<pre><code class="language-JavaScript">    /*jslint browser: true, indent: 4 */
+    /*global YUI */
+    // Define out module using _YUI.add()_
     YUI.add(&quot;clock&quot;, function (Y) {
         &quot;use strict&quot;;
         // Create our namespace
@@ -130,8 +133,8 @@ a configuration object including the required list of modules we need to run.</p
 
         // This is a private function so doesn&#39;t need to be added to
         // the Y.Clock instance.
-        function checkForAlarm(alarms, previous_time, current_time) {
-            alarms.forEach(function (alarm, i) { 
+        function checkForAlarm(alarms) {
+            alarms.forEach(function (alarm) {
                 var weekDays = [
                         &quot;Sunday&quot;,
                         &quot;Monday&quot;,
@@ -141,19 +144,23 @@ a configuration object including the required list of modules we need to run.</p
                         &quot;Friday&quot;,
                         &quot;Saturday&quot;
                     ],
-            today = new Date(),
-            dayOfWeek = weekDays[today.getDay()];
+                    today = new Date(),
+                    dayOfWeek = weekDays[today.getDay()];
 
                 if (alarm.day === dayOfWeek) {
-                   //FIXME: handle case of where we set alarm if the hour hans&#39;t passed.
+                    //FIXME: handle case of where we set alarm if the hour hans&#39;t passed.
+                    Y.log(&#39;need to set alarm&#39;, &#39;debug&#39;);
                 } else {
-                   //FIXME handle case where we&#39;re not setting this alarm
+                    //FIXME handle case where we&#39;re not setting this alarm
+                    Y.log(&quot;don&#39;t set alarm&quot;, &#39;debug&#39;);
                 }
             });
         }
 
         // Setup a constructor with reasonable defaults
-        function Clock () {};
+        function Clock() {
+            Y.log(&#39;clock created&#39;, &#39;debug&#39;);
+        }
         Clock.prototype.interval = 1000;
         Clock.prototype.int_id = null;
         Clock.prototype.selector = null;
@@ -175,7 +182,7 @@ a configuration object including the required list of modules we need to run.</p
                 current_time = new Date();
                 self.render(current_time);
                 previous_time = current_time;
-                checkforAlarm(alarms, previous_time, current_time);
+                checkForAlarm(alarms, previous_time, current_time);
             }, interval);
             return this.int_id;
         };
@@ -188,10 +195,10 @@ a configuration object including the required list of modules we need to run.</p
         // Add our new Object as Clock
         Y.Clock = Clock;
     },
-    // Semantic Version number
-    &quot;0.0.4&quot;,
-    // Configuration with list of modules we &#39;require&#39; 
-    {requires: [&quot;node&quot;, &quot;handlebars&quot;]});</code></pre>
+        // Semantic Version number
+        &quot;0.0.4&quot;,
+        // Configuration with list of modules we &#39;require&#39; 
+        {requires: [&quot;node-base&quot;, &quot;handlebars&quot;]});</code></pre>
 
         </section>
         

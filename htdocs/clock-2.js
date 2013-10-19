@@ -7,7 +7,9 @@ YUI.add("clock", function (Y) {
     Y.namespace("Clock");
 
     // Setup a constructor with reasonable defaults
-    var Clock = function () {};
+    function Clock() {
+        Y.log('clock created', 'debug');
+    }
     Clock.prototype.interval = 1000;
     Clock.prototype.int_id = null;
     Clock.prototype.selector = null;

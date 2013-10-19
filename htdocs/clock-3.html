@@ -3,6 +3,7 @@
     <head>
         <title>clock-3.md</title>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
         <link href="css/styles.css" rel="stylesheet" media="all">
     </head>
     <body>
@@ -67,14 +68,18 @@ our modules core we then include a version number (e.g. 0.0.3) and
 a configuration options object including the required list of modules
 we need to run.</p>
 <p><a href="clock-3.js">clock-3.js</a></p>
-<pre><code class="language-JavaScript">    // Define out module using _YUI.add()_
+<pre><code class="language-JavaScript">    /*jslint browser: true, indent: 4 */
+    /*global YUI */
+    // Define out module using _YUI.add()_
     YUI.add(&quot;clock&quot;, function (Y) {
         &quot;use strict&quot;;
         // Create our namespace
         Y.namespace(&quot;Clock&quot;);
 
         // Setup a constructor with reasonable defaults
-        function Clock () {};
+        function Clock() {
+            Y.log(&#39;clock created&#39;, &#39;deubg&#39;);
+        }
         Clock.prototype.interval = 1000;
         Clock.prototype.int_id = null;
         Clock.prototype.selector = null;
@@ -89,7 +94,7 @@ we need to run.</p>
                 this.render = template;
             }
             this.int_id = setInterval(function () {
-                self.render(new Date());                
+                self.render(new Date());
             }, interval);
             return this.int_id;
         };
@@ -102,10 +107,10 @@ we need to run.</p>
         // Add our new Object as Clock
         Y.Clock = Clock;
     },
-    // Semantic Version number
-    &quot;0.0.3&quot;,
-    // Configuration with list of modules we &#39;require&#39; 
-    {requires: [&quot;node&quot;, &quot;handlebars&quot;]});</code></pre>
+        // Semantic Version number
+        &quot;0.0.3&quot;,
+        // Configuration with list of modules we &#39;require&#39; 
+        {requires: [&quot;node-base&quot;, &quot;handlebars&quot;]});</code></pre>
 
         </section>
         

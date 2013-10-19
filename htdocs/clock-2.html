@@ -3,6 +3,7 @@
     <head>
         <title>clock-2.md</title>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
         <link href="css/styles.css" rel="stylesheet" media="all">
     </head>
     <body>
@@ -88,7 +89,9 @@ we need to run.</p>
         Y.namespace(&quot;Clock&quot;);
 
         // Setup a constructor with reasonable defaults
-        var Clock = function () {};
+        function Clock() {
+            Y.log(&#39;clock created&#39;, &#39;debug&#39;);
+        }
         Clock.prototype.interval = 1000;
         Clock.prototype.int_id = null;
         Clock.prototype.selector = null;

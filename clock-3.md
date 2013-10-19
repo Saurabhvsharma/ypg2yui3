@@ -69,6 +69,8 @@ we need to run.
 
 [clock-3.js](clock-3.js)
 ```JavaScript
+    /*jslint browser: true, indent: 4 */
+    /*global YUI */
     // Define out module using _YUI.add()_
     YUI.add("clock", function (Y) {
         "use strict";
@@ -76,7 +78,9 @@ we need to run.
         Y.namespace("Clock");
 
         // Setup a constructor with reasonable defaults
-        function Clock () {};
+        function Clock() {
+            Y.log('clock created', 'deubg');
+        }
         Clock.prototype.interval = 1000;
         Clock.prototype.int_id = null;
         Clock.prototype.selector = null;
@@ -91,7 +95,7 @@ we need to run.
                 this.render = template;
             }
             this.int_id = setInterval(function () {
-                self.render(new Date());                
+                self.render(new Date());
             }, interval);
             return this.int_id;
         };
@@ -104,10 +108,10 @@ we need to run.
         // Add our new Object as Clock
         Y.Clock = Clock;
     },
-    // Semantic Version number
-    "0.0.3",
-    // Configuration with list of modules we 'require' 
-    {requires: ["node", "handlebars"]});
+        // Semantic Version number
+        "0.0.3",
+        // Configuration with list of modules we 'require' 
+        {requires: ["node-base", "handlebars"]});
 ```
 
 

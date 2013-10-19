@@ -1,3 +1,5 @@
+/*jslint browser: true, indent: 4 */
+/*global YUI */
 // Define out module using _YUI.add()_
 YUI.add("clock", function (Y) {
     "use strict";
@@ -6,8 +8,8 @@ YUI.add("clock", function (Y) {
 
     // This is a private function so doesn't need to be added to
     // the Y.Clock instance.
-    function checkForAlarm(alarms, previous_time, current_time) {
-        alarms.forEach(function (alarm, i) { 
+    function checkForAlarm(alarms) {
+        alarms.forEach(function (alarm) {
             var weekDays = [
                     "Sunday",
                     "Monday",
@@ -17,19 +19,23 @@ YUI.add("clock", function (Y) {
                     "Friday",
                     "Saturday"
                 ],
-		    today = new Date(),
-		    dayOfWeek = weekDays[today.getDay()];
+                today = new Date(),
+                dayOfWeek = weekDays[today.getDay()];
 
             if (alarm.day === dayOfWeek) {
-               //FIXME: handle case of where we set alarm if the hour hans't passed.
+                //FIXME: handle case of where we set alarm if the hour hans't passed.
+                Y.log('need to set alarm', 'debug');
             } else {
-               //FIXME handle case where we're not setting this alarm
+                //FIXME handle case where we're not setting this alarm
+                Y.log("don't set alarm", 'debug');
             }
         });
     }
-    
+
     // Setup a constructor with reasonable defaults
-    function Clock () {};
+    function Clock() {
+        Y.log('clock created', 'debug');
+    }
     Clock.prototype.interval = 1000;
     Clock.prototype.int_id = null;
     Clock.prototype.selector = null;
@@ -51,7 +57,7 @@ YUI.add("clock", function (Y) {
             current_time = new Date();
             self.render(current_time);
             previous_time = current_time;
-            checkforAlarm(alarms, previous_time, current_time);
+            checkForAlarm(alarms, previous_time, current_time);
         }, interval);
         return this.int_id;
     };
@@ -64,7 +70,7 @@ YUI.add("clock", function (Y) {
     // Add our new Object as Clock
     Y.Clock = Clock;
 },
-// Semantic Version number
-"0.0.4",
-// Configuration with list of modules we 'require' 
-{requires: ["node", "handlebars"]});
+    // Semantic Version number
+    "0.0.4",
+    // Configuration with list of modules we 'require' 
+    {requires: ["node-base", "handlebars"]});
