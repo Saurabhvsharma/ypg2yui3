@@ -970,7 +970,7 @@ FIXME: Let's save our alarms in the browser using the Y.StorageLite module. We s
 
 ### Should you use YUI for that?
 
-While _YUI3_ is a very good library it is easy to get carried away. 
+While _YUI3_ is a very good library. It is easy to get carried away. 
 Here's some heuristic in deciding when to use _YUI3_ (or really any 
 JavaScript at all)
 

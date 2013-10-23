@@ -28,7 +28,7 @@ h3 {
     font-family: 'Roboto Slab', serif;
     font-size: 1.5em;
     line-height: 2.5em;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     padding-left: 1em;
 }
 
