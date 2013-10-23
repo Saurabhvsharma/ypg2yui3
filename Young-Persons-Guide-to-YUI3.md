@@ -23,7 +23,7 @@ canonical documentation and you can read the source for _YUI3_ at
 1. [Google Groups](https://groups.google.com/forum/#!forum/yui-contrib)
 2. IRC community on irc.freeenode.net under #yui.
 3. [Stackexchange](http://stackoverflow.com/questions/tagged/yui3)
-4. Use your favorite search terms like "yui3"
+4. Use your favorite search engine with terms like "yui3"
 
 
 [YUI3]: http://yuilibrary.com "YUI3 was at version 3.13.0 at the time this article was written"
