@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>remote.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>remote.md</h1></header>
+        <section>
+        <h2>Remote</h2>
+<h3>Bring content into the page with <strong>Y.io</strong> from <strong>io-base</strong></h3>
+<p>Sometimes we need data from other websites or even an <a href="http://wikipedia.org/wiki/API" title="Application Programming Interface - For our purposes today a way to get data from and push data to a web service">API</a> in our 
+hosting website. It is nice to have that option in the browser and <em>YUI</em> 
+has a module for that :-).  The module is called <em>IO</em> or more specifically 
+in your <em>Y</em> function <em>Y.io</em>. It abstracts content input and output. That 
+means it can be used to load other content (e.g. RSS, XML, HTML, JSON) as 
+well as used to push data to a server (e.g. a forms&#39; POST, PUT, GET or 
+DELETE).  It is what puts connectivity in the phrase &quot;social web app&quot;. 
+I.e. the social services are usually someplace else on the network (e.g. 
+Twitter, Facebook, G+). Since this tutorial in focused on introducing the 
+browser side resources of <em>YUI</em> I am going to show you how you might 
+retrieve a remote <a href="http://json.org" title="JavaScript-Object-Notation, a text format for easy data exchange">JSON</a> file to populate our previous example of phone 
+number list.  In principle you use the same techniques to talk to an API.<br>In this example a list of names and phone numbers is stored in a file 
+called <em>phonelist.json</em> on our web server. Using <em>Y.io</em> we get the file 
+and convert to an JavaScript object. Next the object is used along with a 
+template like our earlier example.</p>
+<p>Here is our phone list data. For the purpose of this tutorial we can think 
+of it as an web service <em>API</em> call.</p>
+<p><a href="phonelist.json">phonelist.json</a></p>
+<pre><code class="language-JavaScript">    [
+        {&quot;name&quot;: &quot;Jane Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4567&quot;},
+        {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-5678&quot;},
+        {&quot;name&quot;: &quot;Trina Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-6789&quot;}
+    ]</code></pre>
+<p>Here is what our HTML with in-line JavaScript would look like.</p>
+<p><a href="phonelist.html">phonelist.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Phone List&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Phone List&lt;/header&gt;
+            &lt;section&gt;Phone list content goes here&lt;/section&gt;
+            &lt;footer&gt;&lt;/footer&gt;
+            &lt;!-- Define a template to render our UL list with --&gt;
+            &lt;script id=&quot;list-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;
+                &lt;ul&gt;
+                {{#data}}
+                    &lt;li&gt;&lt;span class=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span class=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/li&gt;
+                {{/data}}
+                &lt;/ul&gt;
+            &lt;/script&gt;
+            &lt;!-- Define some data to put in the template --&gt;
+            &lt;!-- get YUI3 on the page, and a script element for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            // Notice we have added &quot;io-base&quot; to our list of modules in our &quot;use&quot; function.
+            YUI().use(&quot;node&quot;, &quot;handlebars&quot;, &quot;io-base&quot;, function (Y) {
+                // Your code goes here
+                var source = Y.one(&quot;#list-template&quot;).getHTML(),
+                    template = Y.Handlebars.compile(source),
+                    section = Y.one(&quot;section&quot;);
+
+                // Here are two function, one to execute on a successful data retrieval
+                // the other if something goes wrong.
+                function onSuccess(id, response, extra_args) {
+                    var data = JSON.parse(response.responseText);
+
+                    // Here is our render method from before.
+                    section.setHTML(template({data: data}));
+                }
+
+                function onFailure(id, response, extra_args) {
+                     // If this doesn&#39;t work we should say something.
+                     section.setHTML(&quot;&lt;em&gt;ERROR&lt;/em&gt;: cannot get the phone list at this time.&quot;);
+                }
+
+                // Since the data is not yet available we use YUI to fetch it then we can
+                // use the emplate to render it into &quot;section&quot; as before.
+                Y.io(&quot;phonelist.json&quot;, {
+                    on: {
+                        // We listen for an &quot;io&quot; success event.
+                        success: onSuccess,
+                        // We listen for an &quot;io&quot; failure event.
+                        failure: onFailure
+                    }
+                });
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>Notice we still use our </p>
+<pre><code class="language-JavaScript">    section.setHTML(template({data: data}));</code></pre>
+<p>We only wait to call it until we have data base in the <em>onSuccess()</em> 
+callback.  The first parameter <em>Y.io</em> expects is a URL as a string.<br>This could be a relative path  or a full URL to an API.  There are 
+additional optional parameters in the <em>Y.io</em> function call.  The second 
+one is for a configuration object. Typically we define our success and 
+failure callbacks here.  If we were interacting with an API, say 
+&quot;POST-ing&quot; a form&#39;s content, we would provide additional configuration.</p>
+<p>There are additional events emmited by <em>Y.io</em> which can be listened for.
+To see a complete list go to the <a href="http://yuilibrary.com/yui/">YUI Library</a>
+documentation and <a href="http://yuilibrary.com/yui/utilities">Utilities</a> and
+<a href="http://yuilibrary.com/yui/docs/io/">IO Utility</a>. Additional you will 
+find Object specific docs extracted from the source code at <a href="http://yuilibrary.com/yui/docs/api/classes/IO.html">YUI Library,
+API Docs, IO</a> for 
+specific implementation details.</p>
+<h3>An aside about IO</h3>
+<p><em>IO</em>&#39;s <em>Y.io</em> is a very configurable and flexible object. I have shown 
+only one idiomatic use to keep things simple. If all you were doing in 
+your page was fetching <em>JSON</em> objects then you could use <em>Y.io</em>&#39;s
+<em>getJSON()</em> function. This makes it even simplier. I have chosen to show 
+you this idomatic implementation because you can extend it to do things 
+like submitting POSTs to a API allowing you to do a complete <a href="http://en.wikipedia.org/wiki/Single_page_application" title="Single-Page Application">SPA</a>.</p>
+<p><em>IO</em>&#39;s (i.e. <em>io-base</em> in our use module list) is one of my favorite 
+modules.  It works both in the browser and in <em>Node</em>. That gives us a 
+common way to setup remote API access that might be processed in a middle 
+layer running on the server or directly in the client web browser.</p>
+<h3>Exercises</h3>
+<h4>Clock with alarms</h4>
+<h5>Steps</h5>
+<h5>Notes</h5>
+<ul>
+<li>One implementation of our Clock with Alarms pull is <a href="clock-4.html">clock-4.html</a></li>
+</ul>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

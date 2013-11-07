@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>persistence.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>persistence.md</h1></header>
+        <section>
+        <h2>Persistence</h2>
+<h3>Saving things for latter with Y.StorageLite</h3>
+<p>FIXME: Let&#39;s save our alarms in the browser using the Y.StorageLite module. We should also be able to recall and edit them</p>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

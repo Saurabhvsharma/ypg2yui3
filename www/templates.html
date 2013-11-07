@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>templates.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>templates.md</h1></header>
+        <section>
+        <h2>Templates</h2>
+<h3>Building a page with <strong>Y.Handlebars</strong></h3>
+<p>Templates are a convient solution to generating HTML from JavaScript 
+functions.  Templates in JavaScript can often be rendered server side as 
+well as in the browser. This is true of <em>Handlbars</em> templates.<br><em>Handlebars</em> is an extention to a popular template notation called 
+<em>Mustache</em>.  The basic idea is your surround the parts of the markup you 
+want to replace with double curly brackets surrounding matching variable 
+name.  When you provide the template function with an object that contains 
+attributes that match those curly bracket variable names then the template 
+engine replaces the content.  Here&#39;s a quick example of a template--</p>
+<pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/div&gt;</code></pre>
+<p>Here is a JSON object that could be used to populate the template--</p>
+<pre><code class="language-JavaScript">    {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4444&quot;}</code></pre>
+<p>If you applied that object to that template you&#39;d get something like</p>
+<pre><code class="language-HTML">    &lt;div&gt;&lt;span id=&quot;name&quot;&gt;John Doe&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;+1-222-333-4444&lt;/span&gt;&lt;/div&gt;</code></pre>
+<p>In the past it was common to see code that look like this to generate the 
+same HTML fragment from JavaScript--</p>
+<pre><code class="language-JavaScript">    record = {&quot;name&quot;: &quot;John Doe&quot;, &quot;phonenumber&quot;: &quot;+1-222-333-4444&quot;},
+    html = &#39;&lt;div&gt;&lt;span id=&quot;name&quot;&gt;&#39; + record.name + &#39;&lt;/span&gt; &lt;span id=&quot;phonenumber&quot;&gt;&#39; +
+        record.phonenumber + &#39;&lt;/span&gt;&lt;/div&gt;;</code></pre>
+<p>It is not too bad but when you get lots of fields (e.g. a person&#39;s profile,
+a calendar event listing) you get lots of concatenation operations. That 
+isn&#39;t terribly effecient for JavaScript and if you miss a closing 
+quotation can be tough to debug. Templates provide a clean effective way 
+to avoid that.</p>
+<h4>Embedding your handlebars template</h4>
+<p>The easiest place to embed your template is in the HTML file that needs 
+them.  A practice of using a <em>script</em> element has been evolving as a way 
+of designating the template within the page. Building on our previous 
+example here is a simple webpage that displays a list of names and phone 
+numbers embedded in a <em>ul</em> element.  We load <em>YUI</em> normally but include 
+<em>handlebars</em> as a module.  We fetch the templates using <em>Y.one()</em> by CSS 
+id. We compile the template and then apply our data object the HTML 
+element we want to update.  While our example has one template in 
+principle you can do this as many times as you needed for the page&#39;s 
+content.  With slight modification in approach you could pre-render this 
+server side for a pregressively enhanced experience.</p>
+<p><a href="handlebars-demo-1.html">handlebars-demo-1.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Handlebars Demo 1&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;header&gt;Handlebars Demo 1&lt;/header&gt;
+            &lt;section&gt;Main content goes here&lt;/section&gt;
+            &lt;footer&gt;&lt;/footer&gt;
+            &lt;!-- Define a template to render our UL list with --&gt;
+            &lt;script id=&quot;list-template&quot; type=&quot;text/x-handlebars-template&quot;&gt;
+                &lt;ul&gt;
+                {{#data}}
+                    &lt;li&gt;&lt;span class=&quot;name&quot;&gt;{{name}}&lt;/span&gt; &lt;span class=&quot;phonenumber&quot;&gt;{{phonenumber}}&lt;/span&gt;&lt;/li&gt;
+                {{/data}}
+                &lt;/ul&gt;
+            &lt;/script&gt;
+            &lt;!-- Define some data to put in the template --&gt;
+            &lt;script type=&quot;text/javascript&quot; rel=&quot;javascript&quot;&gt;
+                var data = [
+                    {name: &quot;Jane Doe&quot;, phonenumber: &quot;+1-222-333-4567&quot;},
+                    {name: &quot;John Doe&quot;, phonenumber: &quot;+1-222-333-5678&quot;},
+                    {name: &quot;Trina Doe&quot;, phonenumber: &quot;+1-222-333-6789&quot;}
+                ];
+            &lt;/script&gt;
+            &lt;!-- get YUI3 on the page, and a script element for your code --&gt;
+            &lt;script src=&quot;http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;
+            &lt;script&gt;
+            YUI().use(&quot;node&quot;, &quot;handlebars&quot;, function (Y) {
+                // Your code goes here
+                var source = Y.one(&quot;#list-template&quot;).getHTML(),
+                    template = Y.Handlebars.compile(source),
+                    section = Y.one(&quot;section&quot;);
+
+                section.setHTML(template({data: data}));
+            });
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>Of course you could also define your templates outside the document and 
+bring them in via an <a href="http://docs.webplatform.org/wiki/apis/xhr" title="xdr - Cross Domain Request, also referred to as Ajax.">xdr</a> call.</p>
+<h3>Exercises</h3>
+<h4>Clock with Template</h4>
+<ul>
+<li>Programming Goal<ul>
+<li>Re-factor our Clock <em>YUI</em> module to use templates rather than a custom render method.</li>
+</ul>
+</li>
+<li>Learning Objective<ul>
+<li>Become with familiar with the basics of <em>Handlebars</em> as implemented in <em>YUI</em></li>
+</ul>
+</li>
+</ul>
+<h5>Steps</h5>
+<h5>Notes</h5>
+<ul>
+<li>One implementation is <a href="clock-3.html">clock-3.html</a></li>
+</ul>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

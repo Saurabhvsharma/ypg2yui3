@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>README.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>README.md</h1></header>
+        <section>
+        <h1>ypg2yui3</h1>
+<h1>Young Person&#39;s Guide to YUI3</h1>
+<p>by R. S. Doiel, <a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#x72;&#115;&#x64;&#x6f;&#105;&#x65;&#108;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x72;&#115;&#x64;&#x6f;&#105;&#x65;&#108;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>This is a gentle introduction to <a href="http://yuilibrary.com" title="YUI3 is a JavaScript framework">YUI3</a>. It does make a few assumptions-</p>
+<ul>
+<li>You have a basic knowledge of JavaScript, HTML, CSS</li>
+<li>A basic idea of how the web works</li>
+</ul>
+<h2>About this work</h2>
+<p>Young Person&#39;s Guide to YUI3 is a longform article designed to be read as an 
+electronic text (e.g. via the web or ePub). The primary corpous is in 
+<a href="Young-Persons-Guide-to-YUI3.md">Young-Persons-Guide-to-YUI3.md</a>.</p>
+<h2>Markdown to website</h2>
+<p><em>ypg2yui3</em> was written using in Markdown and uses <a href="http://github.com/rsdoiel/mweave">Markdown-Weave</a>
+to generate the code examples and HTML exercises pages from the primary text. This is
+done through a <em>build.js</em> NodeJS&#39; package manager <em>npm</em>. To generate browser friendly version run---</p>
+<pre><code class="language-Shell">    npm install
+    npm run-script build</code></pre>
+<p>This will render content to an <em>htdocs</em> folder which you can use with your web server.</p>
+<p>(e.g. using <a href="https://github.com/SimbCo/httpster">httpster</a>
+as your web server, this will serve your content at <a href="http://localhost:3333">http://localhost:3333</a>)</p>
+<pre><code class="language-shell">    httpster -d htdocs</code></pre>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

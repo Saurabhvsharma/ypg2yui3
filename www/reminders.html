@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>reminders.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>reminders.md</h1></header>
+        <section>
+        <h2>Reminders</h2>
+<h3>Should you use YUI for that?</h3>
+<p>While <em>YUI3</em> is a very good library it is easy to get carried away. 
+Here&#39;s some heuristic in deciding when to use <em>YUI3</em> (or really any 
+JavaScript at all)</p>
+<ul>
+<li>If it is structure then use HTML</li>
+<li>If it is visual look and feel or layout trying solving with CSS</li>
+<li>If it is behavior use JavaScript if you can not achieve it in HTML and CSS</li>
+<li>If you can solve it simply in plain JavaScript then do so. </li>
+<li>If it is more complicated or can benefit from modularization consider <em>YUI3</em></li>
+</ul>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

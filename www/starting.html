@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>starting.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>starting.md</h1></header>
+        <section>
+        <h2>Starting</h2>
+<h3>The minimum to pull <em>YUI3</em> into the webpage</h3>
+<p><em>YUI</em> needs to be available to the webpage to be useful. Fortunately this 
+is <a href="http://yuilibrary.com/yui/quick-start/" title="YUI Quick Start at yuilibrary.com">easy</a>. You use a <em>script</em> element to include it from Yahoo&#39;s CDN. 
+Let us build a simple webpage  using <em>YUI3</em> to change the pages&#39; <em>title</em> 
+to &quot;Hello World&quot; and the first <em>h1</em> to &quot;Yippee! It worked.&quot;.</p>
+<p>Build the first part of your HTML document as you normally would.</p>
+<p><a href="getting-started.html">getting-started.html</a></p>
+<pre><code class="language-HTML">    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Getting Started&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Getting Started&lt;/h1&gt;
+            &lt;p&gt;When YUI3 is loaded the title and h1 will be updated.&lt;/p&gt;</code></pre>
+<p>Now include <em>YUI3</em> from Yahoo&#39;s CDN with the following script element.</p>
+<p><a href="getting-started.html">getting-started.html</a></p>
+<pre><code class="language-HTML">               &lt;script src=&quot;http://yui.yahooapis.com/3.13.0/build/yui/yui-min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>Now we want to change the contents of the <em>title</em> and <em>h1</em> element to show that
+this worked. We add another <em>script</em> element for that.</p>
+<p><a href="getting-started.html">gitting-started.html</a></p>
+<pre><code class="language-HTML">            &lt;script&gt;
+                YUI().use(&quot;node-base&quot;, function (Y) {
+                    Y.one(&quot;title&quot;).setHTML(&quot;Hello World&quot;);
+                    Y.one(&quot;h1&quot;).setHTML(&quot;Yippee! It worked.&quot;);
+                });
+            &lt;/script&gt;</code></pre>
+<p>Finally close up the rest of your document normally.</p>
+<p><a href="getting-started.html">getting-started.html</a></p>
+<pre><code class="language-HTML">        &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>Save this as the file <em>getting-started.html</em>. Point your web browser at 
+the page and take a look.</p>
+<p>You should now see your first <em>YUI3</em> enabled web page.</p>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>
