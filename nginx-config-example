@@ -1,0 +1,38 @@
+# Nginx config example
+# statements for each of your virtual hosts to this file
+server {
+    # Since Inky can write data you'll realy want to run
+    # it using SSL. An example of that type of setup
+    # is commented out below.  The rest of the uncommented
+    # example assumes you're running everything as "localhost"
+    # and not going out on the network.
+    
+    
+    # You need to let Nginx know where the
+    # the certs are for your domain. 
+    ##ssl_certificate     sslcert/<dns-domain>/<subdomain>.crt;
+    ##ssl_certificate_key sslcert/<dns-dmoain>/<subdomain>.key;
+	# Server name/ip address and port
+    ## listen www.example.com:443; allow all;
+    ## server_name www.example.com;
+
+	# Server name/ip address and port
+    listen ypg2yui3.local:80;
+    server_name ypg2yui3.local;
+    # Root of static web stree
+    root  /www;
+    index index.html;
+
+    # All API calls get passed through to port 3333
+    # on your localhost.  This is via http rather than https.
+    location /api/ {
+        proxy_pass http://ypg2yui3.local:3333;
+        proxy_set_header  X-Real-IP  $remote_addr;
+    }
+    # Everything else is presumed to be a static file covered by this   
+    # location.
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+

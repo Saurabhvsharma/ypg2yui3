@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>index.md</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" media="all">
+        <link href="css/styles.css" rel="stylesheet" media="all">
+    </head>
+    <body>
+        <header><h1>index.md</h1></header>
+        <section>
+        <h1>Young Person&#39;s Guide to YUI3 (draft 0)</h1>
+<p>by R. S. Doiel, <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#114;&#x73;&#100;&#111;&#105;&#x65;&#108;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#114;&#x73;&#100;&#111;&#105;&#x65;&#108;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a>
+Updated: 2013-11-07</p>
+<h1>Contents</h1>
+<ul>
+<li><a href="ypg2yui3.html#preface">Preface</a> -- What you&#39;ll need before you begin</li>
+<li><a href="ypg2yui3.html#starting">Starting</a> -- The minimum to pull YUI3 into the webpage</li>
+<li><a href="ypg2yui3.html#selectors">Selectors</a> -- Accessing parts of a webpage</li>
+<li><a href="ypg2yui3.html#actions">Actions</a> -- Mouse clicks, keyboard commands and touch</li>
+<li><a href="ypg2yui3.html#modules">Modules</a> -- Beyond YUI&#39;s <strong>node</strong> and <strong>event</strong></li>
+<li><a href="ypg2yui3.html#templates">Templates</a> -- Building out a page with <strong>Y.Handlebars</strong></li>
+<li><a href="ypg2yuigi.html#remote">Remote</a> -- Bring content into the page with <strong>Y.io</strong></li>
+<li><a href="ypg2yui3.html#persistence">Persistence</a> -- Saving things for latter with <strong>Y.StorageLite</strong></li>
+<li><a href="ypg2yui3.html#reminders">Reminders</a> -- Should you use YUI for that?</li>
+</ul>
+
+        </section>
+        
+        <footer>
+            <div class="copyright-notice">copyright &copy; 2013</div>
+            <div class="license">Released under the <a href="http://opensource.org/licenses/BSD-2-Clause">BSD 2-Clause</a> license.</div>
+        </footer>
+        <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
+        <script>
+        YUI().use("node", function (Y) {
+            var allH2 = Y.all("h2");
+            allH2.each(function (h2) {
+                var key = h2.getHTML(),
+                    anchor = Y.one('a[href="#' + key.toLowerCase() + '"]');
+                if (anchor) {
+                    h2.setHTML('<a name="' + key.toLowerCase() + '">' + key + '</a>');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

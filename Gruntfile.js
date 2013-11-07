@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                 }
             },
             client: {
-                src: [ 'htdocs/*.js' ],
+                src: [ 'www/*.js' ],
                 directives: {
                     browser: true,
                     predef: [
@@ -33,59 +33,39 @@ module.exports = function (grunt) {
         },
         exec: {
             clean: {
-                cmd: "rm -fR htdocs/*",
+                cmd: "rm -fR www/*",
                 stderr: true,
                 stdout: true,
                 exitCode: 0
             },
             mweave: {
                 cmd: function () {
+                    var mdFilenames;
+
                     function mw(inFilename, outFilename) {
                         return ["node node_modules/mweave/cli.js",
                             inFilename,
-                            "-t templates/page.html",
-                            "-d htdocs",
+                            "-t templates/page.hbs",
+                            "-d www",
                             "-o", outFilename].join(" ");
                     }
 
-                    grunt.log.writeln("Copying templates/css to htdocs/css");
-                    shell.mkdir("-p", "htdocs/css");
-                    shell.cp("-f", "templates/css/*", "htdocs/css/");
+                    grunt.log.writeln("Copying templates/css to www/css");
+                    shell.mkdir("-p", "www/css");
+                    shell.cp("-f", "templates/css/*", "www/css/");
 
-                    grunt.log.writeln("htdocs/index.html <-- Young-Persons-Guide-to-YUI3.md");
-                    if (shell.exec(mw("Young-Persons-Guide-to-YUI3.md", "index.html")).code !== 0) {
-                        grunt.fail.warn("Problem building htdocs/index.html");
-                    }
-
-                    grunt.log.writeln("htdocs/where-am-i.html <-- where-am-id.md");
-                    if (shell.exec(mw("where-am-i.md", "where-am-i.html")).code !== 0) {
-                        grunt.fail.warn("Problem building where-am-i-md");
-                    }
-
-                    grunt.log.writeln("htdocs/what-happened.html <-- what-happened.md");
-                    if (shell.exec(mw("what-happened.md", "what-happened.html")).code !== 0) {
-                        grunt.fail.warn("Problem building what-happened.md");
-                    }
-
-                    grunt.log.writeln("htdocs/clock-1.html <-- clock-1.md");
-                    if (shell.exec(mw("clock-1.md", "clock-1.html")).code !== 0) {
-                        grunt.fail.warn("Problem building digit-clock-1.md");
-                    }
-
-                    grunt.log.writeln("htdocs/clock-2.html <-- clock-2.md");
-                    if (shell.exec(mw("clock-2.md", "clock-2.html")).code !== 0) {
-                        grunt.fail.warn("Problem building clock-2.md");
-                    }
-
-                    grunt.log.writeln("htdocs/clock-3.html <-- clock-3.md");
-                    if (shell.exec(mw("clock-3.md", "clock-3.html")).code !== 0) {
-                        grunt.fail.warn("Problem building clock-3.md");
-                    }
-
-                    grunt.log.writeln("htdocs/clock-4.html <-- clock-4.md");
-                    if (shell.exec(mw("clock-4.md", "clock-4.html")).code !== 0) {
-                        grunt.fail.warn("Problem building clock-4.md");
-                    }
+                    // Find the markdown files
+                    mdFilenames = shell.ls('./').filter(function (filename) {
+                        return filename.match(/\.md$/);
+                    });
+                    grunt.log.writeln(mdFilenames);
+                    mdFilenames.forEach(function (filename) {
+                        var htmlFilename = filename.replace(/\.md$/, '.html');
+                        grunt.log.writeln(htmlFilename + ' <-- ' + filename);
+                        if (shell.exec(mw(filename, htmlFilename)).code !== 0) {
+                            grunt.fail.warn("Problem building " + htmlFilename);
+                        }
+                    });
                     return "";
                 }
             }
@@ -95,13 +75,13 @@ module.exports = function (grunt) {
                 options: {
                     import: 2
                 },
-                src: ['templates/css/*.css', "htdocs/*.css"]
+                src: ['templates/css/*.css', "www/*.css"]
             },
             lax: {
                 options: {
                     import: false
                 },
-                src: ["htdocs/css/*.css"]
+                src: ["www/css/*.css"]
             }
         }
     });
